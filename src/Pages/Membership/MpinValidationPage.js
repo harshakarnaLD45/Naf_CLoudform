@@ -8,7 +8,7 @@ import Image1 from "../../assets/Machines/Login.svg";
 import { useTranslation } from "react-i18next";
 
 const MpinValidationPage = ({ onSuccess }) => {
-    const { t,i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [mpin, setMpin] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
@@ -27,9 +27,11 @@ const MpinValidationPage = ({ onSuccess }) => {
 
         try {
             const response = await axios.post(
-                "https://staging-api.naf-cloudsystem.de/api/membership/authenticate",
-                null,
-                { params: { email, mpin } }
+                "https://api.naf-cloudsystem.de/api/membership/authenticate",
+                {
+                    email: email,
+                    mpin: mpin
+                }
             );
 
             if (response.data.refreshToken) {
@@ -44,14 +46,14 @@ const MpinValidationPage = ({ onSuccess }) => {
             setLoading(false);
         }
     };
-  
-      useEffect(() => {
-      }, [i18n.language]);
-    
+
+    useEffect(() => {
+    }, [i18n.language]);
+
 
     return (
         <Box className="section-container menucontainer">
-            <Box  sx={{ border: '1px solid #525252' }}>
+            <Box sx={{ border: '1px solid #525252' }}>
                 {/* Left Side */}
                 <Box className="main-form-container"
                     sx={{
@@ -99,7 +101,7 @@ const MpinValidationPage = ({ onSuccess }) => {
                                             {showPassword ? <VisibilityOff /> : <Visibility />}
                                         </IconButton>
                                     </InputAdornment>
-                                }/>
+                                } />
 
                             <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
                                 <div onClick={handleCheckMpin}>
@@ -117,7 +119,7 @@ const MpinValidationPage = ({ onSuccess }) => {
                     )}
                 </Box>
 
-              
+
             </Box>
         </Box >
     );

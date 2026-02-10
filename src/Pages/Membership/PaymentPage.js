@@ -63,7 +63,7 @@ const PaymentPage = () => {
 
     try {
       const res = await axios.get(
-        "https://staging-api.naf-cloudsystem.de/api/membership-cards/details",
+        "https://api.naf-cloudsystem.de/api/membership-cards/details",
         {
           headers: { Authorization: `Bearer ${token}` },
           params: { email },
@@ -125,7 +125,7 @@ const PaymentPage = () => {
       const token = localStorage.getItem("authToken");
 
       const response = await axios.post(
-        "https://staging-api.naf-cloudsystem.de/api/membership-cards/deduct-balance",
+        "https://api.naf-cloudsystem.de/api/membership-cards/deduct-balance",
         null,
         {
           headers: { Authorization: `Bearer ${token}` },

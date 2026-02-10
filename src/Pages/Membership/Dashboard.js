@@ -29,7 +29,7 @@ const Dashboard = () => {
                 }
 
                 const response = await axios.get(
-                    "https://staging-api.naf-cloudsystem.de/api/membership-cards/details",
+                    "https://api.naf-cloudsystem.de/api/membership-cards/details",
                     {
                         headers: { Authorization: `Bearer ${token}` },
                         params: { email },

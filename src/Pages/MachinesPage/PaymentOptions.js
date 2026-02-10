@@ -318,7 +318,7 @@ const PaymentOptions = () => {
       };
 
       // Make API request
-      const response = await fetch('https://staging-api.naf-cloudsystem.de/api/NAFWebsite/machine-enquiry', {
+      const response = await fetch('https://api.naf-cloudsystem.de/api/NAFWebsite/machine-enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

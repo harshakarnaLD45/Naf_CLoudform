@@ -142,7 +142,7 @@ const Profile = ({ data = {}, onUpdate }) => {
             const token = localStorage.getItem("authToken");
 
             await axios.post(
-                `https://staging-api.naf-cloudsystem.de/api/membership-cards/change-email/send-otp?memberId=${formData.id}&newEmail=${encodeURIComponent(formData.newEmail)}`,
+                `https://api.naf-cloudsystem.de/api/membership-cards/change-email/send-otp?memberId=${formData.id}&newEmail=${encodeURIComponent(formData.newEmail)}`,
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -186,45 +186,92 @@ const Profile = ({ data = {}, onUpdate }) => {
             return;
         }
 
+        if (formData.verificationCode.length !== 6) {
+            setSnackbar({
+                open: true,
+                message: t("membership.msg_verification_code_6_digits"),
+                severity: "error",
+            });
+            return;
+        }
+
         try {
             const token = localStorage.getItem("authToken");
             const newEmailValue = formData.newEmail;
 
-            await axios.post(
-                `https://staging-api.naf-cloudsystem.de/api/membership-cards/change-email/verify-otp?memberId=${formData.id}&newEmail=${encodeURIComponent(formData.newEmail)}&otp=${formData.verificationCode}`,
-                {},
+            const response = await axios.post(
+                `https://api.naf-cloudsystem.de/api/membership-cards/change-email/verify-otp?memberId=${formData.id}`,
+                {
+                    email: formData.newEmail,
+                    code: formData.verificationCode
+                },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
-            // Update the email and clear the email change fields atomically
-            setFormData(prev => ({
-                ...prev,
-                email: newEmailValue,
-                newEmail: "",
-                verificationCode: ""
-            }));
+            // Properly validate the response
+            if (response.status === 200 && response.data) {
+                // Check if verification was successful based on response
+                const isVerified = response.data.success || response.data.verified || response.data.message?.toLowerCase().includes('success');
 
-            setEmailChangeSuccess(true);
-            setEmailChangeStep('idle');
+                if (!isVerified && response.data.success === false) {
+                    // Backend explicitly rejected the code
+                    setSnackbar({
+                        open: true,
+                        message: t("membership.msg_verification_failed"),
+                        severity: "error",
+                    });
+                    return;
+                }
 
-            // Collapse the email change accordion
-            setEmailAccordionExpanded(false);
+                // Update the email and clear the email change fields atomically
+                setFormData(prev => ({
+                    ...prev,
+                    email: newEmailValue,
+                    newEmail: "",
+                    verificationCode: ""
+                }));
 
-            setSnackbar({
-                open: true,
-                message: t("membership.msg_email_changed_success"),
-                severity: "success",
-            });
+                setEmailChangeSuccess(true);
+                setEmailChangeStep('idle');
 
-            // Update parent component if onUpdate is provided
-            if (onUpdate) onUpdate({ ...formData, email: newEmailValue });
+                // Collapse the email change accordion
+                setEmailAccordionExpanded(false);
+
+                setSnackbar({
+                    open: true,
+                    message: t("membership.msg_email_changed_success"),
+                    severity: "success",
+                });
+
+                // Update parent component if onUpdate is provided
+                if (onUpdate) onUpdate({ ...formData, email: newEmailValue });
+            } else {
+                // Unexpected response format
+                setSnackbar({
+                    open: true,
+                    message: t("membership.msg_verification_failed"),
+                    severity: "error",
+                });
+            }
         } catch (error) {
             console.error("Error verifying OTP:", error);
-            setSnackbar({
-                open: true,
-                message: t("membership.msg_verification_failed"),
-                severity: "error",
-            });
+
+            // Check if error response contains specific validation error
+            const errorMessage = error.response?.data?.message || error.response?.data?.error;
+
+            if (errorMessage && (errorMessage.toLowerCase().includes('invalid') || errorMessage.toLowerCase().includes('incorrect') || errorMessage.toLowerCase().includes('expired'))) {
+                setSnackbar({
+                    open: true,
+                    message: t("membership.msg_error_verifying_code"),
+                    severity: "error",
+                });
+            } else {
+                setSnackbar({
+                    open: true,
+                    message: t("membership.InvalidCode"),
+                    severity: "error",
+                });
+            }
             // Stay in otpSent state to allow retry
         }
     };
@@ -246,7 +293,7 @@ const Profile = ({ data = {}, onUpdate }) => {
             delete payload.verificationCode;
 
             await axios.put(
-                `https://staging-api.naf-cloudsystem.de/api/membership-cards/${formData.id}/basic-details`,
+                `https://api.naf-cloudsystem.de/api/membership-cards/${formData.id}/basic-details`,
                 payload,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -367,10 +414,14 @@ const Profile = ({ data = {}, onUpdate }) => {
 
         try {
             const token = localStorage.getItem("authToken");
-
+            const memberId = formData.id;
             await axios.put(
-                `https://staging-api.naf-cloudsystem.de/api/membership-cards/${formData.id}/update-mpin?currentMPIN=${mpinData.currentMpin}&newMPIN=${mpinData.newMpin}&confirmMPIN=${mpinData.confirmMpin}`,
-                {},
+                `https://api.naf-cloudsystem.de/api/membership-cards/${memberId}/update-mpin`,
+                {
+                    currentMPIN: mpinData.currentMpin,
+                    newMPIN: mpinData.newMpin,
+                    confirmMPIN: mpinData.confirmMpin
+                },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
@@ -430,6 +481,15 @@ const Profile = ({ data = {}, onUpdate }) => {
             return;
         }
 
+        if (formData.verificationCode.length !== 6) {
+            setSnackbar({
+                open: true,
+                message: t("membership.msg_verification_code_6_digits"),
+                severity: "error",
+            });
+            return;
+        }
+
         handleVerifyEmail();
     };
 
@@ -439,7 +499,7 @@ const Profile = ({ data = {}, onUpdate }) => {
             const token = localStorage.getItem("authToken");
             // Replace with your delete API for membership/user account
             await axios.delete(
-                `https://staging-api.naf-cloudsystem.de/api/membership-cards/${formData.id}`,
+                `https://api.naf-cloudsystem.de/api/membership-cards/${formData.id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
@@ -622,7 +682,7 @@ const Profile = ({ data = {}, onUpdate }) => {
 
 
                     {/* Address section */}
-                    <Grid container spacing={ 1  } sx={{ mt: { xs:4 ,sm:4,md:6,lg :8}, mb: 2 }}>
+                    <Grid container spacing={1} sx={{ mt: { xs: 4, sm: 4, md: 6, lg: 8 }, mb: 2 }}>
                         {/* Address Line 1 */}
                         <Grid item xs={12} md={4} sx={{ mb: 2 }}>
                             <label className="bodyRegularText4">{t("membership.field_street")}</label>
@@ -906,6 +966,7 @@ const Profile = ({ data = {}, onUpdate }) => {
                                             // Clear error when user types
                                             if (otpError) setOtpError('');
                                         }}
+                                        inputProps={{ maxLength: 6, digitOnly: true }}
 
                                         error={!!otpError}
                                         helperText={otpError}
@@ -1164,12 +1225,19 @@ const Profile = ({ data = {}, onUpdate }) => {
                 open={snackbar.open}
                 autoHideDuration={3000}
                 onClose={handleCloseSnackbar}
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
             >
                 <Alert
                     onClose={handleCloseSnackbar}
                     severity={snackbar.severity}
-                    sx={{ width: "100%" }}
+                    sx={{
+                        width: "100%",
+                        color: snackbar.severity === "success" ? "#21CD83" :
+                            snackbar.severity === "error" ? "red" :
+                                snackbar.severity === "warning" ? "orange" :
+                                    "info.main",
+                        backgroundColor: "#2a2a2a"
+                    }}
                 >
                     {snackbar.message}
                 </Alert>

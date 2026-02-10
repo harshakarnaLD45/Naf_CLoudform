@@ -176,7 +176,7 @@ const Support = () => {
             });
 
             // Make API request - REPLACE WITH YOUR ACTUAL ENDPOINT
-            const response = await fetch('https://staging-api.naf-cloudsystem.de/api/NAFWebsite/issue', {
+            const response = await fetch('https://api.naf-cloudsystem.de/api/NAFWebsite/issue', {
                 method: 'POST',
                 body: formData,
                 // Note: Don't set Content-Type header - browser will set it with boundary automatically

@@ -42,7 +42,7 @@ const Balance = ({ balance = 0, token, onBalanceUpdate, cardNumber }) => {
         }
         try {
             const res = await axios.post(
-                "https://staging-api.naf-cloudsystem.de/api/membership-cards/create-link",
+                "https://api.naf-cloudsystem.de/api/membership-cards/create-link",
                 {}, // empty body
                 {
                     headers: { Authorization: `Bearer ${token}` },

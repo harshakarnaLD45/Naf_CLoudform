@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children }) => {
       }
 
       try {
-        const res = await axios.get("https://staging-api.naf-cloudsystem.de/api/membership-cards/details", {
+        const res = await axios.get("https://api.naf-cloudsystem.de/api/membership-cards/details", {
           headers: { Authorization: `Bearer ${token}` },
           params: { email },
         });

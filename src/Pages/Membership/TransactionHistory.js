@@ -62,7 +62,7 @@ function TransactionHistory({ memberId, cardId }) {
             // }
 
             const response = await axios.get(
-                `https://staging-api.naf-cloudsystem.de/api/transactions/by-membership-card`,
+                `https://api.naf-cloudsystem.de/api/transactions/by-membership-card`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                     params,
@@ -133,7 +133,7 @@ function TransactionHistory({ memberId, cardId }) {
     const handleDownloadTransaction = async (transactionId) => {
         try {
             const token = localStorage.getItem("authToken");
-            const response = await axios.get(`https://staging-api.naf-cloudsystem.de/api/membership-cards/invoice/${transactionId}/pdf`,
+            const response = await axios.get(`https://api.naf-cloudsystem.de/api/membership-cards/invoice/${transactionId}/pdf`,
                 {
                     headers: { Authorization: `Bearer ${token}`, },
                     responseType: "blob",

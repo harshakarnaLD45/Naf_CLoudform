@@ -74,7 +74,7 @@ function Membership() {
         const email = localStorage.getItem("authEmail");
 
         if (token && email) {
-            axios.get("https://staging-api.naf-cloudsystem.de/api/membership-cards/details", {
+            axios.get("https://api.naf-cloudsystem.de/api/membership-cards/details", {
                 headers: { Authorization: `Bearer ${token}` },
                 params: { email }
             })
@@ -104,7 +104,7 @@ function Membership() {
 
         try {
             const response = await axios.get(
-                `https://staging-api.naf-cloudsystem.de/api/check-mail?email=${encodeURIComponent(
+                `https://api.naf-cloudsystem.de/api/check-mail?email=${encodeURIComponent(
                     email
                 )}`
             );
@@ -116,7 +116,7 @@ function Membership() {
             } else {
                 {/*handleSendVerificationCode()*/ }
                 setStep(22);
-                setSnackbar({ open: true, message: t("membership.msg_email_not_found"), severity: "warning" });
+                setSnackbar({ open: true, message: t("membership.msg_email_not_found"), severity: "error" });
             }
         } catch (error) {
             setSnackbar({ open: true, message: t("membership.msg_error_checking_email"), severity: "error" });
@@ -136,7 +136,7 @@ function Membership() {
 
         try {
             const response = await axios.post(
-                `https://staging-api.naf-cloudsystem.de/api/membership/send-verification-code`,
+                `https://api.naf-cloudsystem.de/api/membership/send-verification-code`,
                 null,
                 { params: { email } }
             );
@@ -153,7 +153,7 @@ function Membership() {
                     // Email already verified but user not signed up
                     setEmailVerified(true);
                     setStep(3); // 👉 go directly to signup
-                    setSnackbar({ open: true, message: t("membership.msg_email_verified"), severity: "error" });
+                    setSnackbar({ open: true, message: t("membership.msg_email_verified"), severity: "success" });
                     return;
                 }
                 setSnackbar({ open: true, message: t("membership.msg_error_sending_code"), severity: "error" });
@@ -166,7 +166,7 @@ function Membership() {
                 // Email already verified but user not signed up
                 setEmailVerified(true);
                 setStep(3); // 👉 go directly to signup
-                setSnackbar({ open: true, message: t("membership.msg_email_verified"), severity: "error" });
+                setSnackbar({ open: true, message: t("membership.msg_email_verified"), severity: "success" });
                 return;
             }
             setSnackbar({ open: true, message: t("membership.msg_error_sending_code"), severity: "error" });
@@ -180,6 +180,13 @@ function Membership() {
         // Clear previous errors
         setVerificationCodeError("");
 
+        // Check if verify button was clicked first
+        if (!verifyButtonClicked) {
+            setSnackbar({ open: true, message: t("membership.msg_click_verify_first"), severity: "error" });
+            return;
+        }
+
+        // Check if verification code was entered
         if (!verificationCode || verificationCode.length === 0) {
             setVerificationCodeError(t("membership.msg_enter_verification_code"));
             setSnackbar({ open: true, message: t("membership.msg_enter_verification_code"), severity: "error" });
@@ -201,9 +208,11 @@ function Membership() {
 
         try {
             const response = await axios.post(
-                `https://staging-api.naf-cloudsystem.de/api/membership/verify-code`,
-                null,
-                { params: { email, code: verificationCode } }
+                `https://api.naf-cloudsystem.de/api/membership/verify-code`,
+                {
+                    email: email,
+                    code: verificationCode
+                }
             )
 
             if (response.status === 200 && response.data.message === "Email verified successfully") {
@@ -241,9 +250,11 @@ function Membership() {
 
         try {
             const response = await axios.post(
-                "https://staging-api.naf-cloudsystem.de/api/membership/authenticate",
-                null,
-                { params: { email, mpin } }
+                "https://api.naf-cloudsystem.de/api/membership/authenticate",
+                {
+                    email: email,
+                    mpin: mpin
+                }
             );
 
             if (response.data.refreshToken) {
@@ -305,7 +316,7 @@ function Membership() {
 
         try {
             const response = await axios.post(
-                "https://staging-api.naf-cloudsystem.de/api/membership/signup",
+                "https://api.naf-cloudsystem.de/api/membership/signup",
                 {
                     email,
                     firstName,
@@ -322,9 +333,11 @@ function Membership() {
 
                 // Auto-login immediately
                 const loginResponse = await axios.post(
-                    "https://staging-api.naf-cloudsystem.de/api/membership/authenticate",
-                    null,
-                    { params: { email, mpin: password } }
+                    "https://api.naf-cloudsystem.de/api/membership/authenticate",
+                    {
+                        email: email,
+                        mpin: password
+                    }
                 );
 
                 if (loginResponse.data.refreshToken) {
@@ -359,7 +372,7 @@ function Membership() {
 
         try {
             const response = await axios.post(
-                "https://staging-api.naf-cloudsystem.de/api/forgot-mpin",
+                "https://api.naf-cloudsystem.de/api/forgot-mpin",
                 null,
                 { params: { email } }
             );
@@ -1164,7 +1177,14 @@ function Membership() {
                 <Alert
                     onClose={() => setSnackbar({ ...snackbar, open: false })}
                     severity={snackbar.severity}
-                    sx={{ width: "100%" }}
+                    sx={{
+                        width: "100%",
+                        color: snackbar.severity === "success" ? "#21CD83" :
+                            snackbar.severity === "error" ? "red" :
+                                snackbar.severity === "warning" ? "orange" :
+                                    "info.main",
+                        backgroundColor: "#2a2a2a"
+                    }}
                 >
                     {snackbar.message}
                 </Alert>
