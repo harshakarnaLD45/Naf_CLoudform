@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Typography, Box } from '@mui/material';
 import AnimateButton from '../../../Components/CommonComponents/AnimateButton';
 import { useTranslation } from 'react-i18next';
@@ -11,15 +11,15 @@ const NafApp = () => {
   const { t } = useTranslation();
   const { lang } = useParams();
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
 
   return (
     <>
-      <Box className='section-container' sx={{mb:0}} >
+      <Box className='section-container' sx={{ mb: 0 }} >
         <Box
           sx={{
             mt: 2,
@@ -74,6 +74,7 @@ const NafApp = () => {
             </Box>
 
             {/* Store Buttons */}
+            {/* Store Buttons */}
             <Box
               sx={{
                 display: 'flex',
@@ -83,8 +84,37 @@ const NafApp = () => {
                 flexWrap: 'wrap'
               }}
             >
-              <Box component="img" src={GooglePlay} alt="Google Play" sx={{ height: 40 }} />
-              <Box component="img" src={AppStore} alt="App Store" sx={{ height: 40 }} />
+              {/* Google Play */}
+              <Box
+                component="a"
+                href="https://play.google.com/store/apps/details?id=com.naf.naf_mobile_app&pcampaignid=web_share"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ display: 'inline-block' }}
+              >
+                <Box
+                  component="img"
+                  src={GooglePlay}
+                  alt="Download NAF App on Google Play"
+                  sx={{ height: 40, cursor: 'pointer' }}
+                />
+              </Box>
+
+              {/* App Store */}
+              <Box
+                component="a"
+                href="https://apps.apple.com/de/app/naf-smarte-automaten/id6758438736"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ display: 'inline-block' }}
+              >
+                <Box
+                  component="img"
+                  src={AppStore}
+                  alt="Download NAF App on the App Store"
+                  sx={{ height: 40, cursor: 'pointer' }}
+                />
+              </Box>
             </Box>
 
             {/* App Image */}

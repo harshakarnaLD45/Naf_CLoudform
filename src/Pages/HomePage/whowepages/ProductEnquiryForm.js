@@ -13,7 +13,6 @@ import {
 import AnimateButton from "../../../Components/CommonComponents/AnimateButton";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import emailjs from "@emailjs/browser";
 import CloseIcon from "@mui/icons-material/Close";
 
 // Map URL segments to use case types
@@ -274,38 +273,31 @@ const ProductEnquiryForm = () => {
     setIsSubmitting(true);
 
     try {
-      const fields = [
-        { label: "Use Case", value: t(`whowesurveproductform.useCases.${formData.useCaseType}`) },
-        { label: "Name", value: formData.fullName },
-        { label: "Email", value: formData.email },
-        { label: "Phone", value: formData.phone },
-        { label: "Company", value: formData.company },
-        { label: "Accepted Policy", value: formData.acceptedPolicy ? "Yes" : "No" },
-      ];
+      const payload = {
+        enquiryType: formData.useCaseType || "",
+        email: formData.email || "",
+        fullName: formData.fullName || "",
+        phoneNumber: formData.phone || "",
+        companyName: formData.company || "",
+        description: formData.description || ""
+      };
 
-      const formDataTable = `
-<table style="width:100%; border-collapse:collapse; font-family:Arial,sans-serif;">
-        ${fields.map(f => `
-<tr>
-<td style="border:1px solid #ddd; font-weight:bold; padding:8px;">${f.label}</td>
-<td style="border:1px solid #ddd; padding:8px;">${f.value || ""}</td>
-</tr>`).join('')}
-</table>
-    `;
-
-      await emailjs.send(
-        "service_m9cjyf7",
-        "template_ka6dtns",
-        {
-          form_type: "Who We Serve",
-          form_data: formDataTable,
-          time: new Date().toLocaleString(),
+      const response = await fetch("https://api.naf-cloudsystem.de/api/NAFWebsite/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        "oohP8NNTJgl2SPoOz"
-      );
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+      }
+
       setShowSuccess(true);
       setIsSubmitting(false);
     } catch (err) {
+      console.error("Submission error:", err);
       alert(t(`validation.submissionFailed`));
       setIsSubmitting(false);
     }

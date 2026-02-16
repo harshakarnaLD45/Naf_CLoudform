@@ -56,7 +56,7 @@ const HomePage = () => {
 '
         />
 
-        {/* Meta Author and Robots */}
+        {/* Meta Author and Robots */} 
         <meta name="author" content="NAF Vending" />
         <meta name="robots" content="index, follow" />
 
@@ -118,7 +118,7 @@ const HomePage = () => {
         </script>
       </Helmet>
 
-      {/* <TradefairPopup /> */}
+      <TradefairPopup />
       {/* <CookieSettingsButton /> */}
       <Box className='main-container'>
         <Box sx={{
@@ -186,7 +186,7 @@ const HomePage = () => {
 
       <HomepageShowreel />
       <Explore />
-      {/* <NafApp /> */}
+      <NafApp />
       <Clients />
       <WhoWeServe />
       <Sustainability />
