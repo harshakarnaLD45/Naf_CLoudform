@@ -42,7 +42,7 @@ const HomePage = () => {
         <title>NAF Germany: AI-Powered Vending Machines</title>
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://vendinaf.com/en" />
+        <link rel="canonical" href="https://vendinaf.com/de" />
 
         {/* Optimized Meta Description */}
         <meta
@@ -70,7 +70,7 @@ const HomePage = () => {
           content="Explore NAF Germany's innovative vending machines – AI-driven, eco-friendly solutions for hotels, events, and more."
         />
         <meta property="og:image" content={VendImg} /> {/* Replace with actual image URL */}
-        <meta property="og:url" content="https://vendinaf.com/en" />
+        <meta property="og:url" content="https://vendinaf.com/de" />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}

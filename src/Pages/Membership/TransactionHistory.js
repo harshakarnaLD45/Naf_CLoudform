@@ -305,7 +305,9 @@ function TransactionHistory({ memberId, cardId }) {
                                             align="center"
                                             sx={{ borderBottom: "1px solid #393939 !important" }}
                                         >
-                                            {row.payment_type === "Debit" && row.id ? (
+                                            {row.payment_type === "Debit" &&
+                                                (row.status === "Completed" || row.status === "Partial Failure" || row.status === "partial_failure") &&
+                                                row.id ? (
                                                 <IconButton
                                                     onClick={() => handleDownloadTransaction(row.id)}
                                                     sx={{ color: "#FCFCFC" }}

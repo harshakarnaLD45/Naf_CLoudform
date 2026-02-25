@@ -83,48 +83,48 @@ function NafAi() {
     <>
       <Box>
 
-   
 
-<Helmet htmlAttributes={{ lang: "de" }}>
-  <title>NAF AI – Intelligent & Sustainable Vending Solutions</title>
 
-  <link
-    rel="canonical"
-    href="https://vendinaf.com/de/nafai"
-  />
+        <Helmet htmlAttributes={{ lang: "de" }}>
+          <title>NAF AI – Intelligent & Sustainable Vending Solutions</title>
 
-  <meta
-    name="description"
-    content="NAF AI ist eine intelligente Automatisierungsschicht für Verkaufsautomaten, die smarte Workflows, Skalierbarkeit, Compliance und nahtlose Integration ermöglicht."
-  />
-  <meta name='keywords'
-    content='NAF AI, KI Verkaufsautomaten, intelligente Vending Automatisierung, smarte Automaten Software, KI Vending Lösungen, Workflow Automatisierung Automaten, Vending Intelligenz, automatisierte Verkaufsautomaten, DSGVO konforme KI, NAF Plattform' />
+          <link
+            rel="canonical"
+            href="https://vendinaf.com/de/nafai"
+          />
 
-  <meta name="robots" content="index, follow" />
+          <meta
+            name="description"
+            content="NAF AI ist eine intelligente Automatisierungsschicht für Verkaufsautomaten, die smarte Workflows, Skalierbarkeit, Compliance und nahtlose Integration ermöglicht."
+          />
+          <meta name='keywords'
+            content='NAF AI, KI Verkaufsautomaten, intelligente Vending Automatisierung, smarte Automaten Software, KI Vending Lösungen, Workflow Automatisierung Automaten, Vending Intelligenz, automatisierte Verkaufsautomaten, DSGVO konforme KI, NAF Plattform' />
 
-  {/* Open Graph */}
-  <meta property="og:title" content="NAF AI – Intelligent & Sustainable Vending Solutions | NAF" />
-  <meta
-    property="og:description"
-    content="Entdecken Sie die KI-Lösungen von NAF AI für optimierte Automatensteuerung, intelligente Services und nachhaltige Technologie."
-  />
-  <meta property="og:url" content="https://vendinaf.com/de/nafai" />
-  <meta property="og:type" content="website" />
+          <meta name="robots" content="index, follow" />
 
-  {/* Twitter */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NAF AI – Intelligent & Sustainable Vending Solutions | NAF" />
-  <meta
-    name="twitter:description"
-    content="Lernen Sie NAF AI kennen – KI-gestützte Funktionen für moderne Verkaufsautomaten und smarte Service-Optimierung."
-  />
-</Helmet>
+          {/* Open Graph */}
+          <meta property="og:title" content="NAF AI – Intelligent & Sustainable Vending Solutions | NAF" />
+          <meta
+            property="og:description"
+            content="Entdecken Sie die KI-Lösungen von NAF AI für optimierte Automatensteuerung, intelligente Services und nachhaltige Technologie."
+          />
+          <meta property="og:url" content="https://vendinaf.com/de/nafai" />
+          <meta property="og:type" content="website" />
+
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="NAF AI – Intelligent & Sustainable Vending Solutions | NAF" />
+          <meta
+            name="twitter:description"
+            content="Lernen Sie NAF AI kennen – KI-gestützte Funktionen für moderne Verkaufsautomaten und smarte Service-Optimierung."
+          />
+        </Helmet>
 
         {/* HERO SECTION */}
-        <Box sx={{ mt: { xs: 10,sm:14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
+        <Box sx={{ mt: { xs: 10, sm: 14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
 
           <Box
-            sx={{ 
+            sx={{
               width: '100%',
               height: { xs: '60vh', sm: '80vh', md: '80vh' },
               display: 'flex',
@@ -133,13 +133,13 @@ function NafAi() {
               p: { xs: 1.5, sm: 4, md: 6 },
               boxSizing: 'border-box',
               overflow: 'hidden',
-              
-               background: `linear-gradient(
+
+              background: `linear-gradient(
                       270deg,
                       rgba(0, 0, 0, 0.00) 32.78%,
                       rgba(0, 0, 0, 0.50) 62.37%
                     ), url(${nafai}) lightgray 50% / cover no-repeat`,
-                    }}
+            }}
           >
             <Box sx={{
 
@@ -164,22 +164,22 @@ function NafAi() {
               <Box
                 sx={{
                   mt: 4,
-                  display:  'flex' ,
+                  display: 'flex',
                   justifyContent: { sm: 'flex-start', md: 'flex-start' },
                 }}
               >
-                <AnimateButton onClick={handleScrollToContact}/>
+                <AnimateButton onClick={handleScrollToContact} />
               </Box>
             </Box>
           </Box>
         </Box>
 
         {/*Feature Overview*/}
-        <Box className="section-container" sx={{ 
+        <Box className="section-container" sx={{
           display: 'flex',
           flexDirection: 'column',
-          
-           mt: { xs: 8,sm:12,  md: '100px' },
+
+          mt: { xs: 8, sm: 12, md: '100px' },
         }} >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t("nafAI.featureOverviewTitle")}
@@ -193,11 +193,11 @@ function NafAi() {
           </Typography>
         </Box>
 
-          <Box className="section-container" sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
+        <Box className="section-container" sx={{
+          display: 'flex',
+          flexDirection: 'column',
 
-          }} 
+        }}
         >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t("nafAI.howItWorksTitle")}
@@ -232,7 +232,7 @@ function NafAi() {
               },
 
             ].map((feature, index) => (
-              <Grid  sx={{ display: 'flex' }} item xs={12} sm={6} md={3} key={index}>
+              <Grid sx={{ display: 'flex' }} item xs={12} sm={6} md={3} key={index}>
                 <Box
                   sx={{
                     height: { xs: '100%', sm: '100%', md: '100%', lg: '150px', xl: '150px' },
@@ -271,19 +271,20 @@ function NafAi() {
           </Grid>
 
           {/*Benifits*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-          }} > 
+            mb: 0
+          }} >
             <Typography sx={{ color: '#fcfcfc', mb: 4 }} className='headings-h3' >
               {t("nafAI.benefitsTitle")}
             </Typography>
           </Box>
 
           <Grid container
-             rowSpacing={{ xs: 5, sm: 10, md: 6, lg:2 ,xl: 2 }}
-            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2 ,xl: 2 }}
+            rowSpacing={{ xs: 5, sm: 10, md: 6, lg: 2, xl: 2 }}
+            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2, xl: 2 }}
           >
             {[
               {
@@ -316,7 +317,7 @@ function NafAi() {
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Box
                   sx={{
-                     height: { xs: '100%', sm: '100%', md: '100%', lg: '150px', xl: '150px' },
+                    height: { xs: '100%', sm: '100%', md: '100%', lg: '150px', xl: '150px' },
                     p: { xs: 2, sm: 4, md: 2, lg: 2, xl: 3 },
                     backgroundColor: '#161616',
                     border: '1px solid #393939',
@@ -350,10 +351,11 @@ function NafAi() {
           </Grid>
 
           {/* Industry compliance*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
+            mb: 0
           }} >
             <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
               {t("nafAI.industryComplianceTitle")}
@@ -363,9 +365,9 @@ function NafAi() {
           </Box>
 
           {/* Cards Grid */}
-          <Box 
+          <Box
             sx={{
-              mt: {xs:3,sm:4,md:6},
+              mt: { xs: 3, sm: 4, md: 6 },
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
@@ -378,7 +380,8 @@ function NafAi() {
             {cards.map((card, index) => (
               <Box
                 key={index}
-                sx={{ width: "100%",
+                sx={{
+                  width: "100%",
                   borderRadius: '16px',
                   overflow: 'hidden',
                   display: 'flex',
@@ -399,7 +402,7 @@ function NafAi() {
                   }}
                 />
                 {/* Content */}
-                <Box sx={{  py: { xs: 1.5, sm: 2, md: 2.4 }}}>
+                <Box sx={{ py: { xs: 1.5, sm: 2, md: 2.4 } }}>
                   <Typography
                     sx={{ color: '#C2C2C4', fontSize: '14px', lineHeight: 1.6 }}
                     className="bodyRegularText4"
@@ -412,7 +415,7 @@ function NafAi() {
           </Box>
 
           {/*Form*/}
-          <Box className="section-container" id="contact" sx={{  p :0}}>
+          <Box className="section-container" id="contact" sx={{ p: 0 }}>
             <SolutionProductForm />
           </Box>
 

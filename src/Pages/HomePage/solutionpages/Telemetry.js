@@ -80,66 +80,66 @@ function Telemetry() {
     <>
       <Box>
 
-          <Helmet htmlAttributes={{ lang: "de" }}>
-  {/* SEO Title */}
-  <title>
-    NAF Telemetrie & Monitoring
-  </title>
+        <Helmet htmlAttributes={{ lang: "de" }}>
+          {/* SEO Title */}
+          <title>
+            NAF Telemetrie & Monitoring
+          </title>
 
-  {/* Canonical URL */}
-  <link
-    rel="canonical"
-    href="https://vendinaf.com/de/telemetry-monitoring"
-  />
+          {/* Canonical URL */}
+          <link
+            rel="canonical"
+            href="https://vendinaf.com/de/telemetry-monitoring"
+          />
 
-  {/* Meta Description */}
-  <meta
-    name="description"
-    content="NAF Telemetrie & Monitoring bietet Echtzeit-Transparenz über Status, Leistung und Zustand von Verkaufsautomaten für zuverlässige und effiziente Abläufe."
-  />
+          {/* Meta Description */}
+          <meta
+            name="description"
+            content="NAF Telemetrie & Monitoring bietet Echtzeit-Transparenz über Status, Leistung und Zustand von Verkaufsautomaten für zuverlässige und effiziente Abläufe."
+          />
 
-  {/* Meta Keywords */}
-  <meta
-    name="keywords"
-    content="Telemetrie Verkaufsautomaten, Verkaufsautomaten Monitoring, NAF Telemetrie, Echtzeit Automatenüberwachung, Fernüberwachung Verkaufsautomaten, Automaten Statusüberwachung, Vending Monitoring Software, Cloud Telemetrie Automaten, Verkaufsautomaten Analyse"
-  />
+          {/* Meta Keywords */}
+          <meta
+            name="keywords"
+            content="Telemetrie Verkaufsautomaten, Verkaufsautomaten Monitoring, NAF Telemetrie, Echtzeit Automatenüberwachung, Fernüberwachung Verkaufsautomaten, Automaten Statusüberwachung, Vending Monitoring Software, Cloud Telemetrie Automaten, Verkaufsautomaten Analyse"
+          />
 
-  {/* Robots */}
-  <meta name="robots" content="index, follow" />
+          {/* Robots */}
+          <meta name="robots" content="index, follow" />
 
-  {/* Open Graph */}
-  <meta
-    property="og:title"
-    content="NAF Telemetrie & Monitoring – Echtzeit-Überwachung von Verkaufsautomaten"
-  />
-  <meta
-    property="og:description"
-    content="Echtzeit-Monitoring für Verkaufsautomaten: Status, Leistung und Zustand zentral überwachen mit NAF Telemetrie."
-  />
-  <meta
-    property="og:url"
-    content="https://vendinaf.com/de/telemetry-monitoring"
-  />
-  <meta
-    property="og:type"
-    content="website"
-  />
+          {/* Open Graph */}
+          <meta
+            property="og:title"
+            content="NAF Telemetrie & Monitoring – Echtzeit-Überwachung von Verkaufsautomaten"
+          />
+          <meta
+            property="og:description"
+            content="Echtzeit-Monitoring für Verkaufsautomaten: Status, Leistung und Zustand zentral überwachen mit NAF Telemetrie."
+          />
+          <meta
+            property="og:url"
+            content="https://vendinaf.com/de/telemetry-monitoring"
+          />
+          <meta
+            property="og:type"
+            content="website"
+          />
 
-  {/* Twitter */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta
-    name="twitter:title"
-    content="NAF Telemetrie & Monitoring – Verkaufsautomaten in Echtzeit"
-  />
-  <meta
-    name="twitter:description"
-    content="NAF Telemetrie ermöglicht die Echtzeit-Überwachung von Verkaufsautomaten für effiziente und sichere Abläufe."
-  />
-</Helmet>
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content="NAF Telemetrie & Monitoring – Verkaufsautomaten in Echtzeit"
+          />
+          <meta
+            name="twitter:description"
+            content="NAF Telemetrie ermöglicht die Echtzeit-Überwachung von Verkaufsautomaten für effiziente und sichere Abläufe."
+          />
+        </Helmet>
 
 
         {/* HERO SECTION */}
-        <Box sx={{ mt: {xs: 10,sm:14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
+        <Box sx={{ mt: { xs: 10, sm: 14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
 
           <Box
 
@@ -156,8 +156,8 @@ function Telemetry() {
                       270deg,
                       rgba(0, 0, 0, 0.00) 32.78%,
                       rgba(0, 0, 0, 0.50) 62.37%
-                    ), url(${TelemetryMonitoring }) lightgray 50% / cover no-repeat`,
-                    }}
+                    ), url(${TelemetryMonitoring}) lightgray 50% / cover no-repeat`,
+            }}
           >
             <Box sx={{
 
@@ -182,7 +182,7 @@ function Telemetry() {
               <Box
                 sx={{
                   mt: 4,
-                  display:  'flex' ,
+                  display: 'flex',
                   justifyContent: { sm: 'flex-start', md: 'flex-start' },
                 }}
               >
@@ -194,10 +194,10 @@ function Telemetry() {
 
         {/*Feature Overview*/}
 
-        <Box  className="section-container" sx={{
+        <Box className="section-container" sx={{
           display: 'flex',
           flexDirection: 'column',
-           mt: { xs: 8,sm:12,  md: '100px' },
+          mt: { xs: 8, sm: 12, md: '100px' },
         }} >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t("telemetryMonitoring.featureOverviewTitle")}
@@ -210,11 +210,11 @@ function Telemetry() {
           </Typography>
         </Box>
 
-        <Box className="section-container" sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
+        <Box className="section-container" sx={{
+          display: 'flex',
+          flexDirection: 'column',
 
-          }} 
+        }}
         >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t("telemetryMonitoring.howItWorksTitle")}
@@ -289,19 +289,20 @@ function Telemetry() {
           </Grid>
 
           {/*Benifits*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-           }} >
+            mb: 0
+          }} >
             <Typography sx={{ color: '#fcfcfc', mb: 4 }} className='headings-h3'>
               {t("telemetryMonitoring.benefitsTitle")}
             </Typography>
           </Box>
 
           <Grid container
-              rowSpacing={{ xs: 5, sm: 10, md: 6, lg:2 ,xl: 2 }}
-            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2 ,xl: 2 }}
+            rowSpacing={{ xs: 5, sm: 10, md: 6, lg: 2, xl: 2 }}
+            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2, xl: 2 }}
           >
             {[
               {
@@ -370,11 +371,12 @@ function Telemetry() {
           </Grid>
 
           {/* Industry compliance*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-           }}>
+            mb: 0
+          }}>
             <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
               {t("telemetryMonitoring.industryComplianceTitle")}
             </Typography>
@@ -385,7 +387,7 @@ function Telemetry() {
           {/* Cards Grid */}
           <Box
             sx={{
-              mt: {xs:3,sm:4,md:6},
+              mt: { xs: 3, sm: 4, md: 6 },
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
@@ -398,7 +400,8 @@ function Telemetry() {
             {cards.map((card, index) => (
               <Box
                 key={index}
-                sx={{width: "100%",
+                sx={{
+                  width: "100%",
                   borderRadius: '16px',
                   overflow: 'hidden',
                   display: 'flex',
@@ -419,7 +422,7 @@ function Telemetry() {
                   }}
                 />
                 {/* Content */}
-                <Box sx={{ py: { xs: 1.5, sm: 2, md: 2.4 }  }}>
+                <Box sx={{ py: { xs: 1.5, sm: 2, md: 2.4 } }}>
                   <Typography
                     sx={{ color: '#C2C2C4', fontSize: '14px', lineHeight: 1.6 }}
                     className="bodyRegularText4"
@@ -433,14 +436,14 @@ function Telemetry() {
 
           {/*Form */}
 
-          <Box  className="section-container" id="contact" sx={{  p :0}}>
-       
+          <Box className="section-container" id="contact" sx={{ p: 0 }}>
+
             <SolutionProductForm />
           </Box>
 
 
           {/* FAQ Section */}
-          <Box className="section-container" sx={{ p: 0,  width: '100%' }} >
+          <Box className="section-container" sx={{ p: 0, width: '100%' }} >
             <Box sx={{ mb: { xs: 5, md: 7 }, textAlign: 'center' }}>
               <Typography className="headings-h2" sx={{ color: '#fcfcfc' }}>
                 {t('telemetryMonitoring.title')}

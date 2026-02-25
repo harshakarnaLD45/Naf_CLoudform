@@ -29,7 +29,7 @@ function NafCloud() {
                  <title>NAF Cloud System</title> 
 
                 {/* Canonical URL */}
-                <link rel="canonical" href="https://vendinaf.com/en/solutions" />
+                <link rel="canonical" href="https://vendinaf.com/de/solutions" />
 
                 {/* Optimized Meta Description */}
                 <meta

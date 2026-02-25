@@ -69,44 +69,44 @@ const Menu = () => {
   return (
     <Box>
       <Helmet>
-  <title>NAF Germany – Vending Machine Menu & Fresh Food Options</title>
+        <title>NAF Germany – Vending Machine Menu & Fresh Food Options</title>
 
-  <link
-    rel="canonical"
-    href="https://vendinaf.com/en/company/menu"
-  />
+        <link
+          rel="canonical"
+          href="https://vendinaf.com/de/company/menu"
+        />
 
-  <meta
-    name="description"
-    content="Discover NAF’s live and monthly vending machine menu. Explore fresh food options, detailed ingredient information, and allergen details available at NAF smart vending machines."
-  />
+        <meta
+          name="description"
+          content="Discover NAF’s live and monthly vending machine menu. Explore fresh food options, detailed ingredient information, and allergen details available at NAF smart vending machines."
+        />
 
-  <meta
-    name="keywords"
-    content="NAF vending menu, vending machine menu, live menu vending machine, monthly menu vending, fresh food vending machine, smart vending food, NAF menu Germany, vending machine food options"
-  />
+        <meta
+          name="keywords"
+          content="NAF vending menu, vending machine menu, live menu vending machine, monthly menu vending, fresh food vending machine, smart vending food, NAF menu Germany, vending machine food options"
+        />
 
-  <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow" />
 
-  {/* Open Graph / Social */}
-  <meta
-    property="og:title"
-    content="NAF Germany – Vending Machine Menu & Fresh Food"
-  />
-  <meta
-    property="og:description"
-    content="Browse NAF’s live and monthly menu for smart vending machines with fresh food and transparent product information."
-  />
-  <meta
-    property="og:url"
-    content="https://vendinaf.com/en/company/menu"
-  />
-  <meta property="og:type" content="website" />
+        {/* Open Graph / Social */}
+        <meta
+          property="og:title"
+          content="NAF Germany – Vending Machine Menu & Fresh Food"
+        />
+        <meta
+          property="og:description"
+          content="Browse NAF’s live and monthly menu for smart vending machines with fresh food and transparent product information."
+        />
+        <meta
+          property="og:url"
+          content="https://vendinaf.com/de/company/menu"
+        />
+        <meta property="og:type" content="website" />
 
-  <script type="application/ld+json">
-    {jsonLd}
-  </script>
-</Helmet>
+        <script type="application/ld+json">
+          {jsonLd}
+        </script>
+      </Helmet>
 
 
       <Box className="section-container menucontainer">
@@ -169,7 +169,7 @@ const Menu = () => {
       <MonthlyMenu />
       <FoodLabeling />
       <Allergen />
-     {/* <Unlock /> */}
+      {/* <Unlock /> */}
     </Box>
   );
 };

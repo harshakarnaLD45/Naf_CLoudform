@@ -116,11 +116,11 @@ const AutomatsPage = () => {
   const location = useLocation();
   const theme = useTheme();
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md"));
-  
+
   const [selectedMachine, setSelectedMachine] = useState(
     location.state?.selectedMachine || "All"
   );
-  
+
   const [hasLoadedSections, setHasLoadedSections] = useState({
     physicsButtons: false,
     machinesSection: false,
@@ -138,21 +138,21 @@ const AutomatsPage = () => {
       setTimeout(() => {
         setHasLoadedSections(prev => ({ ...prev, physicsButtons: true }));
       }, 300);
-      
+
       // Load main content after
       setTimeout(() => {
         setHasLoadedSections(prev => ({ ...prev, machinesSection: true }));
       }, 500);
-      
+
       // Load supporting sections
       setTimeout(() => {
-        setHasLoadedSections(prev => ({ 
-          ...prev, 
+        setHasLoadedSections(prev => ({
+          ...prev,
           solutions: true,
-          paymentOptions: true 
+          paymentOptions: true
         }));
       }, 1000);
-      
+
       // Load less critical sections
       setTimeout(() => {
         setHasLoadedSections(prev => ({
@@ -161,7 +161,7 @@ const AutomatsPage = () => {
           getInTouch: true,
         }));
       }, 1500);
-      
+
       // Load form last
       setTimeout(() => {
         setHasLoadedSections(prev => ({ ...prev, partnersForm: true }));
@@ -169,7 +169,7 @@ const AutomatsPage = () => {
     };
 
     loadSections();
-    
+
     // Scroll to top and set title
     window.scrollTo(0, 0);
     // document.title = `NAF Vending - ${t("titles.Machines")}`;
@@ -179,20 +179,20 @@ const AutomatsPage = () => {
     <Box>
       <Helmet>
         <title>NAF Vending - Automats</title>
-        <link rel="canonical" href="https://vendinaf.com/en/Automats" />
+        <link rel="canonical" href="https://vendinaf.com/de/Automats" />
         <meta
           name="description"
           content="Hochleistungs-Verkaufsautomaten von NAF Germany: Gourmet-, Pizza-, Snack- und Rückgabeautomaten mit KI-Technologie, flexibler Finanzierung und individueller Anpassung."
         />
 
         <meta name='keywords'
-        content='Verkaufsautomaten, Food Automaten, Pizza Automat, Gourmet Automat, KI Verkaufsautomaten, smarte Automaten, Vending Maschinen Deutschland, Mehrweg Rückgabeautomat, nachhaltige Automaten, Automaten Leasing, Automaten kaufen'
-         />
+          content='Verkaufsautomaten, Food Automaten, Pizza Automat, Gourmet Automat, KI Verkaufsautomaten, smarte Automaten, Vending Maschinen Deutschland, Mehrweg Rückgabeautomat, nachhaltige Automaten, Automaten Leasing, Automaten kaufen'
+        />
 
         <meta name="author" content="NAF Vending" />
         <meta name="robots" content="index, follow" />
         <html lang="de" />
-        
+
         <meta property="og:title" content="NAF Germany: AI-Powered Vending Machines & Solutions" />
         <meta
           property="og:description"
@@ -201,7 +201,7 @@ const AutomatsPage = () => {
         <meta property="og:image" content={frenchFries} />
         <meta property="og:url" content="https://vendinaf.com/en/machine" />
         <meta property="og:type" content="website" />
-        
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="NAF Germany: AI-Powered Vending Machines & Solutions" />
         <meta
@@ -209,7 +209,7 @@ const AutomatsPage = () => {
           content="Browse innovative vending machines from NAF – AI-driven, sustainable, and customizable for businesses in Germany and beyond."
         />
         <meta name="twitter:image" content={frenchFries} />
-        
+
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -281,7 +281,7 @@ const AutomatsPage = () => {
           })}
         </script>
       </Helmet>
-      
+
       {/* Above-the-fold content - loads immediately */}
       <Box className="machines-container1">
         <Box className="machines-container">
@@ -377,7 +377,7 @@ const AutomatsPage = () => {
         >
           {t("machines.PartnerNAFGermany")}
         </h2>
-        
+
         {/* Get in Touch - lazy loaded */}
         {hasLoadedSections.getInTouch ? (
           <Suspense fallback={<SectionSkeleton height="200px" />}>

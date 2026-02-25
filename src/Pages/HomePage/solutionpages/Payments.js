@@ -83,65 +83,65 @@ function Payments() {
     <>
       <Box>
 
-  <Helmet htmlAttributes={{ lang: "de" }}>
-  {/* SEO Title */}
-  <title>
-    NAF Payments
-  </title>
+        <Helmet htmlAttributes={{ lang: "de" }}>
+          {/* SEO Title */}
+          <title>
+            NAF Payments
+          </title>
 
-  {/* Canonical URL */}
-  <link
-    rel="canonical"
-    href="https://vendinaf.com/de/payment"
-  />
+          {/* Canonical URL */}
+          <link
+            rel="canonical"
+            href="https://vendinaf.com/de/payment"
+          />
 
-  {/* Meta Description */}
-  <meta
-    name="description"
-    content="NAF Payments ermöglicht sichere, bargeldlose und Scan-&-Pay-Zahlungen für Verkaufsautomaten mit zentraler Verwaltung und hoher Compliance."
-  />
+          {/* Meta Description */}
+          <meta
+            name="description"
+            content="NAF Payments ermöglicht sichere, bargeldlose und Scan-&-Pay-Zahlungen für Verkaufsautomaten mit zentraler Verwaltung und hoher Compliance."
+          />
 
-  {/* Meta Keywords */}
-  <meta
-    name="keywords"
-    content="Zahlungssystem Verkaufsautomaten, bargeldlose Zahlungen Automaten, NAF Payments, Scan & Pay Automaten, digitale Zahlungen Verkaufsautomaten, Mobile Payment Automaten, Vending Zahlungssystem, sichere Automatenzahlungen, Cloud Zahlungsmanagement"
-  />
+          {/* Meta Keywords */}
+          <meta
+            name="keywords"
+            content="Zahlungssystem Verkaufsautomaten, bargeldlose Zahlungen Automaten, NAF Payments, Scan & Pay Automaten, digitale Zahlungen Verkaufsautomaten, Mobile Payment Automaten, Vending Zahlungssystem, sichere Automatenzahlungen, Cloud Zahlungsmanagement"
+          />
 
-  {/* Robots */}
-  <meta name="robots" content="index, follow" />
+          {/* Robots */}
+          <meta name="robots" content="index, follow" />
 
-  {/* Open Graph */}
-  <meta
-    property="og:title"
-    content="NAF Payments – Bargeldlose Zahlungen für Verkaufsautomaten"
-  />
-  <meta
-    property="og:description"
-    content="Sichere, bargeldlose und Scan-&-Pay-Zahlungen für Verkaufsautomaten mit zentralem Cloud-Zahlungsmanagement."
-  />
-  <meta
-    property="og:url"
-    content="https://vendinaf.com/de/payment"
-  />
-  <meta
-    property="og:type"
-    content="website"
-  />
+          {/* Open Graph */}
+          <meta
+            property="og:title"
+            content="NAF Payments – Bargeldlose Zahlungen für Verkaufsautomaten"
+          />
+          <meta
+            property="og:description"
+            content="Sichere, bargeldlose und Scan-&-Pay-Zahlungen für Verkaufsautomaten mit zentralem Cloud-Zahlungsmanagement."
+          />
+          <meta
+            property="og:url"
+            content="https://vendinaf.com/de/payment"
+          />
+          <meta
+            property="og:type"
+            content="website"
+          />
 
-  {/* Twitter */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta
-    name="twitter:title"
-    content="NAF Payments – Bargeldlose Automatenzahlungen"
-  />
-  <meta
-    name="twitter:description"
-    content="NAF Payments bietet sichere Scan-&-Pay- und bargeldlose Zahlungslösungen für moderne Verkaufsautomaten."
-  />
-</Helmet>
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content="NAF Payments – Bargeldlose Automatenzahlungen"
+          />
+          <meta
+            name="twitter:description"
+            content="NAF Payments bietet sichere Scan-&-Pay- und bargeldlose Zahlungslösungen für moderne Verkaufsautomaten."
+          />
+        </Helmet>
 
         {/* HERO SECTION */}
-        <Box sx={{ mt: { xs: 10,sm:14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
+        <Box sx={{ mt: { xs: 10, sm: 14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
 
           <Box
 
@@ -153,7 +153,7 @@ function Payments() {
               width: '100%',
               height: { xs: '60vh', sm: '80vh', md: '80vh' },
               display: 'flex',
-              
+
               flexDirection: 'column',
               justifyContent: { xs: 'center', sm: 'center', md: 'center' },
               alignItems: 'flex-start',
@@ -165,7 +165,7 @@ function Payments() {
                       rgba(0, 0, 0, 0.00) 32.78%,
                       rgba(0, 0, 0, 0.50) 62.37%
                     ), url(${payment}) lightgray 50% / cover no-repeat`,
-                    }}
+            }}
           >
             <Box sx={{
 
@@ -190,7 +190,7 @@ function Payments() {
               <Box
                 sx={{
                   mt: 4,
-                  display:  'flex' ,
+                  display: 'flex',
                   justifyContent: { sm: 'flex-start', md: 'flex-start' },
                 }}
               >
@@ -201,10 +201,10 @@ function Payments() {
         </Box>
 
         {/*Feature Overview*/}
-        <Box  className="section-container" sx={{
+        <Box className="section-container" sx={{
           display: 'flex',
           flexDirection: 'column',
-           mt: { xs: 8,sm:12,  md: '100px' },
+          mt: { xs: 8, sm: 12, md: '100px' },
         }} >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t("payment.featureOverviewTitle")}
@@ -219,11 +219,11 @@ function Payments() {
         </Box>
 
 
-        <Box className="section-container" sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
+        <Box className="section-container" sx={{
+          display: 'flex',
+          flexDirection: 'column',
 
-          }} 
+        }}
         >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t("payment.howItWorksTitle")}
@@ -231,8 +231,8 @@ function Payments() {
           <Typography sx={{ mt: 3, mb: 4, color: '#c2c2c4' }} className='bodyRegularText3'>
             {t("payment.howItWorksSubtitle")}</Typography>
 
-          <Grid container  alignItems="stretch"
-              rowSpacing={{ xs: 5, sm: 10, md: 6, }}
+          <Grid container alignItems="stretch"
+            rowSpacing={{ xs: 5, sm: 10, md: 6, }}
             columnSpacing={{ xs: 1.5, sm: 2, md: 3 }}
           >
             {[
@@ -262,7 +262,7 @@ function Payments() {
                 <Box
                   sx={{
                     height: { xs: '100%', sm: '100%', md: '100%', lg: '150px', xl: '150px' },
-                    p: { xs: 2, sm: 4, md: 2, xl: 4 },  width: '100%',
+                    p: { xs: 2, sm: 4, md: 2, xl: 4 }, width: '100%',
                     backgroundColor: '#161616',
                     border: '1px solid #393939',
                     borderRadius: '24px',
@@ -295,11 +295,12 @@ function Payments() {
           </Grid>
 
           {/*Benifits*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-            }} >
+            mb: 0
+          }} >
 
             <Typography sx={{ color: '#fcfcfc', mb: 4 }} className='headings-h3'>
               {t("payment.benefitsTitle")}
@@ -307,8 +308,8 @@ function Payments() {
           </Box>
 
           <Grid container
-            rowSpacing={{ xs: 5, sm: 10, md: 6, lg:2 ,xl: 2 }}
-            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2 ,xl: 2 }}
+            rowSpacing={{ xs: 5, sm: 10, md: 6, lg: 2, xl: 2 }}
+            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2, xl: 2 }}
           >
             {[
               {
@@ -345,7 +346,7 @@ function Payments() {
                     backgroundColor: '#161616',
                     border: '1px solid #393939',
                     borderRadius: '24px',
-                    p: { xs: 2, sm: 4, md: 2, lg:2, xl: 3 },
+                    p: { xs: 2, sm: 4, md: 2, lg: 2, xl: 3 },
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -375,11 +376,12 @@ function Payments() {
           </Grid>
 
           {/* Industry compliance*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-            }}>
+            mb: 0
+          }}>
             <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
               {t("payment.complianceTitle")}
             </Typography>
@@ -393,7 +395,7 @@ function Payments() {
           {/* Cards Grid */}
           <Box
             sx={{
-              mt: {xs:3,sm:4,md:6},
+              mt: { xs: 3, sm: 4, md: 6 },
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
@@ -406,7 +408,8 @@ function Payments() {
             {cards.map((card, index) => (
               <Box
                 key={index}
-                sx={{  width:"100%",
+                sx={{
+                  width: "100%",
                   borderRadius: '16px',
                   overflow: 'hidden',
                   display: 'flex',
@@ -427,7 +430,7 @@ function Payments() {
                 />
 
                 {/* Content */}
-                <Box sx={{ py: { xs: 1.5, sm: 2, md: 2.4 }}}>
+                <Box sx={{ py: { xs: 1.5, sm: 2, md: 2.4 } }}>
 
                   <Typography
                     sx={{ color: '#C2C2C4', fontSize: '14px', lineHeight: 1.6 }}
@@ -442,16 +445,17 @@ function Payments() {
 
           {/*Form */}
 
-          <Box className="section-container" id="contact" sx={{  p :0}}>
-           
+          <Box className="section-container" id="contact" sx={{ p: 0 }}>
+
             <SolutionProductForm />
           </Box>
 
 
           {/* FAQ Section */}
-          <Box  className="section-container" sx={{ p: 0, 
-            width: '100%' 
-            }}>
+          <Box className="section-container" sx={{
+            p: 0,
+            width: '100%'
+          }}>
             <Box sx={{ mb: { xs: 5, md: 7 }, textAlign: 'center' }}>
               <Typography className="headings-h2" sx={{ color: '#fcfcfc' }}>
                 {t('payment.title')}

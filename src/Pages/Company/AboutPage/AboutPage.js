@@ -26,10 +26,10 @@ function AboutPage() {
         <Box>
 
             {/* SEO + Meta Tags */}
-            <Helmet htmlAttributes={{ lang: "en" }}>
+            <Helmet htmlAttributes={{ lang: "de" }}>
                 <title>NAF About Us</title>
 
-                <link rel="canonical" href="https://vendinaf.com/en/company/about" />
+                <link rel="canonical" href="https://vendinaf.com/de/company/about" />
 
                 <meta
                     name="description"
@@ -51,7 +51,7 @@ function AboutPage() {
                     content="Explore the story behind NAF Germany, from fine dining roots to cutting-edge AI vending technology and eco-friendly solutions."
                 />
                 <meta property="og:image" content="https://vendinaf.com/about-hero.jpg" />
-                <meta property="og:url" content="https://vendinaf.com/en/company/about" />
+                <meta property="og:url" content="https://vendinaf.com/de/company/about" />
                 <meta property="og:type" content="website" />
 
                 {/* Twitter */}

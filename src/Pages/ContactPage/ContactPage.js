@@ -327,7 +327,7 @@ function ContactPage() {
                 <title>Contact NAF Germany: AI Vending Machine Solutions</title>
 
                 {/* Canonical URL */}
-                <link rel="canonical" href="https://vendinaf.com/en/contact" />
+                <link rel="canonical" href="https://vendinaf.com/de/contact" />
 
                 {/* Optimized Meta Description */}
                 <meta
@@ -353,7 +353,7 @@ function ContactPage() {
                     content="Reach NAF Germany for innovative AI vending machines and eco-friendly solutions. Contact us for inquiries, demos, or partnerships in sustainable vending."
                 />
                 <meta property="og:image" content={Picture1} /> {/* Replace with actual image URL */}
-                <meta property="og:url" content="https://vendinaf.com/en/contact" />
+                <meta property="og:url" content="https://vendinaf.com/de/contact" />
                 <meta property="og:type" content="website" />
 
                 {/* Twitter Card Tags */}

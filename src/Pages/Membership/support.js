@@ -280,7 +280,7 @@ const Support = () => {
 
       <link
         rel="canonical"
-        href={`https://vendinaf.com/${lang}/support`}
+        href={`https://vendinaf.com/de/support`}
       />
 
       <meta

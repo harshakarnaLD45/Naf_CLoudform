@@ -1,39 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-   
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script>
-      // Suppress ResizeObserver loop errors
-      window.addEventListener('error', function(e) {
-        if (e.message === 'ResizeObserver loop completed with undelivered notifications.' || 
-            e.message === 'ResizeObserver loop limit exceeded') {
-          e.stopImmediatePropagation();
-          e.preventDefault();
-          return false;
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo 192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Optimized Title with Primary Keywords -->
+  <title>NAF Germany: AI-Powered Sustainable Vending Machines</title>
+
+  <!-- Canonical URL -->
+  <!-- <link rel="canonical" href="https://vendinaf.com/en" /> -->
+
+  <!-- Optimized Meta Description -->
+  <!-- <meta name="description"
+    content="Explore NAF Germany's AI-powered vending machines for fresh, sustainable food solutions. From pizza to beer, our smart systems optimize efficiency for hotels, events, and more. Book a demo today!" /> -->
+  <link rel="canonical" href="https://vendinaf.com/de" />
+
+  <meta name="description" content="NAF bietet intelligente, KI-gestützte Gourmet-Verkaufsautomaten mit frischen Speisen, Mehrwegsystemen, Cloud-Technologie und nachhaltiger Food-Automatisierung.
+" />
+  <meta name='keywords' content='NAF Verkaufsautomaten, KI Verkaufsautomaten, smarte Food Automaten, Gourmet Verkaufsautomat, Pizza Automat, automatisierte Gastronomie, nachhaltige Verkaufsautomaten, Mehrwegsystem, Cloud Plattform für Automaten, Smart Gastronomie, Food Automatisierung, KI Food Technologie, Verkaufsautomaten Deutschland
+' />
+  <!-- Robots Meta for Crawlability -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Tags for Social Sharing -->
+  <meta property="og:title" content="NAF Germany: AI-Powered Sustainable Vending Machines" />
+  <meta property="og:description"
+    content="Discover innovative AI vending solutions from NAF Germany – automated, eco-friendly, and tailored for your business needs." />
+  <meta property="og:image" content="https://vendinaf.com/path-to-hero-image.jpg" />
+  <!-- Replace with actual image URL -->
+  <meta property="og:url" content="https://vendinaf.com/en" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NAF Germany: AI-Powered Sustainable Vending Machines" />
+  <meta name="twitter:description"
+    content="Discover innovative AI vending solutions from NAF Germany – automated, eco-friendly, and tailored for your business needs." />
+  <meta name="twitter:image" content="https://vendinaf.com/path-to-hero-image.jpg" />
+  <!-- Replace with actual image URL -->
+
+  <!-- Structured Data (JSON-LD) for Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NAF Germany",
+    "url": "https://vendinaf.com",
+    "logo": "https://vendinaf.com/path-to-logo.png",
+    "description": "NAF provides AI-powered, sustainable vending machines for food and beverages, optimizing efficiency and reducing waste.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Obere Straße 3",
+      "addressLocality": "Freiberg, OT Halsbach",
+      "postalCode": "09599",
+      "addressCountry": "Germany"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+49-152-28387141",
+      "contactType": "customer service",
+      "email": "info@naf-halsbach.de"
+    }
+  }
+  </script>
+
+  <!-- Critical resource hints for performance -->
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//js.hs-scripts.com">
+  <link rel="dns-prefetch" href="//clarity.ms">
+  <link rel="dns-prefetch" href="//cdn.n8nchatui.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://clarity.ms" crossorigin>
+
+  <!-- CRITICAL: Priority preload for LCP candidate - NAF1 image -->
+  <link rel="preload" href="%PUBLIC_URL%/static/media/NAF1.svg" as="image" fetchpriority="high" crossorigin>
+  <link rel="preload" href="%PUBLIC_URL%/src/assets/About/NAF1.svg" as="image" fetchpriority="high" crossorigin>
+
+  <!-- Secondary NAF images with lower priority -->
+  <link rel="preload" href="%PUBLIC_URL%/static/media/NAF2.svg" as="image" fetchpriority="low">
+  <link rel="preload" href="%PUBLIC_URL%/static/media/NAF3.svg" as="image" fetchpriority="low">
+  <link rel="preload" href="%PUBLIC_URL%/static/media/Vector.svg" as="image">
+
+  <!-- Preload critical assets that might be in build output -->
+  <link rel="modulepreload" href="%PUBLIC_URL%/static/js/main.js">
+  <link rel="preload" href="%PUBLIC_URL%/static/css/main.css" as="style">
+
+  <!-- Early resource hints for faster discovery -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+  <!-- Critical CSS loading -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
+  </noscript>
+
+  <!-- Performance optimized error suppression -->
+  <script>
+    // Optimized error suppression for better performance
+    (function () {
+      const suppressedPatterns = [
+        'ResizeObserver loop completed',
+        'hubspot', 'hsforms', 'hbspt',
+        'clarity', 'clarity.ms',
+        'literal not terminated',
+        'insertBefore', 'Script error'
+      ];
+
+      const origError = console.error;
+      console.error = function (...args) {
+        if (args[0] && typeof args[0] === 'string') {
+          if (suppressedPatterns.some(pattern => args[0].includes(pattern))) return;
         }
+        origError.apply(console, args);
+      };
+
+      ['error', 'unhandledrejection'].forEach(event => {
+        window.addEventListener(event, function (e) {
+          const msg = e.message || (e.reason && e.reason.message) || '';
+          if (suppressedPatterns.some(pattern => msg.includes(pattern))) {
+            e.preventDefault && e.preventDefault();
+            e.stopImmediatePropagation && e.stopImmediatePropagation();
+            return false;
+          }
+        });
       });
-    </script>
+    })();
+  </script>
 
-    <div id="root"></div>
+
+  <style>
+    /* Font face declarations with display: swap for better performance */
+    @font-face {
+      font-family: 'Satoshi';
+      src: url('/Satoshi-Regular.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Satoshi';
+      src: url('/Satoshi-Medium.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'PowerGrotesk';
+      src: url('/PowerGrotesk-Bold.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'ShantellSans';
+      src: url('/ShantellSans-Regular.woff2') format('woff2');
+      font-display: swap;
+    }
+  </style>
+
+  <link rel="preload" as="font" href="/PowerGrotesk-Bold.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/Satoshi-Regular.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/Satoshi-Medium.woff2" type="font/woff2" crossorigin>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+  </div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+
+  <!-- Load non-critical third-party scripts after page load with better prioritization -->
+  <script>
+    // Improved script loading strategy for better LCP
+    let scriptsLoaded = false;
+
+    function loadNonCriticalScripts() {
+      if (scriptsLoaded) return;
+      scriptsLoaded = true;
+      if (window.THREE === undefined && document.querySelector('[data-needs-threejs]')) {
+        const threeScript = document.createElement('script');
+        threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
+        threeScript.async = true;
+        document.head.appendChild(threeScript);
+      }
+
+      setTimeout(() => {
+        if (window.clarity === undefined) {
+          (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            if (y && y.parentNode) { y.parentNode.insertBefore(t, y); }
+            else { l.head.appendChild(t); }
+          })(window, document, "clarity", "script", "sdl0f0u4l6");
+        }
+      }, 1500);
+    }
+    window.addEventListener('load', () => {
+      setTimeout(loadNonCriticalScripts, 100);
+    });
+    ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
+      document.addEventListener(event, loadNonCriticalScripts, { once: true, passive: true });
+    });
+    setTimeout(loadNonCriticalScripts, 3000);
+  </script>
 
 
-  </body>
+
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/145027405.js"></script>
+  <!-- End of HubSpot Embed Code -->
+
+
+</body>
+
 </html>

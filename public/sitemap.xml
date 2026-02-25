@@ -73,13 +73,13 @@
   </url>
 
   <!-- LEGAL -->
-  <url>
+  <!-- <url>
     <loc>https://vendinaf.com/de/privacy-policy</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://vendinaf.com/de/privacy-policy"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vendinaf.com/en/privacy-policy"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://vendinaf.com/fr/privacy-policy"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://vendinaf.com/es/privacy-policy"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://vendinaf.com/pl/privacy-policy"/>
-  </url>
+  </url> -->
 
 </urlset>

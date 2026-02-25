@@ -88,62 +88,62 @@ function ReuseRetunPage() {
   return (
     <>
       <Box>
-       <Helmet htmlAttributes={{ lang: "de" }}>
-  <title>NAF Reuse & Return </title>
+        <Helmet htmlAttributes={{ lang: "de" }}>
+          <title>NAF Reuse & Return </title>
 
-  <meta
-    name="description"
-    content="Das NAF Reuse & Return Ökosystem ermöglicht nachhaltiges Vending mit Mehrwegverpackungen, digitaler Rückverfolgung und zirkulären Nutzungskonzepten."
-  />
+          <meta
+            name="description"
+            content="Das NAF Reuse & Return Ökosystem ermöglicht nachhaltiges Vending mit Mehrwegverpackungen, digitaler Rückverfolgung und zirkulären Nutzungskonzepten."
+          />
 
-  <meta name='keywords'
-    content='Reuse Return Ökosystem, nachhaltige Verkaufsautomaten, Mehrwegverpackungen Automaten, Kreislaufwirtschaft Vending, NAF Mehrwegsystem, Rückgabeautomaten, nachhaltige Food Automaten, digitale Rückverfolgung, Zero Waste Vending' />
+          <meta name='keywords'
+            content='Reuse Return Ökosystem, nachhaltige Verkaufsautomaten, Mehrwegverpackungen Automaten, Kreislaufwirtschaft Vending, NAF Mehrwegsystem, Rückgabeautomaten, nachhaltige Food Automaten, digitale Rückverfolgung, Zero Waste Vending' />
 
-  <link
-    rel="canonical"
-    href="https://vendinaf.com/de/reuse-return"
-  />
+          <link
+            rel="canonical"
+            href="https://vendinaf.com/de/reuse-return"
+          />
 
-  <meta name="robots" content="index, follow" />
+          <meta name="robots" content="index, follow" />
 
-  {/* Open Graph */}
-  <meta property="og:title" content="Reuse & Return – Nachhaltiges Mehrwegsystem | NAF" />
-  <meta
-    property="og:description"
-    content="Erfahren Sie, wie das Reuse- & Return-System von NAF nachhaltige Wiederverwendung und Rückgabe ermöglicht."
-  />
-  <meta property="og:url" content="https://vendinaf.com/de/reuse-return" />
-  <meta property="og:type" content="website" />
+          {/* Open Graph */}
+          <meta property="og:title" content="Reuse & Return – Nachhaltiges Mehrwegsystem | NAF" />
+          <meta
+            property="og:description"
+            content="Erfahren Sie, wie das Reuse- & Return-System von NAF nachhaltige Wiederverwendung und Rückgabe ermöglicht."
+          />
+          <meta property="og:url" content="https://vendinaf.com/de/reuse-return" />
+          <meta property="og:type" content="website" />
 
-  {/* Twitter */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Reuse & Return – Nachhaltiges Mehrwegsystem | NAF" />
-  <meta
-    name="twitter:description"
-    content="Nachhaltige Reuse- & Return-Lösungen von NAF für moderne Versorgungssysteme."
-  />
-</Helmet>
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Reuse & Return – Nachhaltiges Mehrwegsystem | NAF" />
+          <meta
+            name="twitter:description"
+            content="Nachhaltige Reuse- & Return-Lösungen von NAF für moderne Versorgungssysteme."
+          />
+        </Helmet>
         {/* HERO SECTION */}
-        <Box sx={{ mt: {xs: 10,sm:14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
-         
+        <Box sx={{ mt: { xs: 10, sm: 14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
+
           <Box
             sx={{
               width: '100%',
               height: { xs: '60vh', sm: '80vh', md: '80vh' },
               display: 'flex',
-              
+
               flexDirection: 'column',
               justifyContent: { xs: 'center', sm: 'center', md: 'center' },
               alignItems: 'flex-start',
               p: { xs: 1.5, sm: 4, md: 6 },
               boxSizing: 'border-box',
               overflow: 'hidden',
-               background: `linear-gradient(
+              background: `linear-gradient(
                       270deg,
                       rgba(0, 0, 0, 0.00) 32.78%,
                       rgba(0, 0, 0, 0.50) 62.37%
                     ), url(${ReuseReturn}) lightgray 50% / cover no-repeat`,
-                    }}
+            }}
           >
             <Box sx={{
 
@@ -168,7 +168,7 @@ function ReuseRetunPage() {
               <Box
                 sx={{
                   mt: 4,
-                  display:  'flex' ,
+                  display: 'flex',
                   justifyContent: { sm: 'flex-start', md: 'flex-start' },
                 }}
               >
@@ -179,11 +179,11 @@ function ReuseRetunPage() {
         </Box>
 
         {/*Feature Overview*/}
-        <Box  className="section-container"  sx={{
+        <Box className="section-container" sx={{
           display: 'flex',
           flexDirection: 'column',
-          mt: { xs: 8,sm:12,  md: '100px' },
-            // p: { xs: 3, sm: 4, md: 4 },
+          mt: { xs: 8, sm: 12, md: '100px' },
+          // p: { xs: 3, sm: 4, md: 4 },
         }} >
 
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
@@ -198,11 +198,11 @@ function ReuseRetunPage() {
           </Typography>
         </Box>
 
-        <Box  className="section-container" sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
+        <Box className="section-container" sx={{
+          display: 'flex',
+          flexDirection: 'column',
 
-          }} 
+        }}
         >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t('reuseReturn.howItWorksTitle')}
@@ -212,7 +212,7 @@ function ReuseRetunPage() {
           </Typography>
 
           <Grid container alignItems="stretch"
-            rowSpacing={{ xs: 5, sm:10, md: 6 , }}
+            rowSpacing={{ xs: 5, sm: 10, md: 6, }}
             columnSpacing={{ xs: 1.5, sm: 2, md: 3 }}
           >
             {[
@@ -268,20 +268,21 @@ function ReuseRetunPage() {
           </Grid>
 
           {/*Benifits*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-           
-            }}>
-            <Typography sx={{ color: '#fcfcfc', mb: 4   }} className='headings-h3'>
+            mb: 0
+
+          }}>
+            <Typography sx={{ color: '#fcfcfc', mb: 4 }} className='headings-h3'>
               {t('reuseReturn.benefitsTitle')}
             </Typography>
           </Box>
 
           <Grid container
-            rowSpacing={{ xs: 5, sm: 10, md: 6, lg:2 ,xl: 2 }}
-            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2 ,xl: 2 }}
+            rowSpacing={{ xs: 5, sm: 10, md: 6, lg: 2, xl: 2 }}
+            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2, xl: 2 }}
           >
             {[
               {
@@ -305,7 +306,7 @@ function ReuseRetunPage() {
                 <Box
                   sx={{
                     height: { xs: '100%', sm: '100%', md: '100%', lg: '150px', xl: '150px' },
-                     p: { xs: 2, sm: 4, md: 2, lg:2, xl: 3 },
+                    p: { xs: 2, sm: 4, md: 2, lg: 2, xl: 3 },
                     backgroundColor: '#161616',
                     border: '1px solid #393939',
                     borderRadius: '24px',
@@ -339,12 +340,13 @@ function ReuseRetunPage() {
           </Grid>
 
           {/* Industry compliance*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-          
-            }}>
+            mb: 0
+
+          }}>
             <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
               {t('reuseReturn.industryComplianceTitle')}
             </Typography>
@@ -356,7 +358,7 @@ function ReuseRetunPage() {
           {/* Cards Grid */}
           <Box
             sx={{
-             mt: {xs:3,sm:4,md:6},
+              mt: { xs: 3, sm: 4, md: 6 },
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
@@ -405,13 +407,13 @@ function ReuseRetunPage() {
 
           {/*Form */}
 
-            <Box className="section-container" id="contact" sx={{  p :0}}>
+          <Box className="section-container" id="contact" sx={{ p: 0 }}>
             <SolutionProductForm />
           </Box>
 
           {/* FAQ Section */}
 
-          <Box className="section-container" sx={{ p: 0,  width: '100%' }} >
+          <Box className="section-container" sx={{ p: 0, width: '100%' }} >
             <Box sx={{ mb: { xs: 5, md: 7 }, textAlign: 'center' }}>
               <Typography className="headings-h2" sx={{ color: '#fcfcfc' }}>
                 {t('reuseReturn.faqTitle')}

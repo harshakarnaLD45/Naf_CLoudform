@@ -39,7 +39,7 @@ const Maintenance = () => {
     <Box className='section-container'>
       <Helmet>
         <title>NAF Vending - Automats</title>
-        <link rel="canonical" href="https://vendinaf.com/en/maintaince" />
+        <link rel="canonical" href="https://vendinaf.com/de/maintaince" />
         <meta name='description'
           content="Discover NAF’s AI-powered food vending machines near you. Enjoy fresh, sustainable NAF solutions with smart technology and cloud management. Partner today!" />
         <meta name="keywords"

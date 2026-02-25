@@ -79,8 +79,8 @@ function CloudKitchen() {
     }
   ];
 
- 
-   useEffect(() => {
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -91,64 +91,64 @@ function CloudKitchen() {
       <Box >
 
         <Helmet htmlAttributes={{ lang: "de" }}>
-  {/* SEO Title */}
-  <title>
-    NAF Cloud Kitchen 
-  </title>
+          {/* SEO Title */}
+          <title>
+            NAF Cloud Kitchen
+          </title>
 
-  {/* Canonical URL */}
-  <link
-    rel="canonical"
-    href="https://vendinaf.com/de/cloudKitchenPayments"
-  />
+          {/* Canonical URL */}
+          <link
+            rel="canonical"
+            href="https://vendinaf.com/de/cloudKitchenPayments"
+          />
 
-  {/* Meta Description */}
-  <meta
-    name="description"
-    content="Das NAF Cloud Kitchen System verbindet Küchen, Verkaufsautomaten und digitale Bestellungen für effiziente, skalierbare Food-Operationen."
-  />
+          {/* Meta Description */}
+          <meta
+            name="description"
+            content="Das NAF Cloud Kitchen System verbindet Küchen, Verkaufsautomaten und digitale Bestellungen für effiziente, skalierbare Food-Operationen."
+          />
 
-  {/* Meta Keywords */}
-  <meta
-    name="keywords"
-    content="Cloud Kitchen System, Vending Cloud Kitchen, NAF Cloud Kitchen, Food Management Software, Küchen- und Automatenintegration, Multi-Standort Food Operations, digitale Food Distribution, zentrale Küchensteuerung"
-  />
+          {/* Meta Keywords */}
+          <meta
+            name="keywords"
+            content="Cloud Kitchen System, Vending Cloud Kitchen, NAF Cloud Kitchen, Food Management Software, Küchen- und Automatenintegration, Multi-Standort Food Operations, digitale Food Distribution, zentrale Küchensteuerung"
+          />
 
-  {/* Robots */}
-  <meta name="robots" content="index, follow" />
+          {/* Robots */}
+          <meta name="robots" content="index, follow" />
 
-  {/* Open Graph */}
-  <meta
-    property="og:title"
-    content="NAF Cloud Kitchen – Digitale Food- & Automatenintegration"
-  />
-  <meta
-    property="og:description"
-    content="NAF Cloud Kitchen verbindet Küchen, Verkaufsautomaten und digitale Bestellsysteme für skalierbare Food-Operationen."
-  />
-  <meta
-    property="og:url"
-    content="https://vendinaf.com/de/cloudKitchenPayments"
-  />
-  <meta
-    property="og:type"
-    content="website"
-  />
+          {/* Open Graph */}
+          <meta
+            property="og:title"
+            content="NAF Cloud Kitchen – Digitale Food- & Automatenintegration"
+          />
+          <meta
+            property="og:description"
+            content="NAF Cloud Kitchen verbindet Küchen, Verkaufsautomaten und digitale Bestellsysteme für skalierbare Food-Operationen."
+          />
+          <meta
+            property="og:url"
+            content="https://vendinaf.com/de/cloudKitchenPayments"
+          />
+          <meta
+            property="og:type"
+            content="website"
+          />
 
-  {/* Twitter */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta
-    name="twitter:title"
-    content="NAF Cloud Kitchen – Zentrale Food-Steuerung"
-  />
-  <meta
-    name="twitter:description"
-    content="Cloud Kitchen Software für die Integration von Küchen, Verkaufsautomaten und digitalen Bestellungen."
-  />
-</Helmet>
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content="NAF Cloud Kitchen – Zentrale Food-Steuerung"
+          />
+          <meta
+            name="twitter:description"
+            content="Cloud Kitchen Software für die Integration von Küchen, Verkaufsautomaten und digitalen Bestellungen."
+          />
+        </Helmet>
 
         {/* HERO SECTION */}
-        <Box sx={{ mt: { xs: 10,sm:14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
+        <Box sx={{ mt: { xs: 10, sm: 14, md: 16 }, width: '100%', boxSizing: 'border-box' }}>
 
           <Box className='solutions-hero-sec'
             sx={{
@@ -167,13 +167,13 @@ function CloudKitchen() {
                       rgba(0, 0, 0, 0.00) 32.78%,
                       rgba(0, 0, 0, 0.50) 62.37%
                     ), url(${cloudKitchenPayments}) lightgray 50% / cover no-repeat`,
-                    }}
-             
-          
+            }}
+
+
           >
             <Box sx={{
-               width: { xs: '100%', sm: '70%', md: '45%' },
-              
+              width: { xs: '100%', sm: '70%', md: '45%' },
+
             }}>
 
               <Typography className="bodyRegularText3" sx={{ color: '#C2C2C4' }}>
@@ -194,8 +194,8 @@ function CloudKitchen() {
               <Box
                 sx={{
                   mt: 4,
-                  display:  'flex',
-                  justifyContent:'flex-start',
+                  display: 'flex',
+                  justifyContent: 'flex-start',
                 }}
               >
                 <AnimateButton onClick={handleScrollToContact} />
@@ -205,11 +205,11 @@ function CloudKitchen() {
         </Box>
 
         {/*Feature Overview*/}
-        <Box  className="section-container" sx={{ 
+        <Box className="section-container" sx={{
           display: 'flex',
           flexDirection: 'column',
-          
-           mt: { xs: 8,sm:12,  md: '100px' },
+
+          mt: { xs: 8, sm: 12, md: '100px' },
         }} >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3 '>
             {t('cloudKitchen.featureOverviewTitle')}
@@ -223,10 +223,10 @@ function CloudKitchen() {
           </Typography>
         </Box>
 
-        <Box className="section-container" sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
-            }} 
+        <Box className="section-container" sx={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
         >
           <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
             {t('cloudKitchen.howItWorksTitle')}
@@ -292,20 +292,21 @@ function CloudKitchen() {
           </Grid>
 
           {/*Benifits*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
-           }} 
-           >
+            mb: 0
+          }}
+          >
             <Typography sx={{ color: '#fcfcfc', mb: 4 }} className='headings-h3'>
               {t('cloudKitchen.benefitsTitle')}
             </Typography>
           </Box>
 
           <Grid container
-             rowSpacing={{ xs: 5, sm: 10, md: 6, lg:2 ,xl: 2 }}
-            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2 ,xl: 2 }}
+            rowSpacing={{ xs: 5, sm: 10, md: 6, lg: 2, xl: 2 }}
+            columnSpacing={{ xs: 2, sm: 2, md: 2.5, lg: 2, xl: 2 }}
           >
             {[
               {
@@ -362,10 +363,11 @@ function CloudKitchen() {
           </Grid>
 
           {/* Industry compliance*/}
-          <Box className="section-container" sx={{ p: 0 ,
-              display: 'flex', 
+          <Box className="section-container" sx={{
+            p: 0,
+            display: 'flex',
             flexDirection: 'column',
-            mb:0
+            mb: 0
           }}>
             <Typography sx={{ color: '#fcfcfc' }} className='headings-h3'>
               {t('cloudKitchen.industryComplianceTitle')}
@@ -378,7 +380,7 @@ function CloudKitchen() {
           {/* Cards Grid */}
           <Box
             sx={{
-              mt: {xs:3,sm:4,md:6},
+              mt: { xs: 3, sm: 4, md: 6 },
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
@@ -425,14 +427,14 @@ function CloudKitchen() {
           </Box>
 
           {/*Form */}
-          <Box className="section-container" id="contact" sx={{  p :0}}>
+          <Box className="section-container" id="contact" sx={{ p: 0 }}>
 
-          <SolutionProductForm />
+            <SolutionProductForm />
           </Box>
 
           {/* FAQ Section */}
 
-          <Box  className="section-container" sx={{ p: 0, width: '100%' }} >
+          <Box className="section-container" sx={{ p: 0, width: '100%' }} >
             <Box sx={{ mb: { xs: 5, md: 7 }, textAlign: 'center' }}>
               <Typography className="headings-h2" sx={{ color: '#fcfcfc' }}>
                 {t('cloudKitchen.faqTitle')}
