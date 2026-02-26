@@ -108,6 +108,13 @@ const LanguageWrapper = React.memo(() => {
     i18n.changeLanguage(supported.includes(lang) ? lang : 'de');
   }, [lang, i18n]);
 
+  useEffect(() => {
+  const supported = ['de', 'en', 'fr', 'es', 'pl'];
+  const currentLang = supported.includes(lang) ? lang : 'de';
+  
+  document.documentElement.lang = currentLang;
+}, [lang]);
+
   return (
     <>
 

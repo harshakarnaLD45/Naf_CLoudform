@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React from "react";
 import { Box, Typography } from '@mui/material';
 import './HomePage.css';
 import HomepageShowreel from './Homepagereel';
@@ -14,7 +14,6 @@ import Testmonials from './Testmonials';
 import Sustainability from './Sustainability';
 import WhoWeServe from './WhoWeServe';
 import FooterLogo from '../../assets/footer/Foote-logo.svg'
-
 import Solutions from "./Solutions";
 import GradientMaskText from '../../Components/CommonComponents/GradientMaskText';
 import { useTranslation } from 'react-i18next';
@@ -22,84 +21,67 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import VendImg from '../../assets/Home/Gourmet-machine.webp'
 import Logourl from '../../assets/Home/NAF-logo.png'
-import CookieSettingsButton from './CookieSettingsButton';
 import TradefairPopup from './TradefairPopup';
 
 const HomePage = () => {
   const { t } = useTranslation();
   const { lang } = useParams();
 
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   //  document.title = `NAF Vending -${t('titles.Home')}`; // Set tab title
-  // }, []);
+  // Force canonical & URLs to German homepage
+  const canonicalUrl = 'https://vendinaf.com/de';
 
   return (
     <Box>
-      <Helmet>
-        {/* Shorter, SEO-Optimized Title (targets "AI vending machines Germany" queries) */}
-        <title>NAF Germany: AI-Powered Vending Machines</title>
+      <Helmet htmlAttributes={{ lang: 'de' }}>
+        {/* Page title and meta */}
+        <title>{t('Home.meta.title')}</title>
+        <meta name="description" content={t('Home.meta.description')} />
+        <meta name="keywords" content={t('Home.meta.keywords')} />
+        <meta name="author" content={t('Home.meta.author')} />
+        <meta name="robots" content={t('Home.meta.robots')} />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://vendinaf.com/de" />
+        <link rel="canonical" href={canonicalUrl} />
 
-        {/* Optimized Meta Description */}
-        <meta
-          name="description"
-          content="NAF bietet intelligente, KI-gestützte Gourmet-Verkaufsautomaten mit frischen Speisen, Mehrwegsystemen, Cloud-Technologie und nachhaltiger Food-Automatisierung.
-"
-        />
-        {/*Meta Keywords}*/}
-        <meta name='keywords'
-          content='NAF Verkaufsautomaten, KI Verkaufsautomaten, smarte Food Automaten, Gourmet Verkaufsautomat, Pizza Automat, automatisierte Gastronomie, nachhaltige Verkaufsautomaten, Mehrwegsystem, Cloud Plattform für Automaten, Smart Gastronomie, Food Automatisierung, KI Food Technologie, Verkaufsautomaten Deutschland
-'
-        />
+        {/* Hreflang for SEO */}
+        <link rel="alternate" href="https://vendinaf.com/de" hreflang="de" />
+        <link rel="alternate" href="https://vendinaf.com/en" hreflang="en" />
+        <link rel="alternate" href="https://vendinaf.com/fr" hreflang="fr" />
+        <link rel="alternate" href="https://vendinaf.com/es" hreflang="es" />
+        <link rel="alternate" href="https://vendinaf.com/pl" hreflang="pl" />
+        <link rel="alternate" href="https://vendinaf.com" hreflang="x-default" />
 
-        {/* Meta Author and Robots */} 
-        <meta name="author" content="NAF Vending" />
-        <meta name="robots" content="index, follow" />
-
-        {/* HTML Lang */}
-        <html lang="en" />
-
-        {/* Open Graph Tags for Social Sharing */}
-        <meta property="og:title" content="NAF Germany: AI-Powered Vending Machines" />
-        <meta
-          property="og:description"
-          content="Explore NAF Germany's innovative vending machines – AI-driven, eco-friendly solutions for hotels, events, and more."
-        />
-        <meta property="og:image" content={VendImg} /> {/* Replace with actual image URL */}
-        <meta property="og:url" content="https://vendinaf.com/de" />
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={t('Home.meta.title')} />
+        <meta property="og:description" content={t('Home.meta.description')} />
+        <meta property="og:image" content={VendImg} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="NAF Germany: AI-Powered Vending Machines" />
-        <meta
-          name="twitter:description"
-          content="Explore NAF Germany's innovative vending machines – AI-driven, eco-friendly solutions for hotels, events, and more."
-        />
-        <meta name="twitter:image" content={VendImg} /> {/* Replace with actual image URL */}
+        <meta name="twitter:title" content={t('Home.meta.title')} />
+        <meta name="twitter:description" content={t('Home.meta.description')} />
+        <meta name="twitter:image" content={VendImg} />
 
-        {/* Structured Data (JSON-LD) for Rich Snippets – Organization with HomePage Focus */}
+        {/* Structured Data JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "NAF Germany",
-            "url": "https://vendinaf.com",
-            "description": "NAF Germany provides AI-powered vending machines and sustainable food solutions with smart cloud technology for various industries.",
+            "name": t('Home.meta.title'),
+            "url": "https://vendinaf.com/de",
+            "description": t('Home.meta.description'),
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://vendinaf.com/en/search?q={search_term_string}",
+              "target": "https://vendinaf.com/de/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             },
             "mainEntity": {
               "@type": "Organization",
               "name": "NAF Germany",
-              "url": "https://vendinaf.com",
-              "logo": Logourl, // Replace with actual logo URL
+              "url": "https://vendinaf.com/de",
+              "logo": Logourl,
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Obere Straße 3",
@@ -119,7 +101,7 @@ const HomePage = () => {
       </Helmet>
 
       <TradefairPopup />
-      {/* <CookieSettingsButton /> */}
+
       <Box className='main-container'>
         <Box sx={{
           position: 'relative',
@@ -129,50 +111,74 @@ const HomePage = () => {
           height: '100vh',
           width: '100%'
         }}>
-          <Box sx={{ position: 'absolute', width: '50%', height: '50%', background: 'linear-gradient(155deg, rgba(127, 238, 100, 0.60) 8.85%, rgba(250, 120, 84, 0.60) 52.81%)', filter: 'blur(125px)', borderRadius: '50%', }} />
-          <Box sx={{ width: '100%', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <Typography sx={{ color: '#fcfcfc', textAlign: 'center', maxWidth: { xs: '100%', sm: '45%', md: '45%' }, mb: { xs: 0.5, sm: 3, md: 4 }, letterSpacing: 4 }} className="headings-h1">
+          <Box sx={{
+            position: 'absolute',
+            width: '50%',
+            height: '50%',
+            background: 'linear-gradient(155deg, rgba(127, 238, 100, 0.60) 8.85%, rgba(250, 120, 84, 0.60) 52.81%)',
+            filter: 'blur(125px)',
+            borderRadius: '50%',
+          }} />
+          <Box sx={{
+            width: '100%',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <Typography sx={{
+              color: '#fcfcfc',
+              textAlign: 'center',
+              maxWidth: { xs: '100%', sm: '45%', md: '45%' },
+              mb: { xs: 0.5, sm: 3, md: 4 },
+              letterSpacing: 4
+            }} className="headings-h1">
               {t("Home.mainHeading")}
             </Typography>
-            <Typography sx={{ color: '#c2c2c4', textAlign: 'center', maxWidth: '45%' }} className="bodyRegularText4">
+            <Typography sx={{
+              color: '#c2c2c4',
+              textAlign: 'center',
+              maxWidth: '45%'
+            }} className="bodyRegularText4">
               {t("Home.mainParagraph")}
             </Typography>
-            <Box data-cursor="hover" className="button-container" sx={{ width: '100%', transform: 'none', gap: '50px', display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4 }}>
-              <AnimateButton route={`/${lang}/contact`} />
-              <AutomatsButton route={`/${lang}/Automats`} />
+            <Box data-cursor="hover" className="button-container" sx={{
+              width: '100%',
+              transform: 'none',
+              gap: '50px',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              mt: 4
+            }}>
+              <AnimateButton route={`/de/contact`} />
+              <AutomatsButton route={`/de/Automats`} />
             </Box>
           </Box>
         </Box>
-
       </Box>
 
-
-      <Box
-        sx={{
-          mt: { xs: -14, md: -12, xl: -18 },
-          width: "100%",
-          display: 'flex',
-          justifyContent: "center",
-          alignItems: 'center',
-
-        }}
-      >
+      <Box sx={{
+        mt: { xs: -14, md: -12, xl: -18 },
+        width: "100%",
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: 'center',
+      }}>
         <Box
           component="img"
           loading="lazy"
           src={VendImg}
           alt="NAF Gourmet Vending Machine Delivering Fresh, High-Quality Food Options."
           sx={{
-
-            width: { xs: "70%", sm: "70%", md: "45%", lg: "35%", xl: "30%", },
-
+            width: { xs: "70%", sm: "70%", md: "45%", lg: "35%", xl: "30%" },
             maxWidth: "582px",
             height: "auto",
             maxHeight: "80vh",
             objectFit: "contain",
             display: "block",
           }}
-
         />
       </Box>
 
@@ -191,12 +197,10 @@ const HomePage = () => {
       <WhoWeServe />
       <Sustainability />
       <Solutions />
-      {/*<TakeControl />*/}
       <WhatsNew />
       <NafParagrap />
       <Testmonials />
     </Box>
-
   );
 };
 

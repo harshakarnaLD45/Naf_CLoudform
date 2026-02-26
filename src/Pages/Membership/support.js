@@ -272,53 +272,36 @@ const Support = () => {
                 px: { xs: 2, md: 5 },
             }}
         >
- {/* SEO + Meta Tags */}
-    <Helmet htmlAttributes={{ lang }}>
-      <title>
-          NAF Support
-      </title>
+ <Helmet htmlAttributes={{ lang: 'de' }}>
+  <title>NAF Support – Kundenservice</title>
+  <link rel="canonical" href={`https://vendinaf.com/de/support`} />
+  <meta
+    name="description"
+    content="Kontaktieren Sie den NAF Support bei Fragen zu Verkaufsautomaten, Konten oder technischen Problemen. Schnelle und zuverlässige Unterstützung online."
+  />
+  <meta
+    name="keywords"
+    content="NAF Support, Verkaufsautomaten Support, Kundenservice NAF, Hilfe Verkaufsautomaten, technischer Support Automaten, NAF Kontakt, Automaten Service, Störungsmeldung, NAF Hilfe, Support Anfrage"
+  />
+  <meta name="robots" content="index, follow" />
 
-      <link
-        rel="canonical"
-        href={`https://vendinaf.com/de/support`}
-      />
+  {/* Open Graph */}
+  <meta property="og:title" content="NAF Support – Kundenservice" />
+  <meta
+    property="og:description"
+    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
+  />
+  <meta property="og:url" content={`https://vendinaf.com/de/support`} />
+  <meta property="og:type" content="website" />
 
-      <meta
-        name="description"
-        content={"Kontaktieren Sie den NAF Support bei Fragen zu Verkaufsautomaten, Konten oder technischen Problemen. Schnelle und zuverlässige Unterstützung online."}
-      />
-
-      <meta
-        name="keywords"
-        content="NAF Support, Verkaufsautomaten Support, Kundenservice NAF, Hilfe Verkaufsautomaten, technischer Support Automaten, NAF Kontakt, Automaten Service, Störungsmeldung, NAF Hilfe, Support Anfrage
-"
-      />
-
-      <meta name="robots" content="index, follow" />
-
-      {/* Open Graph */}
-      <meta property="og:title" content="NAF Support – We’re Here to Help" />
-      <meta
-        property="og:description"
-        content="Contact NAF Support for fast assistance with vending machines, payments, accounts, and technical issues."
-      />
-      <meta
-        property="og:url"
-        content={`https://vendinaf.com/${lang}/support`}
-      />
-      <meta
-        property="og:type"
-        content="website"
-      />
-
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="NAF Support – Customer Assistance" />
-      <meta
-        name="twitter:description"
-        content="Need help? Reach NAF Support for quick solutions to vending machine and account issues."
-      />
-    </Helmet>
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NAF Support – Kundenservice" />
+  <meta
+    name="twitter:description"
+    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
+  />
+</Helmet>
 
 
             {/* Header */}
