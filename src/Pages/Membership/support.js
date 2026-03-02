@@ -8,6 +8,8 @@ import {
     AccordionDetails,
     Modal,
     IconButton,
+    Snackbar,
+    Alert,
 } from "@mui/material";
 import React, { useEffect, useState } from 'react';
 import CustomTextField from '../MachinesPage/MantaincePage/CustomTextField';
@@ -34,6 +36,11 @@ const Support = () => {
     const [showSuccess, setShowSuccess] = useState(false);
     const [errors, setErrors] = useState({});
     const [isConsentChecked, setIsConsentChecked] = useState(false);
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: "",
+        severity: "error",
+    });
 
     useEffect(() => {
         if (lang && i18n.language !== lang) {
@@ -54,50 +61,6 @@ const Support = () => {
         if (!phone) return true; // Phone is optional
         const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
         return phoneRegex.test(phone);
-    };
-
-    const validateForm = () => {
-        const newErrors = {};
-
-        // Required fields
-        if (!formTab0.fullName.trim()) {
-            newErrors.fullName = t('validation.fullNameRequired') || 'Full name is required';
-        }
-
-        if (!formTab0.email.trim()) {
-            newErrors.email =  t('productModal.email.error.required') || 'Email is required';
-        } else if (!validateEmail(formTab0.email)) {
-            newErrors.email = t('productModal.email.error.invalid') || 'Please enter a valid email address';
-        }
-
-        if (formTab0.phoneNumber && !validatePhoneNumber(formTab0.phoneNumber)) {
-            newErrors.phoneNumber = t('productModal.phone.error.invalid') || 'Please enter a valid phone number';
-        }
-
-        if (!formTab0.accountType) {
-            newErrors.accountType = t('supportForm.errors.accountTypeRequired') || 'Account type is required';
-        }
-
-        if (!formTab0.requestType) {
-            newErrors.requestType = t('supportForm.errors.requestTypeRequired') || 'Request type is required';
-        }
-
-        if (!formTab0.subject.trim()) {
-            newErrors.subject = t('supportForm.errors.subjectRequired') || 'Subject is required';
-        }
-
-        if (!formTab0.message.trim()) {
-            newErrors.message = t('supportForm.errors.messageRequired') || 'Message is required';
-        } else if (formTab0.message.trim().length < 10) {
-            newErrors.message = t('supportForm.errors.messageTooShort') || 'Message must be at least 10 characters';
-        }
-
-        if (!isConsentChecked) {
-            newErrors.consent =  t('productModal.privacyPolicy.error');
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
     };
 
     const [formTab0, setFormTab0] = useState({
@@ -147,7 +110,66 @@ const Support = () => {
 
     const handleSubmit = async () => {
         // Validate form
-        if (!validateForm()) {
+        const newErrors = {};
+
+        // Required fields
+        if (!formTab0.fullName.trim()) {
+            newErrors.fullName = t('validation.fullNameRequired') || 'Full name is required';
+        }
+
+        if (!formTab0.email.trim()) {
+            newErrors.email =  t('productModal.email.error.required') || 'Email is required';
+        } else if (!validateEmail(formTab0.email)) {
+            newErrors.email = t('productModal.email.error.invalid') || 'Please enter a valid email address';
+        }
+
+        if (formTab0.phoneNumber && !validatePhoneNumber(formTab0.phoneNumber)) {
+            newErrors.phoneNumber = t('productModal.phone.error.invalid') || 'Please enter a valid phone number';
+        }
+
+        if (!formTab0.accountType) {
+            newErrors.accountType = t('supportForm.errors.accountTypeRequired') || 'Account type is required';
+        }
+
+        if (!formTab0.requestType) {
+            newErrors.requestType = t('supportForm.errors.requestTypeRequired') || 'Request type is required';
+        }
+
+        if (!formTab0.subject.trim()) {
+            newErrors.subject = t('supportForm.errors.subjectRequired') || 'Subject is required';
+        }
+
+        if (!formTab0.message.trim()) {
+            newErrors.message = t('supportForm.errors.messageRequired') || 'Message is required';
+        } else if (formTab0.message.trim().length < 10) {
+            newErrors.message = t('supportForm.errors.messageTooShort') || 'Message must be at least 10 characters';
+        }
+
+        if (!isConsentChecked) {
+            newErrors.consent =  t('productModal.privacyPolicy.error');
+        }
+
+        setErrors(newErrors);
+
+        // Check if there are any errors
+        const errorValues = Object.values(newErrors);
+        if (errorValues.length > 0) {
+            // Show first error in snackbar
+            setSnackbar({
+                open: true,
+                message: errorValues[0],
+                severity: "error",
+            });
+
+            // Scroll to first error field
+            const firstErrorField = Object.keys(newErrors).find(key => newErrors[key]);
+            if (firstErrorField) {
+                const element = document.querySelector(`[name="${firstErrorField}"]`);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.focus();
+                }
+            }
             return;
         }
 
@@ -176,7 +198,7 @@ const Support = () => {
             });
 
             // Make API request - REPLACE WITH YOUR ACTUAL ENDPOINT
-            const response = await fetch('https://api.naf-cloudsystem.de/api/NAFWebsite/issue', {
+            const response = await fetch('https://staging-api.naf-cloudsystem.de/api/NAFWebsite/issue', {
                 method: 'POST',
                 body: formData,
                 // Note: Don't set Content-Type header - browser will set it with boundary automatically
@@ -280,7 +302,7 @@ const Support = () => {
 
       <link
         rel="canonical"
-        href={`https://vendinaf.com/de/support`}
+        href={`https://vendinaf.com/${lang}/support`}
       />
 
       <meta
@@ -393,11 +415,6 @@ const Support = () => {
                             onChange={(e) => handleChange(e, 0)}
                             error={!!errors.fullName}
                         />
-                        {errors.fullName && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.fullName}
-                            </Typography>
-                        )}
                     </Box>
                     <Box>
                         <CustomTextField
@@ -408,11 +425,6 @@ const Support = () => {
                             onChange={(e) => handleChange(e, 0)}
                             error={!!errors.email}
                         />
-                        {errors.email && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.email}
-                            </Typography>
-                        )}
                     </Box>
 
                     <Box>
@@ -423,11 +435,6 @@ const Support = () => {
                             onChange={(e) => handleChange(e, 0)}
                             error={!!errors.phoneNumber}
                         />
-                        {errors.phoneNumber && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.phoneNumber}
-                            </Typography>
-                        )}
                     </Box>
 
                     <CustomTextField
@@ -450,11 +457,6 @@ const Support = () => {
                             ]}
                             error={!!errors.accountType}
                         />
-                        {errors.accountType && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.accountType}
-                            </Typography>
-                        )}
                     </Box>
 
                     <Box>
@@ -474,11 +476,6 @@ const Support = () => {
                             ]}
                             error={!!errors.requestType}
                         />
-                        {errors.requestType && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.requestType}
-                            </Typography>
-                        )}
                     </Box>
 
                     <Box>
@@ -490,11 +487,6 @@ const Support = () => {
                             onChange={(e) => handleChange(e, 0)}
                             error={!!errors.subject}
                         />
-                        {errors.subject && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.subject}
-                            </Typography>
-                        )}
                     </Box>
 
                     <Box>
@@ -508,11 +500,6 @@ const Support = () => {
                             rows={4}
                             error={!!errors.message}
                         />
-                        {errors.message && (
-                            <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 1 }}>
-                                {errors.message}
-                            </Typography>
-                        )}
                     </Box>
 
                     <Box sx={{ mt: 2 }}>
@@ -641,11 +628,7 @@ const Support = () => {
 
 
 
-                    {errors.consent && (
-                        <Typography sx={{ color: '#d32f2f', fontSize: '12px', mt: 0.5, ml: 3 }}>
-                            {errors.consent}
-                        </Typography>
-                    )}
+
 
 
                     <Box sx={{
@@ -803,7 +786,10 @@ const Support = () => {
                     open={showSuccess}
                     onClose={handleCloseSuccess}
                     aria-labelledby="success-message-modal"
-                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  
+                        '& .MuiBackdrop-root': {
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        }, }}
                 >
                     <Box
                         onClick={(e) => e.stopPropagation()}
@@ -878,6 +864,31 @@ const Support = () => {
                     </Box>
                 </Modal>
             )}
+
+
+
+              {/* Snackbar for error messages */}
+                  <Snackbar
+                    open={snackbar.open}
+                    autoHideDuration={4000}
+                    onClose={() => setSnackbar({ ...snackbar, open: false })}
+                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                  >
+                    <Alert
+                      onClose={() => setSnackbar({ ...snackbar, open: false })}
+                      severity={snackbar.severity}
+                      sx={{
+                        width: "100%",
+                        color: snackbar.severity === "success" ? "#21CD83" :
+                            snackbar.severity === "error" ? "red" :
+                                snackbar.severity === "warning" ? "orange" :
+                                    "info.main",
+                        backgroundColor: "#2a2a2a"
+                      }}
+                    >
+                      {snackbar.message}
+                    </Alert>
+                  </Snackbar>
         </Box>
     );
 }

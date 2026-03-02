@@ -7,7 +7,6 @@ import {
   TextField,
   IconButton,
   FormControl,
-  FormHelperText,
   MenuItem,
   Select,
   Snackbar,
@@ -256,14 +255,35 @@ const ProductModal = ({
     }, {});
     setTouched(allTouched);
 
-    // Validate form
-    if (!validateForm()) {
-      // Scroll to first error
-      const firstErrorField = Object.keys(formErrors).find(key => formErrors[key]);
+    // Validate form and collect errors
+    const errors = {
+      purchaseMethod: validateRequired("purchaseMethod", formData.purchaseMethod),
+      machine: validateRequired("machine", formData.machine),
+      email: validateEmail(formData.email),
+      phone: validatePhone(formData.phone),
+      fullName: validateRequired("fullName", formData.fullName),
+      company: "",
+      description: "",
+      acceptedPolicy: formData.acceptedPolicy ? "" : t('productModal.privacyPolicy.error'),
+    };
+
+    setFormErrors(errors);
+
+    // Check if there are any errors
+    const errorValues = Object.values(errors).filter(error => error !== "");
+    if (errorValues.length > 0) {
+      // Show first error in snackbar
+      setSnackbarMessage(errorValues[0]);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+
+      // Scroll to first error field
+      const firstErrorField = Object.keys(errors).find(key => errors[key]);
       if (firstErrorField) {
         const element = document.querySelector(`[name="${firstErrorField}"]`);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.focus();
         }
       }
       return;
@@ -314,95 +334,6 @@ const ProductModal = ({
       setIsSubmitting(false);
     }
   };
-
-  // Success Modal
-  if (showSuccess) {
-    return (
-      <Modal 
-        open={Boolean(open)} 
-        onClose={handleCloseSuccess} 
-        aria-labelledby="success-message-modal" 
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        disablePortal
-        keepMounted
-        disableEnforceFocus
-        disableAutoFocus
-      >
-        <Box
-          onClick={(e) => e.stopPropagation()}
-          sx={{
-            width: "632px",
-            maxWidth: "95vw",
-            maxHeight: "95vh",
-            bgcolor: "#444444",
-            borderRadius: "8px",
-            position: "relative",
-            overflow: "auto",
-
-            "&::-webkit-scrollbar": {
-              width: "8px",
-            },
-            "&::-webkit-scrollbar-track": {
-              background: "#3a3a3a",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              background: "#666666",
-              borderRadius: "4px",
-            },
-          }}
-        >
-          <IconButton
-            onClick={handleCloseSuccess}
-            sx={{
-              position: "absolute",
-              right: 16,
-              top: 16,
-              color: "#E0A678",
-              border: "1px solid #E0A678",
-              borderRadius: "4px",
-              width: "28px",
-              height: "28px",
-              padding: 0,
-              "&:hover": {
-                backgroundColor: "rgba(224, 166, 120, 0.1)",
-              },
-            }}
-          >
-            <CloseIcon sx={{ fontSize: "18px" }} />
-          </IconButton>
-
-          <Box sx={{ pt: 8, pb: 6, px: 5, textAlign: "center" }}>
-            <Typography
-              sx={{
-                color: "#FCFCFC",
-                fontWeight: 400,
-                fontSize: "32px",
-                textAlign: "center",
-                letterSpacing: "0.5px",
-                mb: 2,
-              }}
-              className="headings-h5"
-            >
-              {t('productModal.success.title')}
-            </Typography>
-
-            <Typography
-              sx={{
-                color: "#C2C2C4",
-                fontSize: "18px",
-                textAlign: "center",
-                lineHeight: 1.6,
-                mb: 4,
-              }}
-              className="bodyRegularText3"
-            >
-              {t('productModal.success.message')}
-            </Typography>
-          </Box>
-        </Box>
-      </Modal>
-    );
-  }
 
   // Main Form Modal
   return (
@@ -538,11 +469,6 @@ const ProductModal = ({
                 <MenuItem value="Rental Purchase">{t('productModal.purchaseMethod.options.rentalPurchase')}</MenuItem>
                 <MenuItem value="Direct Purchase">{t('productModal.purchaseMethod.options.directPurchase')}</MenuItem>
               </Select>
-              {touched.purchaseMethod && formErrors.purchaseMethod && (
-                <FormHelperText sx={{ color: "#f44336", fontSize: "12px", mt: 0.5 }}>
-                   {t('productModal.purchaseMethod.error')}
-                </FormHelperText>
-              )}
             </FormControl>
           </Box>
 
@@ -613,11 +539,6 @@ const ProductModal = ({
                                 <MenuItem value="Cotton Candy Machine">{t('productModal.machine.options.cottonCandy')}</MenuItem> */}
                 <MenuItem value={t('machines.Snack')}>{t('machines.Snack')}</MenuItem>
               </Select>
-              {touched.machine && formErrors.machine && (
-                <FormHelperText sx={{ color: "#f44336", fontSize: "12px", mt: 0.5 }}>
-                  {formErrors.machine}
-                </FormHelperText>
-              )}
             </FormControl>
           </Box>
 
@@ -633,10 +554,6 @@ const ProductModal = ({
               onBlur={() => handleBlur("email")}
               variant="standard"
               error={touched.email && Boolean(formErrors.email)}
-              helperText={touched.email && formErrors.email}
-              FormHelperTextProps={{
-                sx: { color: "#f44336", fontSize: "12px", mt: 0.5 },
-              }}
               sx={{
                 "& .MuiInput-root": {
                   color: "#c2c2c4",
@@ -683,10 +600,6 @@ const ProductModal = ({
               onBlur={() => handleBlur("phone")}
               variant="standard"
               error={touched.phone && Boolean(formErrors.phone)}
-              helperText={touched.phone && formErrors.phone}
-              FormHelperTextProps={{
-                sx: { color: "#f44336", fontSize: "12px", mt: 0.5 },
-              }}
               sx={{
                 "& .MuiInput-root": {
                   color: "#c2c2c4",
@@ -733,10 +646,6 @@ const ProductModal = ({
               onBlur={() => handleBlur("fullName")}
               variant="standard"
               error={touched.fullName && Boolean(formErrors.fullName)}
-              helperText={touched.fullName && formErrors.fullName}
-              FormHelperTextProps={{
-                sx: { color: "#f44336", fontSize: "12px", mt: 0.5 },
-              }}
               sx={{
                 "& .MuiInput-root": {
                   color: "#c2c2c4",
@@ -883,11 +792,6 @@ const ProductModal = ({
               </span>
             </Typography>
           </Box>
-          {touched.acceptedPolicy && formErrors.acceptedPolicy && (
-            <FormHelperText sx={{ color: "#f44336", fontSize: "12px", mt: 0.5 }}>
-              {formErrors.acceptedPolicy}
-            </FormHelperText>
-          )}
 
           {/* Submit Button */}
           <Box
@@ -924,17 +828,114 @@ const ProductModal = ({
         </Box>
       </Box>
     </Modal>
+
+    {/* Success Modal Overlay */}
+    <Modal
+      open={showSuccess}
+      onClose={handleCloseSuccess}
+      aria-labelledby="success-message-modal"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1300,
+      }}
+      disablePortal
+      keepMounted
+      disableEnforceFocus
+      disableAutoFocus
+    >
+      <Box
+        onClick={(e) => e.stopPropagation()}
+        sx={{
+          width: "632px",
+          maxWidth: "95vw",
+          maxHeight: "95vh",
+          bgcolor: "#444444",
+          borderRadius: "8px",
+          position: "relative",
+          overflow: "auto",
+
+          "&::-webkit-scrollbar": {
+            width: "8px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "#3a3a3a",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "#666666",
+            borderRadius: "4px",
+          },
+        }}
+      >
+        <IconButton
+          onClick={handleCloseSuccess}
+          sx={{
+            position: "absolute",
+            right: 16,
+            top: 16,
+            color: "#E0A678",
+            border: "1px solid #E0A678",
+            borderRadius: "4px",
+            width: "28px",
+            height: "28px",
+            padding: 0,
+            "&:hover": {
+              backgroundColor: "rgba(224, 166, 120, 0.1)",
+            },
+          }}
+        >
+          <CloseIcon sx={{ fontSize: "18px" }} />
+        </IconButton>
+
+        <Box sx={{ pt: 8, pb: 6, px: 5, textAlign: "center" }}>
+          <Typography
+            sx={{
+              color: "#FCFCFC",
+              fontWeight: 400,
+              fontSize: "32px",
+              textAlign: "center",
+              letterSpacing: "0.5px",
+              mb: 2,
+            }}
+            className="headings-h5"
+          >
+            {t('productModal.success.title')}
+          </Typography>
+
+          <Typography
+            sx={{
+              color: "#C2C2C4",
+              fontSize: "18px",
+              textAlign: "center",
+              lineHeight: 1.6,
+              mb: 4,
+            }}
+            className="bodyRegularText3"
+          >
+            {t('productModal.success.message')}
+          </Typography>
+        </Box>
+      </Box>
+    </Modal>
+
     {/* Snackbar for displaying error/success messages - placed outside Modal */}
     <Snackbar
       open={snackbarOpen}
-      autoHideDuration={6000}
+      autoHideDuration={4000}
       onClose={handleSnackbarClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
       <Alert
         onClose={handleSnackbarClose}
         severity={snackbarSeverity}
-        sx={{ width: '100%', backgroundColor: '#444444', color: '#FCFCFC', border: '1px solid #E0A678' }}
+        sx={{
+          width: '100%',
+          color: snackbarSeverity === 'success' ? '#21CD83' :
+                 snackbarSeverity === 'error' ? 'red' :
+                 snackbarSeverity === 'warning' ? 'orange' : 'info.main',
+          backgroundColor: '#2a2a2a'
+        }}
       >
         {snackbarMessage}
       </Alert>

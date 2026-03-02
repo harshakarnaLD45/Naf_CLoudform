@@ -138,11 +138,49 @@ const PaymentPage = () => {
       } else {
         setStatus("failed");
       }
+      // if (response.data?.status === "processing") {
+      //   const transactionId = response.data.transactionId;
+      //   // setStatus("processing");
+
+      //   startPolling(transactionId);
+      // } else {
+      //   setStatus("failed");
+      // }
     } catch {
       setStatus("failed");
     } finally {
       setChecked(false)
     }
+  };
+
+  const startPolling = (transactionId) => {
+    const token = localStorage.getItem("authToken");
+
+    const interval = setInterval(async () => {
+      try {
+        const res = await axios.get(
+          `https://staging-api.naf-cloudsystem.de/api/andriod/transaction-status/${transactionId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        const status = res.data?.status;
+
+        if (status === "Completed") {
+          clearInterval(interval);
+          setStatus("success");
+        }
+
+        if (status === "Failed") {
+          clearInterval(interval);
+          setStatus("failed");
+        }
+      } catch (error) {
+        clearInterval(interval);
+        setStatus("failed");
+      }
+    }, 2000); // poll every 2 seconds
   };
 
   // -----------------------------

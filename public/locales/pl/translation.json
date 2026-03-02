@@ -3743,7 +3743,9 @@
         "rentalPurchase": "Zakup ratalny",
         "directPurchase": "Zakup bezpośredni"
       },
-      "error": "Metoda zakupu jest wymagana"
+      "error": {
+        "required": "Metoda zakupu jest wymagana"
+      }
     },
     "machine": {
       "label": "Maszyna*",
@@ -3833,6 +3835,7 @@
       "emailRequired": "E-mail jest wymagany",
       "invalidEmail": "Nieprawidłowy adres e-mail",
       "invalidPhone": "Nieprawidłowy format numeru telefonu",
+      "fullNameRequired": "Imię i nazwisko są wymagane",
       "nameTooShort": "Imię jest za krótkie",
       "nameTooLong": "Imię jest za długie",
       "selectUseCase": "Proszę wybrać zastosowanie"

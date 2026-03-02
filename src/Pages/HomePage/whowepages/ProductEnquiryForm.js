@@ -9,6 +9,9 @@ import {
   MenuItem,
   Select,
   IconButton,
+  Modal,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import AnimateButton from "../../../Components/CommonComponents/AnimateButton";
 import { useTranslation } from "react-i18next";
@@ -119,6 +122,11 @@ const ProductEnquiryForm = () => {
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "error",
+  });
 
   // Set use case based on URL when component mounts
   useEffect(() => {
@@ -163,7 +171,7 @@ const ProductEnquiryForm = () => {
 
   const validateFullName = (name) => {
     if (!name)
-      return t("whowesurveproductform.validation.required");
+      return t("whowesurveproductform.validation.fullNameRequired");
 
     if (name.trim().length < 2)
       return t("whowesurveproductform.validation.nameTooShort");
@@ -257,9 +265,26 @@ const ProductEnquiryForm = () => {
     });
 
     // Validate form
-    if (!validateForm()) {
-      // Scroll to first error
-      const firstErrorField = Object.keys(formErrors).find(key => formErrors[key]);
+    const errors = {
+      useCaseType: validateUseCaseType(formData.useCaseType),
+      email: validateEmail(formData.email),
+      phone: validatePhone(formData.phone),
+      fullName: validateFullName(formData.fullName),
+      acceptedPolicy: validateAcceptedPolicy(formData.acceptedPolicy),
+    };
+    setFormErrors(errors);
+
+    const firstError = Object.values(errors).find((e) => e !== "");
+    if (firstError) {
+      // Show snackbar with first validation error
+      setSnackbar({
+        open: true,
+        message: firstError,
+        severity: "error",
+      });
+
+      // Scroll to first error field
+      const firstErrorField = Object.keys(errors).find((key) => errors[key]);
       if (firstErrorField) {
         const element = document.querySelector(`[name="${firstErrorField}"]`);
         if (element) {
@@ -282,7 +307,7 @@ const ProductEnquiryForm = () => {
         description: formData.description || ""
       };
 
-      const response = await fetch("https://api.naf-cloudsystem.de/api/NAFWebsite/enquiry", {
+      const response = await fetch("https://staging-api.naf-cloudsystem.de/api/NAFWebsite/enquiry", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -298,7 +323,11 @@ const ProductEnquiryForm = () => {
       setIsSubmitting(false);
     } catch (err) {
       console.error("Submission error:", err);
-      alert(t(`validation.submissionFailed`));
+      setSnackbar({
+        open: true,
+        message: t("validation.submissionFailed"),
+        severity: "error",
+      });
       setIsSubmitting(false);
     }
   };
@@ -320,87 +349,6 @@ const ProductEnquiryForm = () => {
     setFormErrors({});
     setShowSuccess(false);
   };
-
-  /* =========================
-     SUCCESS STATE
-  ========================= */
-  if (showSuccess) {
-    return (
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          bgcolor: 'rgba(0, 0, 0, 0.8)',
-          zIndex: 9999,
-          p: 2,
-        }}
-      >
-        <Box
-          sx={{
-            bgcolor: '#161616',
-            borderRadius: '12px',
-            border: '1px solid #393939',
-            maxWidth: '500px',
-            width: '100%',
-            p: { xs: 3, md: 5 },
-            textAlign: 'center',
-            position: 'relative',
-            pt: { xs: 5, md: 4 },
-          }}
-        >
-          {/* Title */}
-          <Typography
-            sx={{
-              color: '#fff',
-              fontSize: { xs: '28px', md: '32px' },
-              fontWeight: 600,
-              mb: 2,
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            {t("whowesurveproductform.success.title")}
-          </Typography>
-
-          {/* Message */}
-          <Typography
-            sx={{
-              color: '#c2c2c4',
-              fontSize: '16px',
-              lineHeight: 1.6,
-              mb: 4,
-              maxWidth: '400px',
-              mx: 'auto',
-            }}
-          >
-            {t("whowesurveproductform.success.message")}
-          </Typography>
-
-          {/* Close Icon */}
-          <IconButton
-            onClick={handleReset}
-            sx={{
-              position: 'absolute',
-              top: 16,
-              right: 16,
-              color: '#c2c2c4',
-              '&:hover': {
-                color: '#fff',
-                bgcolor: 'rgba(255, 255, 255, 0.1)',
-              },
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-      </Box>
-    );
-  }
 
   /* =========================
      FORM
@@ -455,9 +403,6 @@ const ProductEnquiryForm = () => {
               </MenuItem>
             ))}
           </Select>
-          {touched.useCaseType && formErrors.useCaseType && (
-            <FormHelperText error>{formErrors.useCaseType}</FormHelperText>
-          )}
         </FormControl>
 
         {/* Email Field */}
@@ -471,7 +416,6 @@ const ProductEnquiryForm = () => {
           onChange={handleChange}
           onBlur={() => handleBlur("email")}
           error={touched.email && !!formErrors.email}
-          helperText={touched.email && formErrors.email}
           sx={{ mb: 6, ...standardInputStyle }}
           required
         />
@@ -486,7 +430,6 @@ const ProductEnquiryForm = () => {
           onChange={handleChange}
           onBlur={() => handleBlur("fullName")}
           error={touched.fullName && !!formErrors.fullName}
-          helperText={touched.fullName && formErrors.fullName}
           sx={{ mb: 6, ...standardInputStyle }}
           required
         />
@@ -502,7 +445,6 @@ const ProductEnquiryForm = () => {
           onChange={handleChange}
           onBlur={() => handleBlur("phone")}
           error={touched.phone && !!formErrors.phone}
-          helperText={touched.phone && formErrors.phone}
           sx={{ mb: 6, ...standardInputStyle }}
         />
 
@@ -573,17 +515,6 @@ const ProductEnquiryForm = () => {
           </Typography>
         </Box>
 
-        {touched.acceptedPolicy && formErrors.acceptedPolicy && (
-          <FormHelperText sx={{
-            color: "#f44336",
-            fontSize: "12px",
-            mt: 0.5,
-            ml: 4
-          }}>
-            {formErrors.acceptedPolicy}
-          </FormHelperText>
-        )}
-
         {/* Submit Button */}
         <Box
           sx={{
@@ -622,6 +553,109 @@ const ProductEnquiryForm = () => {
           )}
         </Box>
       </Box>
+
+      {/* SUCCESS MESSAGE MODAL */}
+      <Modal
+        open={showSuccess}
+        onClose={handleReset}
+        aria-labelledby="success-message-modal"
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1300,
+          '& .MuiBackdrop-root': {
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          },
+        }}
+      >
+        <Box
+          onClick={(e) => e.stopPropagation()}
+          sx={{
+            width: '500px',
+            maxWidth: '95vw',
+            maxHeight: '95vh',
+            bgcolor: '#161616',
+            borderRadius: '12px',
+            border: '1px solid #393939',
+            position: 'relative',
+            overflow: 'auto',
+            p: { xs: 3, md: 5 },
+            pt: { xs: 5, md: 4 },
+            textAlign: 'center',
+          }}
+        >
+          {/* Close Button */}
+          <IconButton
+            onClick={handleReset}
+            sx={{
+              position: 'absolute',
+              top: 16,
+              right: 16,
+              color: '#c2c2c4',
+              '&:hover': {
+                color: '#fff',
+                bgcolor: 'rgba(255, 255, 255, 0.1)',
+              },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+
+          {/* Success Message Content */}
+          <Box sx={{ pt: 4, pb: 2, px: 2 }}>
+            {/* Title */}
+            <Typography
+              sx={{
+                color: '#fff',
+                fontSize: { xs: '28px', md: '32px' },
+                fontWeight: 600,
+                mb: 2,
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
+              {t("whowesurveproductform.success.title")}
+            </Typography>
+
+            {/* Message */}
+            <Typography
+              sx={{
+                color: '#c2c2c4',
+                fontSize: '16px',
+                lineHeight: 1.6,
+                mb: 4,
+                maxWidth: '400px',
+                mx: 'auto',
+              }}
+            >
+              {t("whowesurveproductform.success.message")}
+            </Typography>
+          </Box>
+        </Box>
+      </Modal>
+
+      {/* Snackbar for error messages */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.severity}
+          sx={{
+            width: "100%",
+            color: snackbar.severity === "success" ? "#21CD83" :
+                snackbar.severity === "error" ? "red" :
+                    snackbar.severity === "warning" ? "orange" :
+                        "info.main",
+            backgroundColor: "#2a2a2a"
+          }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

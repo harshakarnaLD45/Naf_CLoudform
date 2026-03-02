@@ -3726,7 +3726,9 @@
         "rentalPurchase": "Location avec option d'achat",
         "directPurchase": "Achat direct"
       },
-      "error": "Le mode d'achat est requis"
+      "error": {
+        "required": "Le mode d'achat est requis"
+      }
     },
     "machine": {
       "label": "Machine*",
@@ -3812,12 +3814,13 @@
     },
     "validation": {
       "required": "Ce champ est requis",
-      "emailRequired": "L’e-mail est requis",
+      "emailRequired": "L'e-mail est requis",
       "invalidEmail": "Adresse e-mail invalide",
       "invalidPhone": "Format de numéro invalide",
+      "fullNameRequired": "Le nom complet est requis",
       "nameTooShort": "Le nom est trop court",
       "nameTooLong": "Le nom est trop long",
-      "selectUseCase": "Veuillez sélectionner un cas d’utilisation"
+      "selectUseCase": "Veuillez sélectionner un cas d'utilisation"
     },
     "submit": {
       "button": "Envoyer",

@@ -7,7 +7,10 @@ import {
     Snackbar,
     Alert,
     Button,
+    Modal,
+    IconButton,
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import AnimateButton from '../../Components/CommonComponents/AnimateButton';
 import CustomTextField from './MantaincePage/CustomTextField';
 import Service1 from '../../assets/Machines/how-it-works-1.png'
@@ -33,6 +36,7 @@ function PartnersForm() {
         severity: 'success', // or 'error'
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
 
 
     const [formTab0, setFormTab0] = useState({
@@ -62,6 +66,10 @@ function PartnersForm() {
 
     const handleSnackbarClose = () => {
         setSnackbar((prev) => ({ ...prev, open: false }));
+    };
+
+    const handleCloseSuccess = () => {
+        setShowSuccess(false);
     };
 
     const handleTabChange = (_, newValue) => setTab(newValue);
@@ -166,11 +174,11 @@ function PartnersForm() {
             setIsSubmitting(true);  // Determine the endpoint
             const endpoint =
                 tab === 0
-                    ? 'https://api.naf-cloudsystem.de/api/NAFWebsite/company-installations'
-                    : 'https://api.naf-cloudsystem.de/api/NAFWebsite/gastronomy-partners';
+                    ? 'https://staging-api.naf-cloudsystem.de/api/NAFWebsite/company-installations'
+                    : 'https://staging-api.naf-cloudsystem.de/api/NAFWebsite/gastronomy-partners';
             await axios.post(endpoint, submittedData);
 
-            showSnackbar(t('validation.submissionSuccess'), 'success');
+            setShowSuccess(true);
             // Reset
             if (tab === 0) {
                 setFormTab0({
@@ -510,6 +518,97 @@ function PartnersForm() {
                 <Typography  variant="body2" className="bodyRegularText4 fixedSize" align="center" color="#C2C2C4" sx={{ mt: 2 }}>
                     {t('machines.FormfooterText')}
                 </Typography>
+
+                {/* SUCCESS MESSAGE MODAL */}
+                <Modal
+                    open={showSuccess}
+                    onClose={handleCloseSuccess}
+                    aria-labelledby="success-message-modal"
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 1300,
+                        '& .MuiBackdrop-root': {
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        },
+                    }}
+                >
+                    <Box
+                        onClick={(e) => e.stopPropagation()}
+                        sx={{
+                            width: '632px',
+                            maxWidth: '95vw',
+                            maxHeight: '95vh',
+                            bgcolor: '#444444',
+                            borderRadius: '8px',
+                            position: 'relative',
+                            overflow: 'auto',
+
+                            '&::-webkit-scrollbar': {
+                                width: '8px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                                background: '#3a3a3a',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                                background: '#666666',
+                                borderRadius: '4px',
+                            },
+                        }}
+                    >
+                        {/* Close Button */}
+                        <IconButton
+                            onClick={handleCloseSuccess}
+                            sx={{
+                                position: 'absolute',
+                                right: 16,
+                                top: 16,
+                                color: '#E0A678',
+                                border: '1px solid #E0A678',
+                                borderRadius: '4px',
+                                width: '28px',
+                                height: '28px',
+                                padding: 0,
+
+                            }}
+                        >
+                            <CloseIcon sx={{ fontSize: '18px' }} />
+                        </IconButton>
+
+                        {/* Success Message Content */}
+                        <Box sx={{ pt: 8, pb: 6, px: 5, textAlign: 'center' }}>
+                            {/* Title */}
+                            <Typography
+                                sx={{
+                                    color: '#FCFCFC',
+                                    fontWeight: 400,
+                                    fontSize: '32px',
+                                    textAlign: 'center',
+                                    letterSpacing: '0.5px',
+                                    mb: 2
+                                }}
+                                className='headings-h5'
+                            >
+                                {t('productModal.success.title')}
+                            </Typography>
+
+                            {/* Subtitle */}
+                            <Typography
+                                sx={{
+                                    color: '#C2C2C4',
+                                    fontSize: '18px',
+                                    textAlign: 'center',
+                                    lineHeight: 1.6,
+                                    mb: 4
+                                }}
+                                className='bodyRegularText3'
+                            >
+                                {t('productModal.success.message')}
+                            </Typography>
+                        </Box>
+                    </Box>
+                </Modal>
             </Box>
         </Box>
     );

@@ -21,12 +21,18 @@ import AnimateButton from "./CommonComponents/AnimateButton";
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from "react-router-dom";
 
-const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', defaultMachine = '', showSuccess, handleCloseSuccess, onSuccess }) => {
+const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', defaultMachine = '', showSuccess: externalShowSuccess, handleCloseSuccess: externalHandleCloseSuccess, onSuccess }) => {
   const { t } = useTranslation();
   const { lang } = useParams();
   const navigate = useNavigate();
-  // Using externally managed success state instead of local state
-  // const [showSuccess, setShowSuccess] = useState(false);
+  // Local success state for when external prop is not provided
+  const [internalShowSuccess, setInternalShowSuccess] = useState(false);
+  // Use external showSuccess if provided, otherwise use internal state
+  const showSuccess = externalShowSuccess !== undefined ? externalShowSuccess : internalShowSuccess;
+  const handleCloseSuccess = externalHandleCloseSuccess || (() => {
+    setInternalShowSuccess(false);
+    handleClose();
+  });
   const [formData, setFormData] = useState({
     purchaseMethod: defaultPurchaseMethod,
     machine: defaultMachine,
@@ -87,6 +93,8 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
         description: false,
         acceptedPolicy: false
       });
+      // Reset internal success state when modal closes
+      setInternalShowSuccess(false);
     }
   }, [open, defaultPurchaseMethod, defaultMachine]);
   const [formErrors, setFormErrors] = useState({
@@ -178,7 +186,7 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
         error = validatePhone(formData.phone);
         break;
       case "purchaseMethod":
-        error = validateRequired("purchaseMethod", formData.purchaseMethod, t('productModal.purchaseMethod.error'));
+        error = validateRequired("purchaseMethod", formData.purchaseMethod);
         break;
       case "machine":
         error = validateRequired("machine", formData.machine);
@@ -227,9 +235,30 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
     setTouched(allTouched);
 
     // Validate form
-    if (!validateForm()) {
-      // Scroll to first error
-      const firstErrorField = Object.keys(formErrors).find(key => formErrors[key]);
+    const errors = {
+      purchaseMethod: validateRequired("purchaseMethod", formData.purchaseMethod),
+      machine: validateRequired("machine", formData.machine),
+      email: validateEmail(formData.email),
+      phone: validatePhone(formData.phone),
+      fullName: validateRequired("fullName", formData.fullName),
+      company: "",
+      description: "",
+      acceptedPolicy: formData.acceptedPolicy
+        ? ""
+        : t('productModal.privacyPolicy.error'),
+    };
+
+    setFormErrors(errors);
+
+    const firstError = Object.values(errors).find(error => error !== "");
+    if (firstError) {
+      // Show snackbar with first error message
+      setSnackbarMessage(firstError);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+
+      // Scroll to first error field
+      const firstErrorField = Object.keys(errors).find(key => errors[key]);
       if (firstErrorField) {
         const element = document.querySelector(`[name="${firstErrorField}"]`);
         if (element) {
@@ -254,7 +283,7 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
       };
 
       // Make API request
-      const response = await fetch('https://api.naf-cloudsystem.de/api/NAFWebsite/machine-enquiry', {
+      const response = await fetch('https://staging-api.naf-cloudsystem.de/api/NAFWebsite/machine-enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -267,13 +296,16 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
       }
 
       const result = await response.json();
-      
+
       // Reset submitting state and show success message
       setIsSubmitting(false);
       if (onSuccess) {
         onSuccess();
-      } else if (handleCloseSuccess) {
-        handleCloseSuccess();
+      } else if (externalHandleCloseSuccess) {
+        externalHandleCloseSuccess();
+      } else {
+        // Use internal state to show success modal
+        setInternalShowSuccess(true);
       }
 
     } catch (error) {
@@ -422,12 +454,12 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
                   <MenuItem value={t('machines.RentalPurchase')}>{t('machines.RentalPurchase')}</MenuItem>
                   <MenuItem value={t('productModal.purchaseMethod.options.directPurchase')}>{t('productModal.purchaseMethod.options.directPurchase')}</MenuItem>
                 </Select>
-                {touched.purchaseMethod && formErrors.purchaseMethod && (
+                {/* {touched.purchaseMethod && formErrors.purchaseMethod && (
                   <FormHelperText sx={{ color: '#f44336', fontSize: '12px', mt: 0.5 }}>
-                    {/* {formErrors.purchaseMethod} */}
+                    
                      {t('productModal.purchaseMethod.error')}
                   </FormHelperText>
-                )}
+                )} */}
               </FormControl>
             </Box>
 
@@ -488,11 +520,11 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
                   <MenuItem value="Cotton Candy Machine">{t('productModal.machine.options.cottonCandy')}</MenuItem> */}
                   <MenuItem value={t('machines.Snack')}>{t('machines.Snack')}</MenuItem>
                 </Select>
-                {touched.machine && formErrors.machine && (
+                {/* {touched.machine && formErrors.machine && (
                   <FormHelperText sx={{ color: '#f44336', fontSize: '12px', mt: 0.5 }}>
                     {formErrors.machine} 
                   </FormHelperText>
-                )}
+                )} */}
               </FormControl>
             </Box>
 
@@ -508,7 +540,6 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
                 onBlur={() => handleBlur("email")}
                 variant="standard"
                 error={touched.email && Boolean(formErrors.email)}
-                helperText={touched.email && formErrors.email}
                 FormHelperTextProps={{
                   sx: { color: "#f44336", fontSize: "12px", mt: 0.5 },
                 }}
@@ -558,7 +589,6 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
                 onBlur={() => handleBlur("phone")}
                 variant="standard"
                 error={touched.phone && Boolean(formErrors.phone)}
-                helperText={touched.phone && formErrors.phone}
                 FormHelperTextProps={{
                   sx: { color: "#f44336", fontSize: "12px", mt: 0.5 },
                 }}
@@ -609,7 +639,6 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
                 onBlur={() => handleBlur("fullName")}
                 variant="standard"
                 error={touched.fullName && Boolean(formErrors.fullName)}
-                helperText={touched.fullName && formErrors.fullName}
                 FormHelperTextProps={{
                   sx: { color: "#f44336", fontSize: "12px", mt: 0.5 },
                 }}
@@ -758,12 +787,6 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
                 </span>
               </Typography>
             </Box>
-            {touched.acceptedPolicy && formErrors.acceptedPolicy && (
-              <FormHelperText sx={{ color: "#f44336", fontSize: "12px", mt: 0.5 }}>
-                {formErrors.acceptedPolicy}
-              </FormHelperText>
-            )}
-
             {/* Submit Button - Exact circular green button */}
             <Box sx={{
               mt: 5,
@@ -808,6 +831,10 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          zIndex: 1300,
+          '& .MuiBackdrop-root': {
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          },
         }}
       >
         <Box
@@ -888,14 +915,21 @@ const SharedPaymentModal = ({ open, handleClose, defaultPurchaseMethod = '', def
       {/* Snackbar for displaying error/success messages */}
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        autoHideDuration={4000}
         onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert
           onClose={handleSnackbarClose}
           severity={snackbarSeverity}
-          sx={{ width: '100%', backgroundColor: '#444444', color: '#FCFCFC', border: '1px solid #E0A678' }}
+           sx={{
+                        width: "100%",
+                        color: snackbarSeverity === "success" ? "#21CD83" :
+                            snackbarSeverity === "error" ? "red" :
+                                snackbarSeverity === "warning" ? "orange" :
+                                    "info.main",
+                        backgroundColor: "#2a2a2a"
+                    }}
         >
           {snackbarMessage}
         </Alert>

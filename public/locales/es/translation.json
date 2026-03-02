@@ -3717,7 +3717,9 @@
         "rentalPurchase": "Compra por alquiler",
         "directPurchase": "Compra directa"
       },
-      "error": "El método de compra es obligatorio"
+      "error": {
+        "required": "El método de compra es obligatorio"
+      }
     },
     "machine": {
       "label": "Máquina*",
@@ -3837,6 +3839,7 @@
       "emailRequired": "El correo electrónico es obligatorio",
       "invalidEmail": "Correo electrónico inválido",
       "invalidPhone": "Formato de teléfono inválido",
+      "fullNameRequired": "El nombre completo es obligatorio",
       "nameTooShort": "El nombre es demasiado corto",
       "nameTooLong": "El nombre es demasiado largo",
       "selectUseCase": "Por favor seleccione un caso de uso"

@@ -3988,7 +3988,9 @@
         "rentalPurchase": "Rental Purchase",
         "directPurchase": "Direct Purchase"
       },
-      "error": "Purchase method is required"
+      "error": {
+        "required": "Purchase method is required"
+      }
     },
     "machine": {
       "label": "Machine*",
@@ -4077,6 +4079,7 @@
       "emailRequired": "Email is required",
       "invalidEmail": "Invalid email address",
       "invalidPhone": "Invalid phone number format",
+      "fullNameRequired": "Full name is required",
       "nameTooShort": "Name is too short",
       "nameTooLong": "Name is too long",
       "selectUseCase": "Please select a use case type"
@@ -4121,7 +4124,7 @@
       "softwareIntegrations": "Software Integrations"
     },
     "validation": {
-      "required": "This field is required",
+      "required": "Email is required",
       "invalidEmail": "Invalid email address",
       "invalidPhone": "Invalid phone number format",
       "selectUseCase": "Please select a use case type",

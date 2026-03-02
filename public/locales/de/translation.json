@@ -3634,8 +3634,9 @@
         "rentalPurchase": "Mietkauf",
         "directPurchase": "Direktkauf"
       },
-      "error": "Bitte wählen Sie eine Kaufmethode"
-
+      "error": {
+        "required": "Bitte wählen Sie eine Kaufmethode"
+      }
     },
     "machine": {
       "label": "Maschine*",
@@ -3729,6 +3730,7 @@
       "emailRequired": "E-Mail ist erforderlich",
       "invalidEmail": "Ungültige E-Mail-Adresse",
       "invalidPhone": "Ungültiges Telefonnummernformat",
+      "fullNameRequired": "Vollständiger Name ist erforderlich",
       "nameTooShort": "Name ist zu kurz",
       "nameTooLong": "Name ist zu lang",
       "selectUseCase": "Bitte wählen Sie einen Anwendungsfall"
