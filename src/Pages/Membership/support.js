@@ -302,7 +302,7 @@ const Support = () => {
 
       <link
         rel="canonical"
-        href={`https://vendinaf.com/${lang}/support`}
+        href={`https://vendinaf.com/de/support`}
       />
 
       <meta
@@ -318,29 +318,23 @@ const Support = () => {
 
       <meta name="robots" content="index, follow" />
 
-      {/* Open Graph */}
-      <meta property="og:title" content="NAF Support – We’re Here to Help" />
-      <meta
-        property="og:description"
-        content="Contact NAF Support for fast assistance with vending machines, payments, accounts, and technical issues."
-      />
-      <meta
-        property="og:url"
-        content={`https://vendinaf.com/${lang}/support`}
-      />
-      <meta
-        property="og:type"
-        content="website"
-      />
+  {/* Open Graph */}
+  <meta property="og:title" content="NAF Support – Kundenservice" />
+  <meta
+    property="og:description"
+    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
+  />
+  <meta property="og:url" content={`https://vendinaf.com/de/support`} />
+  <meta property="og:type" content="website" />
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="NAF Support – Customer Assistance" />
-      <meta
-        name="twitter:description"
-        content="Need help? Reach NAF Support for quick solutions to vending machine and account issues."
-      />
-    </Helmet>
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NAF Support – Kundenservice" />
+  <meta
+    name="twitter:description"
+    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
+  />
+</Helmet>
 
 
             {/* Header */}

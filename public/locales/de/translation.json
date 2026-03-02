@@ -64,7 +64,15 @@
       "cloudDemo": "Cloud-Demo"
     }
   },
+  
   "Home": {
+  "meta": {
+    "title": "NAF Germany | KI-gesteuerte intelligente Verkaufsautomaten",
+    "description": "Entdecken Sie innovative Verkaufsautomatenlösungen für Unternehmen, Universitäten, Krankenhäuser und mehr – 24/7 Verfügbarkeit, intelligente Steuerung und einfache Verwaltung.",
+    "keywords": "Verkaufsautomat, Smart Vending, KI, NAF, Automaten, Catering, Selbstbedienung",
+    "author": "NAF Team",
+    "robots": "index, follow"
+  },
     "mainHeading": "Das 3-Minuten-Restaurant",
     "mainParagraph": "Mach es einfach. Mach es smart. Mach es zirkulär.",
     "viewMore": "Mehr anzeigen",
@@ -113,6 +121,7 @@
       "text": "Das Auberginen-Kichererbsen-Curry heute war köstlich. Die Hähnchenbällchen gestern waren ebenfalls gut.",
       "author": "Kunde"
     },
+    
     "testimonial2": {
       "text": "Das Roastbeef war lecker 👍🏻 und der Preis auch super 🤩.",
       "author": "Gerdi"
@@ -224,6 +233,7 @@
     "button1": "Demnächst",
     "button2": "verfügbar"
   },
+
   "machines": {
     "with": "mit Heizung",
     "without": "ohne Heizung",

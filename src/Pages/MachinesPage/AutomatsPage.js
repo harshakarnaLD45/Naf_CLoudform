@@ -1,7 +1,6 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import React, { useEffect, useState, lazy, Suspense, useRef } from "react";
 import "./AutomatsPage.css";
-
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
@@ -177,7 +176,7 @@ const AutomatsPage = () => {
 
   return (
     <Box>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: 'de' }}>
         <title>NAF Vending - Automats</title>
         <link rel="canonical" href="https://vendinaf.com/de/Automats" />
         <meta
@@ -199,7 +198,7 @@ const AutomatsPage = () => {
           content="Browse innovative vending machines from NAF – AI-driven, sustainable, and customizable for businesses in Germany and beyond."
         />
         <meta property="og:image" content={frenchFries} />
-        <meta property="og:url" content="https://vendinaf.com/en/machine" />
+        <meta property="og:url" content="https://vendinaf.com/de/Automats" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />

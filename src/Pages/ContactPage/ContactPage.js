@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
-import logoUrl from '../../assets/Home/NAF-logo.png'; // Replace with actual logo URL
+import logoUrl from '../../assets/Home/NAF-logo.png';
 
 function ContactPage() {
     const { t } = useTranslation();
@@ -28,16 +28,18 @@ function ContactPage() {
     const { lang } = useParams();
     const [active, setActive] = useState('submit');
     const [selectedItems, setSelectedItems] = useState([]);
-    const [isSubmitform, setIsSubmitform] = useState(true); // default to showing the form
+    const [isSubmitform, setIsSubmitform] = useState(true);
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
     const [isConsentChecked, setIsConsentChecked] = useState(false);
     const [customCategory, setCustomCategory] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
- const [categoryError, setCategoryError] = useState(false);
+    const [categoryError, setCategoryError] = useState(false);
+
     const handleSnackbarClose = () => {
         setSnackbar((prev) => ({ ...prev, open: false }));
     };
+
     const [formData, setFormData] = useState({
         email: '',
         fullName: '',
@@ -53,17 +55,6 @@ function ContactPage() {
         });
     };
 
-    // const handleCategorySelect = (category) => {
-    //     setFormData((prev) => ({
-    //         ...prev,
-    //         inquiryType: prev.inquiryType === category ? '' : category,
-    //     }));
-    //     setSelectedItems(category)
-
-    //     if (category !== 'Others') {
-    //         setCustomCategory('');
-    //     }
-    // };
     const handleCategorySelect = (category) => {
         let updatedSelection = [...selectedItems];
 
@@ -82,7 +73,7 @@ function ContactPage() {
         if (!updatedSelection.includes('Others')) {
             setCustomCategory('');
         }
-         if (updatedSelection.length > 0) {
+        if (updatedSelection.length > 0) {
             setCategoryError(false);
         }
     };
@@ -92,8 +83,7 @@ function ContactPage() {
 
         const { email, fullName, message, inquiryType } = formData;
 
-         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             return setSnackbar({ open: true, message: t('validation.invalidEmail'), severity: 'error' });
         }
         if (!fullName.trim()) {
@@ -125,7 +115,6 @@ function ContactPage() {
             });
             setSnackbar({ open: true, message: t('validation.submissionSuccess'), severity: 'success' });
 
-            // Clear the form
             setFormData({
                 email: '',
                 fullName: '',
@@ -135,14 +124,13 @@ function ContactPage() {
             setSelectedItems([]);
             setIsConsentChecked(false);
         } catch (error) {
-            setSnackbar({ open: true, message: t('validation.submissionFailed') , severity: 'error' });
+            setSnackbar({ open: true, message: t('validation.submissionFailed'), severity: 'error' });
         } finally {
-            setIsSubmitting(false); // ✅ Stop loading
+            setIsSubmitting(false);
         }
     };
 
     const locations = [
-
         {
             address: (
                 <>
@@ -152,7 +140,6 @@ function ContactPage() {
                 </>
             )
         },
-
         {
             address: (
                 <>
@@ -206,8 +193,6 @@ function ContactPage() {
         t('contactus.PartnershipInquiry'),
         t('contactus.SalesInquiry'),
         t('contactus.TechnicalSupport'),
-        // 'Kaufanfragen',
-        // t('contactus.FranchiseEnquiry'),
         t('contactus.Others'),
     ];
 
@@ -283,7 +268,6 @@ function ContactPage() {
             image: Picture2,
             alt: 'Abdelilah Lamkhizni, NAF Owner - Passionate about Customer Experience.',
             links: "Abdelilah.Lamkhizni@naf-halsbach.de"
-
         },
         {
             title: t('contactus.personrole3'),
@@ -310,10 +294,10 @@ function ContactPage() {
     }, [activeCategory]);
 
     const socialIcons = [
-        { alt: "NAF  Facebook ", src: Facebook, name: "Facebook", url: "https://www.facebook.com/p/NAF-New-Age-of-Food-by-Gasthof-Halsbach-61551546894852/" },
-        { alt: "NAF  Instagram ", src: Instagram, name: "Instagram", url: "https://www.instagram.com/nafbygasthofhalsbach/" },
-        { alt: "NAF  LinkedIn ", src: LinkedIn, name: "LinkedIn", url: "https://www.linkedin.com/in/odette-lamkhizni-42a241251/" },
-        { alt: "NAF  YouTube ", src: YouTube, name: "YouTube", url: "https://www.youtube.com/@NAFbyGasthofHalsbach" },
+        { alt: "NAF Facebook", src: Facebook, name: "Facebook", url: "https://www.facebook.com/p/NAF-New-Age-of-Food-by-Gasthof-Halsbach-61551546894852/" },
+        { alt: "NAF Instagram", src: Instagram, name: "Instagram", url: "https://www.instagram.com/nafbygasthofhalsbach/" },
+        { alt: "NAF LinkedIn", src: LinkedIn, name: "LinkedIn", url: "https://www.linkedin.com/in/odette-lamkhizni-42a241251/" },
+        { alt: "NAF YouTube", src: YouTube, name: "YouTube", url: "https://www.youtube.com/@NAFbyGasthofHalsbach" },
     ];
 
     useEffect(() => {
@@ -323,56 +307,34 @@ function ContactPage() {
     return (
         <Box>
             <Helmet>
-                {/* Optimized Title with Primary Keywords */}
-                <title>Contact NAF Germany: AI Vending Machine Solutions</title>
-
-                {/* Canonical URL */}
+                <title>Kontakt NAF Deutschland: AI Verkaufsautomatenlösungen</title>
                 <link rel="canonical" href="https://vendinaf.com/de/contact" />
+                <link rel="alternate" href="https://vendinaf.com/de/contact" hreflang="de" />
+                <link rel="alternate" href="https://vendinaf.com" hreflang="x-default" />
 
-                {/* Optimized Meta Description */}
-                <meta
-                    name="description"
-                    content="Buchen Sie eine Demo oder kontaktieren Sie NAF, um innovative Verkaufsautomatenlösungen kennenzulernen. Sprechen Sie mit unserem Team für Beratung, Vertrieb und Support."
-                />
-
-                <meta name='keywords'
-               content='Demo buchen Verkaufsautomat, NAF Kontakt, Automatenlösungen Demo, Smart Vending Beratung, Verkaufsautomat Anfrage, NAF Vertrieb, Vending System Demo'
-                />
-
-                {/* Meta Author and Robots */}
+                <meta name="description" content="Buchen Sie eine Demo oder kontaktieren Sie NAF, um innovative Verkaufsautomatenlösungen kennenzulernen. Sprechen Sie mit unserem Team für Beratung, Vertrieb und Support." />
                 <meta name="author" content="NAF Vending" />
                 <meta name="robots" content="index, follow" />
-
-                {/* HTML Lang */}
                 <html lang="de" />
 
-                {/* Open Graph Tags for Social Sharing */}
-                <meta property="og:title" content="Contact NAF Germany: AI Vending Machine Solutions" />
-                <meta
-                    property="og:description"
-                    content="Reach NAF Germany for innovative AI vending machines and eco-friendly solutions. Contact us for inquiries, demos, or partnerships in sustainable vending."
-                />
-                <meta property="og:image" content={Picture1} /> {/* Replace with actual image URL */}
+                <meta property="og:title" content="Kontakt NAF Deutschland: AI Verkaufsautomatenlösungen" />
+                <meta property="og:description" content="Kontaktieren Sie NAF Deutschland für innovative AI-Verkaufsautomaten und nachhaltige Lösungen. Anfragen, Demos oder Partnerschaften." />
+                <meta property="og:image" content={Picture1} />
                 <meta property="og:url" content="https://vendinaf.com/de/contact" />
                 <meta property="og:type" content="website" />
 
-                {/* Twitter Card Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Contact NAF Germany: AI Vending Machine Solutions" />
-                <meta
-                    name="twitter:description"
-                    content="Reach NAF Germany for innovative AI vending machines and eco-friendly solutions. Contact us for inquiries, demos, or partnerships in sustainable vending."
-                />
-                <meta name="twitter:image" content={Picture1} /> {/* Replace with actual image URL */}
+                <meta name="twitter:title" content="Kontakt NAF Deutschland: AI Verkaufsautomatenlösungen" />
+                <meta name="twitter:description" content="Kontaktieren Sie NAF Deutschland für innovative AI-Verkaufsautomaten und nachhaltige Lösungen. Anfragen, Demos oder Partnerschaften." />
+                <meta name="twitter:image" content={Picture1} />
 
-                {/* Structured Data (JSON-LD) for Rich Snippets – LocalBusiness for Local SEO */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "NAF Germany",
-                        "description": "NAF Germany offers AI-powered vending machines and sustainable food solutions. Contact us for partnerships, leasing, or technical support.",
-                        "url": "https://vendinaf.com/en/contact",
+                        "name": "NAF Deutschland",
+                        "description": "NAF Deutschland bietet AI-gesteuerte Verkaufsautomaten und nachhaltige Lebensmittel-Lösungen. Kontaktieren Sie uns für Partnerschaften, Leasing oder technischen Support.",
+                        "url": "https://vendinaf.com/de/contact",
                         "telephone": "+49-152-28387141",
                         "email": "info@naf-halsbach.de",
                         "address": {
@@ -382,13 +344,11 @@ function ContactPage() {
                             "postalCode": "09599",
                             "addressCountry": "Germany"
                         },
-
                         "contactPoint": [
                             {
                                 "@type": "ContactPoint",
                                 "telephone": "+49-152-28387141",
                                 "contactType": "Customer Service",
-                                "contactOption": "TollFree",
                                 "areaServed": "DE",
                                 "availableLanguage": "English, German"
                             },
@@ -396,7 +356,6 @@ function ContactPage() {
                                 "@type": "ContactPoint",
                                 "telephone": "+49-162-1638005",
                                 "contactType": "Technical Support",
-                                "contactOption": "TollFree",
                                 "areaServed": "DE",
                                 "availableLanguage": "English, German"
                             }
@@ -409,28 +368,14 @@ function ContactPage() {
                         },
                         "logo": {
                             "@type": "ImageObject",
-                            "url": { logoUrl }
+                            "url": logoUrl
                         }
                     })}
                 </script>
-                {/* Add Person Schema for Each Member */}
-                <script type="application/ld+json">
-                    {JSON.stringify(contacts.map((contact, index) => ({
-                        "@context": "https://schema.org",
-                        "@type": "Person",
-                        "name": contact.name,
-                        "jobTitle": contact.roleDescription,
-                        "worksFor": {
-                            "@type": "Organization",
-                            "name": "NAF Germany"
-                        },
-                        "description": contact.description,
-                        "image": contact.image,
-                        "url": `https://vendinaf.com/en/contact#${contact.name.replace(/\s/g, '-')}`, // Anchor link for internal navigation
-                        "sameAs": contact.linkedin ? [contact.linkedin] : []
-                    })))}
-                </script>
             </Helmet>
+
+            {/* The rest of your JSX remains exactly as-is */}
+            {/* ... your Contact form, Calendly, contacts, map, FAQs sections ... */}
             <Box className='section-container contactus-sec' sx={{ pr: 0 }}>
                 <Box className='contactus-subsec'>
                     <Typography sx={{ color: '#C2C2C4', mb: 2 }} className='bodyRegularText3'>{t('contactus.heroSubTitle1')}</Typography>
