@@ -49,7 +49,7 @@ const Support = () => {
     }, [lang]);
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
 
     // Validation functions
     const validateEmail = (email) => {
@@ -118,7 +118,7 @@ const Support = () => {
         }
 
         if (!formTab0.email.trim()) {
-            newErrors.email =  t('productModal.email.error.required') || 'Email is required';
+            newErrors.email = t('productModal.email.error.required') || 'Email is required';
         } else if (!validateEmail(formTab0.email)) {
             newErrors.email = t('productModal.email.error.invalid') || 'Please enter a valid email address';
         }
@@ -146,7 +146,7 @@ const Support = () => {
         }
 
         if (!isConsentChecked) {
-            newErrors.consent =  t('productModal.privacyPolicy.error');
+            newErrors.consent = t('productModal.privacyPolicy.error');
         }
 
         setErrors(newErrors);
@@ -191,7 +191,7 @@ const Support = () => {
             // Create FormData
             const formData = new FormData();
             formData.append('issueData', JSON.stringify(issueData));
-            
+
             // Append media files
             formTab0.media.forEach(file => {
                 formData.append('mediaFiles', file);
@@ -280,8 +280,8 @@ const Support = () => {
 
 
     return (
-        <Box className="section-container" 
-        
+        <Box className="section-container"
+
             sx={{
                 minHeight: "100vh",
                 background: "#1D1D1F",
@@ -294,47 +294,53 @@ const Support = () => {
                 px: { xs: 2, md: 5 },
             }}
         >
- {/* SEO + Meta Tags */}
-    <Helmet htmlAttributes={{ lang }}>
-      <title>
-          NAF Support
-      </title>
+            {/* SEO + Meta Tags */}
+            <Helmet htmlAttributes={{ lang }}>
+                <title>
+                    NAF Support
+                </title>
 
-      <link
-        rel="canonical"
-        href={`https://vendinaf.com/de/support`}
-      />
+                <link
+                    rel="canonical"
+                    href={`https://vendinaf.com/${lang}/support`}
+                />
 
-      <meta
-        name="description"
-        content={"Kontaktieren Sie den NAF Support bei Fragen zu Verkaufsautomaten, Konten oder technischen Problemen. Schnelle und zuverlässige Unterstützung online."}
-      />
+                <meta
+                    name="description"
+                    content={"Kontaktieren Sie den NAF Support bei Fragen zu Verkaufsautomaten, Konten oder technischen Problemen. Schnelle und zuverlässige Unterstützung online."}
+                />
 
-      <meta
-        name="keywords"
-        content="NAF Support, Verkaufsautomaten Support, Kundenservice NAF, Hilfe Verkaufsautomaten, technischer Support Automaten, NAF Kontakt, Automaten Service, Störungsmeldung, NAF Hilfe, Support Anfrage
+                <meta
+                    name="keywords"
+                    content="NAF Support, Verkaufsautomaten Support, Kundenservice NAF, Hilfe Verkaufsautomaten, technischer Support Automaten, NAF Kontakt, Automaten Service, Störungsmeldung, NAF Hilfe, Support Anfrage
 "
-      />
+                />
 
-      <meta name="robots" content="index, follow" />
+                <meta name="robots" content="index, follow" />
 
-  {/* Open Graph */}
+                {/* Open Graph */}
   <meta property="og:title" content="NAF Support – Kundenservice" />
-  <meta
-    property="og:description"
-    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
-  />
-  <meta property="og:url" content={`https://vendinaf.com/de/support`} />
-  <meta property="og:type" content="website" />
+                <meta
+                    property="og:description"
+                    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
+                />
+                <meta
+                    property="og:url"
+                    content={`https://vendinaf.com/${lang}/support`}
+                />
+                <meta
+                    property="og:type"
+                    content="website"
+                />
 
-  {/* Twitter */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NAF Support – Kundenservice" />
-  <meta
-    name="twitter:description"
-    content="Kontaktieren Sie NAF Support für schnelle Hilfe bei Verkaufsautomaten, Konten oder technischen Problemen."
-  />
-</Helmet>
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="NAF Support – Customer Assistance" />
+                <meta
+                    name="twitter:description"
+                    content="Need help? Reach NAF Support for quick solutions to vending machine and account issues."
+                />
+            </Helmet>
 
 
             {/* Header */}
@@ -647,7 +653,7 @@ const Support = () => {
 
 
 
-            <Box className="section-container" sx={{ p: 0 ,}}>
+            <Box className="section-container" sx={{ p: 0, }}>
                 <Box
                     sx={{
                         width: "100%",
@@ -691,14 +697,14 @@ const Support = () => {
                                     sx={{
                                         display: "flex",
                                         width: { xs: "80px", sm: "80px", md: "100px", lg: "100px", xl: "100px" },
-                                        padding:  { xs: "18px", sm: "20px", md: "30px", lg: "30px", xl: "30px" },
+                                        padding: { xs: "18px", sm: "20px", md: "30px", lg: "30px", xl: "30px" },
                                         justifyContent: "center",
                                         alignItems: "center",
                                         aspectRatio: "1 / 1",
                                         borderRadius: "50%",
                                         background: "#393939",
                                         color: '#9D9EA1',
-                                        mb:{ xs: 2, sm: 2, md: 3, lg: 5, xl: 5 },
+                                        mb: { xs: 2, sm: 2, md: 3, lg: 5, xl: 5 },
                                     }}
                                 >
                                     {item.step}
@@ -731,7 +737,7 @@ const Support = () => {
 
 
             {/* FAQ Section */}
-            <Box className="section-container" sx={{ p: 0 ,  width: '100%' }}>
+            <Box className="section-container" sx={{ p: 0, width: '100%' }}>
                 <Box sx={{ mb: { xs: 5, md: 7 }, textAlign: 'center' }}>
                     <Typography className="headings-h2" sx={{ color: '#fcfcfc' }}>
                         {t('transportation.faq.title')}
@@ -780,10 +786,12 @@ const Support = () => {
                     open={showSuccess}
                     onClose={handleCloseSuccess}
                     aria-labelledby="success-message-modal"
-                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  
+                    sx={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
                         '& .MuiBackdrop-root': {
                             backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        }, }}
+                        },
+                    }}
                 >
                     <Box
                         onClick={(e) => e.stopPropagation()}
@@ -839,7 +847,7 @@ const Support = () => {
                                 }}
                                 className="headings-h5"
                             >
-                                  {t('productModal.success.title')}
+                                {t('productModal.success.title')}
                             </Typography>
 
                             <Typography
@@ -852,7 +860,7 @@ const Support = () => {
                                 }}
                                 className="bodyRegularText3"
                             >
-                                 {t('productModal.success.message')}
+                                {t('productModal.success.message')}
                             </Typography>
                         </Box>
                     </Box>
@@ -861,28 +869,28 @@ const Support = () => {
 
 
 
-              {/* Snackbar for error messages */}
-                  <Snackbar
-                    open={snackbar.open}
-                    autoHideDuration={4000}
+            {/* Snackbar for error messages */}
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={4000}
+                onClose={() => setSnackbar({ ...snackbar, open: false })}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+                <Alert
                     onClose={() => setSnackbar({ ...snackbar, open: false })}
-                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                  >
-                    <Alert
-                      onClose={() => setSnackbar({ ...snackbar, open: false })}
-                      severity={snackbar.severity}
-                      sx={{
+                    severity={snackbar.severity}
+                    sx={{
                         width: "100%",
                         color: snackbar.severity === "success" ? "#21CD83" :
                             snackbar.severity === "error" ? "red" :
                                 snackbar.severity === "warning" ? "orange" :
                                     "info.main",
                         backgroundColor: "#2a2a2a"
-                      }}
-                    >
-                      {snackbar.message}
-                    </Alert>
-                  </Snackbar>
+                    }}
+                >
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }
