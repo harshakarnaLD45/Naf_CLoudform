@@ -26,7 +26,7 @@ import sourceimg2 from '../../../assets/About/Menu/SourceMenu/sourceimg2.jpg';
 import downLoadicon from '../../../assets/About/Menu/downLoad-icon.svg';
 import './Menu.css';
 
-const monthlyMenus = [Menu4, Menu5, Menu6];
+const monthlyMenus = [Menu6, Menu5, Menu4];
 
 export default function MonthlyMenu() {
   const prevRef = useRef(null);

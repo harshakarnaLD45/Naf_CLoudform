@@ -6,6 +6,8 @@ import { Close } from '@mui/icons-material';
 import './HomePage.css';
 import { useTranslation } from 'react-i18next';
 import PromoImage from  '../../assets/Home/TradefairPopupImg.png';
+import GooglePlay from '../../assets/Home/Google Play.svg'
+import AppStore from '../../assets/Home/App Store.svg'
 
 const TradefairPopup = () => {
   const [isVisible, setIsVisible] = useState(false); 
@@ -84,6 +86,40 @@ const handleLearnMore = () => {
           >
             {t('tradefairPopup.description')}
           </Typography>
+
+          <Box sx={{ 
+            display: "flex",
+            gap: "12px",
+            mt: 3,
+            flexWrap: "wrap"
+            }}
+          >
+          
+           <a href="https://apps.apple.com/de/app/naf-smarte-automaten/id6758438736" target="_blank" rel="noopener noreferrer">
+          
+          <Box component="img" 
+          src={GooglePlay} 
+          alt="Get it on Google Play"
+          sx={{
+            height: "40px",
+            cursor: "pointer"
+           }}
+           />
+          </a>
+        
+          <a href="https://play.google.com/store/apps/details?id=com.naf.naf_mobile_app&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+
+             <Box component="img"
+             src={AppStore}
+             alt="Download on App Store"
+             sx={{
+              height: "40px",
+              cursor: "pointer"
+            }}
+            />
+          </a>
+          </Box>
+         
 
          
 

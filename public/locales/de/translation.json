@@ -40,8 +40,8 @@
       "about": "Über uns"
     },
     "automatsDropdown": {
-      "gourmetHeating": "Gourmet-Automat (mit Heizung)",
-      "gourmetNoHeating": "Gourmet-Automat (ohne Heizung)",
+      "gourmetHeating": "Gourmet-Automat (mit Erhitzungsstrecke)",
+      "gourmetNoHeating": "Gourmet-Automat (ohne  Erhitzungsstrecke)",
       "return": "Rückgabeautomat",
       "pizza": "Pizza-Automat",
       "snack": "Snack-Automat"
@@ -228,7 +228,7 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Download Unser",
+    "titleLine1": "Erhalten Sie alle Informationen auf einen Blick – laden Sie unsere informative Broschüre als PDF (ca. 9,6 MB) herunter!",
     "titleLine2": "Katalog",
     "button1": "Demnächst",
     "button2": "verfügbar"
@@ -2393,7 +2393,7 @@
   },
  "tradefairPopup": {
     "title": "Die NAF App Ist Bald Da",
-    "description": "Bestelle smarter, spare Zeit und genieße Essen nach deinem Rhythmus. Reserviere Mahlzeiten, sieh dir Live-Menüs an, finde nahegelegene Automaten und bezahle schnell mit Scan & Pay. Bald verfügbar für Android und iOS.",
+    "description": "Bestelle smarter, überspringe die Wartezeit und genieße dein Essen nach deinen Bedingungen. Reserviere Mahlzeiten, prüfe Live-Menüs, finde Automaten in deiner Nähe und bezahle sofort mit Scan & Pay. Jetzt verfügbar für Android und iOS.",
     "offer": "Besuchen Sie NAF – New Age of Food in Halle 21b, Stand 282 (Teigwaren Riesa Stand) und entdecken Sie unsere intelligenten Verkaufsautomaten für warme Mahlzeiten, Pizza und vieles mehr.",
     "learnMore": "Mehr erfahren"
   },

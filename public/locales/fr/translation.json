@@ -218,7 +218,7 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Téléchargez Notre",
+    "titleLine1": "Obtenez toutes les informations en un coup d’œil : téléchargez notre brochure informative en PDF (env. 9.6 Mo).",
     "titleLine2": "Catalogue",
     "button1": "Bientôt",
     "button2": "disponible"
@@ -2373,7 +2373,7 @@
   },
 "tradefairPopup": {
         "title": "L’application NAF arrive très bientôt",
-        "description": "Commandez plus intelligemment, évitez l'attente et profitez de la nourriture à votre guise. Réservez des repas, consultez les menus en direct, trouvez des distributeurs à proximité et payez instantanément avec Scan & Pay. Bientôt disponible sur Android et iOS.",
+        "description": "Commandez plus intelligemment, évitez l’attente et profitez de votre repas à votre façon.Réservez vos repas, consultez les menus en direct, trouvez des machines à proximité et payez instantanément avec Scan & Pay.Maintenant disponible sur Android et iOS.",
         "offer": "Visitez NAF – New Age of Food au hall 21b, stand 282 (stand Teigwaren Riesa) et découvrez nos distributeurs automatiques intelligents proposant des plats chauds, des pizzas et bien plus encore.",
         "learnMore": "En savoir plus"
     },
