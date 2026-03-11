@@ -221,8 +221,9 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Uzyskaj wszystkie informacje w jednym miejscu — pobierz naszą broszurę informacyjną w formacie PDF (ok. 9.6 MB).",
-    "titleLine2": "Katalog",
+    "titleLine1": "Uzyskaj wszystkie informacje w jednym miejscu – ",
+    "titleLine2": "pobierz naszą informacyjną ",
+    "titleLine3": "broszurę w formacie PDF (ok. 9,6 MB)!",
     "button1": "Wkrótce",
     "button2": "dostępny"
   },

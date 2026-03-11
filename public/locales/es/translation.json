@@ -217,8 +217,9 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Obtén toda la información de un vistazo: descarga nuestro folleto informativo en PDF (aprox. 9.6 MB).",
-    "titleLine2": "Catálogo",
+    "titleLine1": "Obtenga toda la información de un vistazo – ",
+    "titleLine2": "descargue nuestro informativo ",
+    "titleLine3": "folleto en formato PDF (aprox. 9,6 MB)!",
     "button1": "Próximamente",
     "button2": "disponible"
   },

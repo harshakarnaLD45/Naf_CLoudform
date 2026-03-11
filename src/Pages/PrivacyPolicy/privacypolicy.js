@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import "./privacypolicy.css";
-
+import { Helmet } from 'react-helmet';
 import ThirdPartyPage from './thirdparty'
 
 
@@ -21,7 +21,13 @@ const PrivacyPolicyPage = () => {
 
   }, []);
   return (
+   
     <Box className="section-container" >
+
+    <Helmet htmlAttributes={{ lang: 'de' }}>
+      <meta name="robots" content="noindex,follow"/>
+      
+    </Helmet>
       {/* Header */}
       <Typography className='headings-h1' variant="h3" gutterBottom>
         {t('privacypolicy.privacyPolicy')}

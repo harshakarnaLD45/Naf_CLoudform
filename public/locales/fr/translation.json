@@ -218,8 +218,9 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Obtenez toutes les informations en un coup d’œil : téléchargez notre brochure informative en PDF (env. 9.6 Mo).",
-    "titleLine2": "Catalogue",
+    "titleLine1": "Obtenez toutes les informations en un coup d'œil – ",
+    "titleLine2": "téléchargez notre ",
+    "titleLine3": "brochure informative au format PDF (env. 9,6 Mo) !",
     "button1": "Bientôt",
     "button2": "disponible"
   },

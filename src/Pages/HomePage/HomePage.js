@@ -34,11 +34,11 @@ const HomePage = () => {
     <Box>
       <Helmet htmlAttributes={{ lang: 'de' }}>
         {/* Page title and meta */}
-        <title>{t('Home.meta.title')}</title>
-        <meta name="description" content={t('Home.meta.description')} />
-        <meta name="keywords" content={t('Home.meta.keywords')} />
-        <meta name="author" content={t('Home.meta.author')} />
-        <meta name="robots" content={t('Home.meta.robots')} />
+        <title>NAF Germany | KI-gestützte Gourmet-Verkaufsautomaten & Smart Vending Lösungen</title>
+        <meta name="description" content="Entdecken Sie innovative Verkaufsautomatenlösungen für Unternehmen, Universitäten, Krankenhäuser und mehr – 24/7 Verfügbarkeit, intelligente Steuerung und einfache Verwaltung."/>
+        <meta name="keywords" content="NAF Verkaufsautomaten, KI Verkaufsautomaten, smarte Food Automaten, Gourmet Verkaufsautomat, Pizza Automat, automatisierte Gastronomie, nachhaltige Verkaufsautomaten, Mehrwegsystem, Cloud Plattform für Automaten, Smart Gastronomie, Food Automatisierung, KI Food Technologie, Verkaufsautomaten Deutschland" />
+        <meta name="author" content="NAF Team" />
+        <meta name="robots" content="index, follow" />
 
         {/* Canonical URL */}
         <link rel="canonical" href={canonicalUrl} />
@@ -52,16 +52,16 @@ const HomePage = () => {
         <link rel="alternate" href="https://vendinaf.com" hreflang="x-default" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content={t('Home.meta.title')} />
-        <meta property="og:description" content={t('Home.meta.description')} />
+        <meta property="og:title" content="NAF Germany | KI-gestützte Gourmet-Verkaufsautomaten & Smart Vending Lösungen" />
+        <meta property="og:description" content="Entdecken Sie innovative Verkaufsautomatenlösungen für Unternehmen, Universitäten, Krankenhäuser und mehr – 24/7 Verfügbarkeit, intelligente Steuerung und einfache Verwaltung." />
         <meta property="og:image" content={VendImg} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('Home.meta.title')} />
-        <meta name="twitter:description" content={t('Home.meta.description')} />
+        <meta name="twitter:title" content="NAF Germany | KI-gestützte Gourmet-Verkaufsautomaten & Smart Vending Lösungen" />
+        <meta name="twitter:description" content="Entdecken Sie innovative Verkaufsautomatenlösungen für Unternehmen, Universitäten, Krankenhäuser und mehr – 24/7 Verfügbarkeit, intelligente Steuerung und einfache Verwaltung." />
         <meta name="twitter:image" content={VendImg} />
 
         {/* Structured Data JSON-LD */}
@@ -69,9 +69,9 @@ const HomePage = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": t('Home.meta.title'),
+            "name": "NAF Germany | KI-gestützte Gourmet-Verkaufsautomaten & Smart Vending Lösungen",
             "url": "https://vendinaf.com/de",
-            "description": t('Home.meta.description'),
+            "description": "Entdecken Sie innovative Verkaufsautomatenlösungen für Unternehmen, Universitäten, Krankenhäuser und mehr – 24/7 Verfügbarkeit, intelligente Steuerung und einfache Verwaltung.",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://vendinaf.com/de/search?q={search_term_string}",
