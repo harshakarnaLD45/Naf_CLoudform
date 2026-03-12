@@ -41,6 +41,7 @@ function TransactionHistory({ memberId, cardId }) {
         Credit: t("membership.type_credit"),
         Debit: t("membership.type_debit"),
         Refund: "Refund",
+        Failed: "Failed",
     };
 
     const fetchTransactions = async () => {
@@ -62,7 +63,7 @@ function TransactionHistory({ memberId, cardId }) {
             // }
 
             const response = await axios.get(
-                `https://api.naf-cloudsystem.de/api/transactions/by-membership-card`,
+                `http://localhost:8080/api/transactions/by-membership-card`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                     params,
@@ -265,6 +266,7 @@ function TransactionHistory({ memberId, cardId }) {
                         {transactions.length > 0 ? (
                             transactions.map((row) => {
                                 const isDebit = row.payment_type === "Debit";  // backend field
+                                const isCredit = row.payment_type === "Credit";  // backend field
                                 return (
                                     <TableRow
                                         key={row.id}
@@ -297,9 +299,9 @@ function TransactionHistory({ memberId, cardId }) {
                                             {typeLabel[row.payment_type] || "-"}
                                         </TableCell>
                                         <TableCell className="bodyRegularText4"
-                                            sx={{ color: !isDebit ? "#7FEE64" : "#FCFCFC", borderBottom: '1px solid #393939 !important' }}
+                                            sx={{ color: isCredit ? "#7FEE64" : "#FCFCFC", borderBottom: '1px solid #393939 !important' }}
                                         >
-                                            {!isDebit ? "+" : "-"} € {row.amount}
+                                            {isDebit ? "-" : isCredit ? "+" : ""} € {row.amount}
                                         </TableCell>
                                         <TableCell
                                             align="center"

@@ -228,9 +228,9 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Get all the information at a glance – download our informative brochure as a PDF (approx. 9.6 MB)!",
-    "titleLine2": "download our informative ",
-    "titleLine3":" brochure as a PDF (approx. 9.6 MB)!",
+    "titleLine1": "Get all the information at a glance –",
+    "titleLine2": "download our informative brochure ",
+    "titleLine3":" as a PDF (approx. 9.6 MB)!",
     "button1": "Coming",
     "button2": "Soon"
   },
@@ -769,6 +769,8 @@
     "col_amount": "Amount",
     "type_credit": "Credit",
     "type_debit": "Debit",
+    "type_failed": "Failed",
+    "type_refund": "Refund",
     "msg_no_transactions": "No transactions found",
     "label_available_balance": "Available Balance",
     "btn_add_balance": "Add +",

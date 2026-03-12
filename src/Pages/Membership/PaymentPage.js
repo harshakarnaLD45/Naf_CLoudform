@@ -125,7 +125,7 @@ const PaymentPage = () => {
       const token = localStorage.getItem("authToken");
 
       const response = await axios.post(
-        "https://api.naf-cloudsystem.de/api/membership-cards/deduct-balance",
+        "https://staging-api.naf-cloudsystem.de/api/membership-cards/deduct-balance",
         null,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -133,19 +133,19 @@ const PaymentPage = () => {
         }
       );
 
-      if (response.data?.status === "success") {
-        setStatus("success");
-      } else {
-        setStatus("failed");
-      }
-      // if (response.data?.status === "processing") {
-      //   const transactionId = response.data.transactionId;
-      //   // setStatus("processing");
-
-      //   startPolling(transactionId);
+      // if (response.data?.status === "success") {
+      //   setStatus("success");
       // } else {
       //   setStatus("failed");
       // }
+      if (response.data?.status === "processing") {
+        const transactionId = response.data.transactionId;
+        setStatus("processing");
+        setStatus("loading");
+        startPolling(transactionId);
+      } else {
+        setStatus("failed");
+      }
     } catch {
       setStatus("failed");
     } finally {
@@ -153,34 +153,70 @@ const PaymentPage = () => {
     }
   };
 
+  // const startPolling = (transactionId) => {
+  //   // const token = localStorage.getItem("authToken");
+
+  //   const interval = setInterval(async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `https://staging-api.naf-cloudsystem.de/api/andriod/transaction-status/${transactionId}`,
+  //         // {
+  //         //   headers: { Authorization: `Bearer ${token}` },
+  //         // }
+  //       );
+
+  //       const status = res.data;
+
+  //       if (status === "Completed") {
+  //         clearInterval(interval);
+  //         setStatus("success");
+  //       }
+
+  //       if (status === "Failed") {
+  //         clearInterval(interval);
+  //         setStatus("failed");
+  //       }
+  //     } catch (error) {
+  //       clearInterval(interval);
+  //       setStatus("failed");
+  //     }
+  //   }, 5000); // poll every 2 seconds
+  // };
   const startPolling = (transactionId) => {
-    const token = localStorage.getItem("authToken");
 
     const interval = setInterval(async () => {
       try {
         const res = await axios.get(
-          `https://staging-api.naf-cloudsystem.de/api/andriod/transaction-status/${transactionId}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
+          `https://staging-api.naf-cloudsystem.de/api/andriod/transaction-status/${transactionId}`
         );
 
-        const status = res.data?.status;
+        const status = res.data;
 
         if (status === "Completed") {
           clearInterval(interval);
+          clearTimeout(timeout);
           setStatus("success");
         }
 
         if (status === "Failed") {
           clearInterval(interval);
+          clearTimeout(timeout);
           setStatus("failed");
         }
+
       } catch (error) {
         clearInterval(interval);
+        clearTimeout(timeout);
         setStatus("failed");
       }
-    }, 2000); // poll every 2 seconds
+    }, 5000); // every 5 seconds
+
+
+    // stop polling after 1.5 minutes
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+      setStatus("failed");
+    }, 75000); // 75 seconds
   };
 
   // -----------------------------
@@ -462,7 +498,7 @@ const PaymentPage = () => {
                       {t("membership.msg_insufficient_balance")}
                     </Typography>
                   </Box>
-                  <Box className="wallet_check_sec"
+                  {/* <Box className="wallet_check_sec"
                     sx={{ mb: 1 }}
 
                   >
@@ -493,7 +529,7 @@ const PaymentPage = () => {
                         </Typography>
                       }
                     />
-                  </Box>
+                  </Box> */}
                   <Typography className="headings-h3" variant="h4" mb={3} sx={{ fontWeight: "bold", color: "#FCFCFC" }}>
                     € {amountInEuros ? parseFloat(amountInEuros).toFixed(2) : '0.00'}
                   </Typography>

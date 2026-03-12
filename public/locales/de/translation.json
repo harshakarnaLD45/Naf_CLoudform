@@ -224,9 +224,9 @@
     }
   },
   "catalogue": {
-    "titleLine1": "Erhalten Sie alle Informationen auf einen Blick – laden Sie unsere informative Broschüre als PDF herunter (ca. 9.6 MB)!",
-    "titleLine2": "laden Sie unsere informative ",
-    "titleLine3": "Broschüre als PDF herunter (ca. 9.6 MB)!",
+    "titleLine1": "Alle Informationen auf einen Blick –",
+    "titleLine2": "laden Sie unsere informative Broschüre",
+    "titleLine3": "als PDF herunter (ca. 9.6 MB)!",
     "button1": "Demnächst",
     "button2": "verfügbar"
   },
@@ -721,6 +721,8 @@
     "col_amount": "Betrag",
     "type_credit": "Gutschrift",
     "type_debit": "Lastschrift",
+    "type_failed": "Fehlgeschlagen",
+    "type_refund": "Rückerstattung",
     "msg_no_transactions": "Keine Transaktionen gefunden",
     "label_available_balance": "Verfügbares Guthaben",
     "btn_add_balance": "Guthaben +",

@@ -178,7 +178,7 @@ const AutomatsPage = () => {
     <Box>
       <Helmet htmlAttributes={{ lang: 'de' }}>
         <title>NAF Vending - Automats</title>
-        <link rel="canonical" href="https://vendinaf.com/de/Automats" />
+        <link rel="canonical" href="https://vendinaf.com/de/automats" />
         <meta
           name="description"
           content="Hochleistungs-Verkaufsautomaten von NAF Germany: Gourmet-, Pizza-, Snack- und Rückgabeautomaten mit KI-Technologie, flexibler Finanzierung und individueller Anpassung."
