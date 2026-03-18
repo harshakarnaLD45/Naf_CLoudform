@@ -4140,6 +4140,7 @@
       "title": "NAF Solution Enquiry",
       "selectType": "Select Type*",
       "selectUseCase": "Select a Solution Type",
+      "selectPlanType": "Select Plan Type",
       "useCases": "Solutions",
       "servicesProducts": "Services & Products",
       "email": "Email*",

@@ -3873,6 +3873,7 @@
       "title": "Zapytanie dotyczące rozwiązań NAF",
       "selectType": "Wybierz typ*",
       "selectUseCase": "Wybierz typ rozwiązania",
+      "selectPlanType": "Wybierz typ planu",
       "useCases": "Rozwiązania",
       "servicesProducts": "Usługi i produkty",
       "email": "E-mail*",

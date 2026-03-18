@@ -329,7 +329,7 @@ export default function PricingFinance() {
           // bgcolor: "#444444",
           borderRadius: "8px",
           position: "relative",
-          overflow: "auto", scrollbarWidth: 'thin',
+          overflow: "auto", scrollbarWidth: 'none',
         scrollbarColor: '#393939 #1A1A1A',}}
             onClick={e => e.stopPropagation()}
           >

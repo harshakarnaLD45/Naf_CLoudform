@@ -3872,6 +3872,7 @@
       "title": "Consulta sobre soluciones NAF",
       "selectType": "Seleccionar tipo*",
       "selectUseCase": "Seleccionar tipo de solución",
+      "selectPlanType": "Seleccionar tipo de plan",
       "useCases": "Soluciones",
       "servicesProducts": "Servicios y productos",
       "email": "Correo electrónico*",

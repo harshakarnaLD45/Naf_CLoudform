@@ -86,7 +86,7 @@ const standardInputStyle = {
 
 
 
-const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) => {
+const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose, nafCloudOnly }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
@@ -405,7 +405,7 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
       </Typography>
 
       <Box component="form" onSubmit={handleSubmit} noValidate>
-        {/* Select Use Case Type - Now pre-selected based on URL */}
+        {/* Select Plan Type for NAF Cloud, otherwise Use Case Type */}
 
         <FormControl fullWidth variant="standard" sx={{ mb: 3, ...standardInputStyle }}>
           <Select
@@ -419,7 +419,7 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
               if (!val) {
                 return (
                   <span style={{ color: "#c2c2c4" }}>
-                    {t("solutionsProductForm.form.selectUseCase")}
+                    {nafCloudOnly ? t("solutionsProductForm.form.selectPlanType") : t("solutionsProductForm.form.selectUseCase")}
                   </span>
                 );
               }
@@ -427,7 +427,7 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
             }}
           >
             <MenuItem value="" disabled>
-              <em>{t("solutionsProductForm.form.selectUseCase")}</em>
+              <em>{nafCloudOnly ? t("solutionsProductForm.form.selectPlanType") : t("solutionsProductForm.form.selectUseCase")}</em>
             </MenuItem>
 
             {(planOptions && planOptions.length > 0 ? planOptions : USE_CASE_OPTIONS).map((item) => (

@@ -3774,6 +3774,7 @@
       "title": "Anfrage zu NAF-Lösungen",
       "selectType": "Typ auswählen*",
       "selectUseCase": "Lösungstyp auswählen",
+      "selectPlanType": "Plantyp auswählen",
       "useCases": "Lösungen",
       "servicesProducts": "Services & Produkte",
       "email": "E-Mail*",

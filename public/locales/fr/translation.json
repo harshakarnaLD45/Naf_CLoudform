@@ -3872,6 +3872,7 @@
       "title": "Demande de solutions NAF",
       "selectType": "Sélectionner le type*",
       "selectUseCase": "Sélectionner un type de solution",
+      "selectPlanType": "Sélectionner le type d'abonnement",
       "useCases": "Solutions",
       "servicesProducts": "Services et produits",
       "email": "E-mail*",
