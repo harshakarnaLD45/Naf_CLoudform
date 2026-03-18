@@ -86,7 +86,7 @@ const standardInputStyle = {
 
 
 
-const SolutionProductForm = ({ planOptions, preselectedPlan, title }) => {
+const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
@@ -360,8 +360,29 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title }) => {
         minHeight: "400px",
         mx: "auto",
         m: { sm: "auto", md: "auto" },
+        position: 'relative',
       }}
     >
+      {/* Close Button - Only show when onClose is provided (modal mode) */}
+      {onClose && (
+        <IconButton
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: 16,
+            top: 16,
+            color: '#c2c2c4',
+            '&:hover': {
+              color: '#fff',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            },
+            zIndex: 1,
+          }}
+          aria-label="close form"
+        >
+          <CloseIcon />
+        </IconButton>
+      )}
 
       <Typography
         sx={{
