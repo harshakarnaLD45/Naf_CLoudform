@@ -346,6 +346,14 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
     setShowSuccess(false);
   };
 
+  // Handle closing success modal and parent modal (when used in NAF Cloud page)
+  const handleCloseSuccessAndModal = () => {
+    setShowSuccess(false);
+    if (onClose) {
+      onClose(); // Close the parent modal
+    }
+  };
+
   /* =========================
      FORM
   ========================= */
@@ -608,7 +616,7 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
       {/* SUCCESS MESSAGE MODAL */}
       <Modal
         open={showSuccess}
-        onClose={handleReset}
+        onClose={handleCloseSuccessAndModal}
         aria-labelledby="success-message-modal"
         sx={{
           display: 'flex',
@@ -623,22 +631,23 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
         <Box
           onClick={(e) => e.stopPropagation()}
           sx={{
-            width: '500px',
-            maxWidth: '95vw',
-            maxHeight: '95vh',
+            width: { xs: '90vw', sm: '90vw', md: '500px' },
+            maxWidth: '98vw',
+            maxHeight: { xs: '90vh', md: '95vh' },
             bgcolor: '#161616',
             borderRadius: '12px',
             border: '1px solid #393939',
             position: 'relative',
             overflow: 'auto',
-            p: { xs: 3, md: 5 },
-            pt: { xs: 5, md: 4 },
+            p: { xs: 1, sm: 3, md: 5 },
+            pt: { xs: 2, sm: 5, md: 4 },
             textAlign: 'center',
+            margin: { xs: '20px', sm: '20px', md: 'auto' },
           }}
         >
           {/* Close Button */}
           <IconButton
-            onClick={handleReset}
+            onClick={handleCloseSuccessAndModal}
             sx={{
               position: 'absolute',
               top: 16,
@@ -659,7 +668,7 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
             <Typography
               sx={{
                 color: '#fff',
-                fontSize: { xs: '28px', md: '32px' },
+                fontSize: { xs: '22px', sm: '26px', md: '32px' },
                 fontWeight: 600,
                 mb: 2,
                 fontFamily: "'Inter', sans-serif",
@@ -673,10 +682,10 @@ const SolutionProductForm = ({ planOptions, preselectedPlan, title, onClose }) =
             <Typography
               sx={{
                 color: '#c2c2c4',
-                fontSize: '16px',
+                fontSize: { xs: '14px', sm: '15px', md: '16px' },
                 lineHeight: 1.6,
                 mb: 4,
-                maxWidth: '400px',
+                maxWidth: { xs: '90vw', sm: '350px', md: '400px' },
                 mx: 'auto',
               }}
               className="bodyRegularText3"

@@ -187,7 +187,7 @@ export default function PricingFinance() {
                 <Typography sx={{ textAlign: 'left', color: '#c2c2c4',mt:3 }} className="bodyRegularText3">
                   {t('software.plans_premiumDesc')}
                 </Typography>
-                <Typography sx={{ textAlign: 'left', color: '#c2c2c4',mt:5 }} className="bodyRegularText3">
+                <Typography sx={{ textAlign: 'left', color: '#c2c2c4',mt:3 }} className="bodyRegularText3">
                   {t('software.plans_includesBasic')}
                 </Typography>
 
