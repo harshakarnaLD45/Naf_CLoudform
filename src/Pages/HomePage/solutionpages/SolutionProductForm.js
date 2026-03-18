@@ -85,7 +85,8 @@ const standardInputStyle = {
 };
 
 
-const SolutionProductForm = () => {
+
+const SolutionProductForm = ({ planOptions, preselectedPlan, title }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { lang } = useParams();
@@ -105,7 +106,7 @@ const SolutionProductForm = () => {
 
 
   const [formData, setFormData] = useState({
-    useCaseType: "",
+    useCaseType: preselectedPlan || "",
     email: "",
     phone: "",
     fullName: "",
@@ -126,18 +127,21 @@ const SolutionProductForm = () => {
 
 
 
-  // Set use case based on URL when component mounts
+  // Set use case based on URL or preselectedPlan when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    const useCaseFromUrl = extractUseCaseFromUrl();
-    if (useCaseFromUrl) {
-      setFormData(prev => ({
-        ...prev,
-        useCaseType: useCaseFromUrl,
-      }));
+    if (preselectedPlan) {
+      setFormData(prev => ({ ...prev, useCaseType: preselectedPlan }));
+    } else {
+      const useCaseFromUrl = extractUseCaseFromUrl();
+      if (useCaseFromUrl) {
+        setFormData(prev => ({
+          ...prev,
+          useCaseType: useCaseFromUrl,
+        }));
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, preselectedPlan]);
 
 
   /* =========================
@@ -329,7 +333,7 @@ const SolutionProductForm = () => {
     const useCaseFromUrl = extractUseCaseFromUrl();
 
     setFormData({
-      useCaseType: useCaseFromUrl || "",
+      useCaseType: preselectedPlan || useCaseFromUrl || "",
       email: "",
       phone: "",
       fullName: "",
@@ -353,9 +357,12 @@ const SolutionProductForm = () => {
         borderRadius: "12px",
         border: "1px solid #393939",
         maxWidth: "700px",
+        minHeight: "400px",
+        mx: "auto",
         m: { sm: "auto", md: "auto" },
       }}
     >
+
       <Typography
         sx={{
           color: "#fff",
@@ -365,11 +372,12 @@ const SolutionProductForm = () => {
         }}
         className="headings-h4"
       >
-        {t("solutionsProductForm.form.title")}
+        {title ? title : t("solutionsProductForm.form.title")}
       </Typography>
 
       <Box component="form" onSubmit={handleSubmit} noValidate>
         {/* Select Use Case Type - Now pre-selected based on URL */}
+
         <FormControl fullWidth variant="standard" sx={{ mb: 3, ...standardInputStyle }}>
           <Select
             name="useCaseType"
@@ -393,7 +401,7 @@ const SolutionProductForm = () => {
               <em>{t("solutionsProductForm.form.selectUseCase")}</em>
             </MenuItem>
 
-            {USE_CASE_OPTIONS.map((item) => (
+            {(planOptions && planOptions.length > 0 ? planOptions : USE_CASE_OPTIONS).map((item) => (
               <MenuItem key={item} value={item}>
                 {t(`solutionsProductForm.useCases.${item}`)}
               </MenuItem>

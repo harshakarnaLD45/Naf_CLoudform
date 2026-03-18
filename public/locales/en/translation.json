@@ -493,7 +493,45 @@
     "readyBalls6": "Enhance Decision-Making",
     "GETIN": "GET IN",
     "TOUCH": "TOUCH",
-    "softwareEnd": "softwareEnd"
+      "plans_flexibleTitle": "Flexible Plans for Every Operation",
+      "plans_flexibleSubtitle": "Start with essential machine management and scale as your business grows. NAF Cloud offers flexible plans designed for operators of all sizes—from single machines to large vending networks.",
+      "plans_basic": "Basic",
+      "plans_premium": "Premium",
+      "plans_enterprise": "Enterprise",
+      "plans_free": "Free",
+      "plans_perMonth": "per Month",
+      "plans_custom": "Custom",
+      "plans_basicDesc": "Essential tools to manage and monitor your vending machines from day one.",
+      "plans_premiumDesc": "Advanced tools to grow revenue, engage customers, and optimize operations.",
+      "plans_enterpriseDesc": "Tailored solutions for large operators and enterprise environments.",
+      "plans_includesBasic": "Includes everything in Basic, plus:",
+      "plans_includesPremium": "Includes everything in premium, plus:",
+      "plans_basic_feature1": "Real-time machine monitoring",
+      "plans_basic_feature2": "Product & menu management",
+      "plans_basic_feature3": "Sales tracking",
+      "plans_basic_feature4": "Basic reporting",
+      "plans_basic_feature5": "2 user accounts",
+      "plans_basic_feature6": "Standard support",
+      "plans_premium_feature1": "Marketing & promotions",
+      "plans_premium_feature2": "Coupon system",
+      "plans_premium_feature3": "Advertising on machines",
+      "plans_premium_feature4": "Advanced analytics",
+      "plans_premium_feature5": "Multi-location management",
+      "plans_premium_feature6": "Automated financial reports",
+      "plans_premium_feature7": "Mobile app integration",
+      "plans_enterprise_feature1": "API integrations",
+      "plans_enterprise_feature2": "ERP connectivity",
+      "plans_enterprise_feature3": "Franchise management",
+      "plans_enterprise_feature4": "White-label app options",
+      "plans_enterprise_feature5": "Custom features and support",
+      "form_title_cloud": "NAF Cloud System Enquiry",
+
+    "softwareEnd": "softwareEnd",
+
+
+
+    "softwareEnd1": "softwareEnd1"
+
   },
   "insights": {
     "heroTitle": "Blogs & Insights",
@@ -4124,7 +4162,11 @@
       "payments": "Payments",
       "reuseReturn": "Reuse & Return Ecosystem",
       "cloudKitchen": "Cloud Kitchen System",
-      "softwareIntegrations": "Software Integrations"
+      "softwareIntegrations": "Software Integrations",
+      "Free": "Free",
+      "Premium": "Premium",
+      "Enterprise": "Enterprise"
+
     },
     "validation": {
       "required": "Email is required",

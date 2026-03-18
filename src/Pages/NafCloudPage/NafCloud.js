@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import logoUrl from '../../assets/NAF-logo.png'; // Replace with actual logo URL
 import SoftwareHeroImg from '../../assets/Solutions/Real-time-sales-analytics.svg'; // Replace with actual logo URL
-import SolutionProductForm from '../HomePage/solutionpages/SolutionProductForm';
+import Price from '../NafCloudPage/pricingFinance';
 import NAFCloudVideo from '../../assets/Solutions/NAF-Cloud-System.mp4';
 
 function NafCloud() {
@@ -145,7 +145,8 @@ function NafCloud() {
             <Specifications />
             <ExpertiseSection />
             <Box sx={{ mt: { xs: 8, md: 25 }, mb: 8 }} id="contact"></Box>
-            <SolutionProductForm/>
+
+            <Price />
                 
         <Box/>
         </div>
