@@ -516,6 +516,7 @@
   "plans_enterprise_feature4": "Options d’application en marque blanche",
   "plans_enterprise_feature5": "Fonctionnalités et support personnalisés",
   "form_title_cloud": "Demande d'information système NAF Cloud",
+  "ContactSales": "Contacter service ",
     "softwareEnd": "FinSoftware"
   },
   "insights": {
@@ -3895,9 +3896,9 @@
       "reuseReturn": "Système de réutilisation et de retour",
       "cloudKitchen": "Système de cuisine cloud",
       "softwareIntegrations": "Intégrations logicielles",
-       "Free": "Gratuit",
-  "Premium": "Premium",
-  "Enterprise": "Entreprise"
+      "Basic": "De base",
+      "Premium": "Premium",
+      "Enterprise": "Entreprise"
     },
     "validation": {
       "required": "Ce champ est obligatoire",

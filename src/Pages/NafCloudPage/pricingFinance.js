@@ -23,7 +23,7 @@ export default function PricingFinance() {
 
   // Handler functions for each pricing option
   const handleLeasing = () => {
-    setSelectedPlan('Free');
+    setSelectedPlan('Basic');
     setModalOpen(true);
   };
 
@@ -93,6 +93,8 @@ export default function PricingFinance() {
                   mx: { sm: 1, md: 1 },
                   display: 'flex',
                   flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '500px',
                 }}
               >
                 <Typography sx={{ textAlign: 'center', mb: 2, color: '#c2c2c4' }} className="bodyRegularText2">
@@ -106,11 +108,11 @@ export default function PricingFinance() {
                 <Typography sx={{ textAlign: 'center', color: '#c2c2c4', mb: 1 }} className="bodyRegularText4">
                   {t('software.plans_free')}
                 </Typography>
-                <Typography sx={{ textAlign: 'left', color: '#c2c2c4',mt:2  }} className="bodyRegularText3">
+                <Typography sx={{ textAlign: 'left', color: '#c2c2c4',mt:3  }} className="bodyRegularText3">
                   {t('software.plans_basicDesc')}
                 </Typography>
 
-                <List sx={{ p: 0, my: { xs: 4, md: 4 }, flexGrow: 1 }}>
+                <List sx={{ p: 0, my: { xs: 4, md: 9.5 }, flexGrow: 1 }}>
                   {[1, 2, 3, 4, 5, 6].map((i) => (
                     <ListItem key={i}>
                       <ListItemIcon sx={{ minWidth: 30 }}>
@@ -171,6 +173,8 @@ export default function PricingFinance() {
                   my: 2,
                   mx: { sm: 0, md: 1 },
                   flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '500px',
                 }}
               >
                 <Typography sx={{ textAlign: 'center', mb: 3, color: '#c2c2c4' }} className="bodyRegularText2">
@@ -251,20 +255,22 @@ export default function PricingFinance() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '500px',
                 }}
               >
                 <Typography sx={{ textAlign: 'center', mb: 2, color: '#c2c2c4' }} className="bodyRegularText2">
                   {t('software.plans_enterprise')}
                 </Typography>
 
-                <Typography sx={{ textAlign: 'center', mb: 2, color: '#FA7854' }} className="headings-h4">
+                <Typography sx={{ textAlign: 'center', mb: 8.7, color: '#FA7854' }} className="headings-h4">
                  {t('software.plans_custom')}
                 </Typography>
 
                 <Typography sx={{ textAlign: 'left', color: '#c2c2c4', mb: 2 }} className="bodyRegularText3">
                   {t('software.plans_enterpriseDesc')}
                 </Typography>
-                <Typography sx={{ textAlign: 'left', color: '#c2c2c4', mt: 1 }} className="bodyRegularText3">
+                <Typography sx={{ textAlign: 'left', color: '#c2c2c4', mt: 2 }} className="bodyRegularText3">
                   {t('software.plans_includesPremium')}
                 </Typography>
 
@@ -301,7 +307,7 @@ export default function PricingFinance() {
                     className="bodyRegularText4"
                     onClick={handleDirectPurchase} // Updated handler
                   >
-                    {t('products.gourmetMachine.pricing.getStarted')}
+                    {t('software.ContactSales')}
                   </Button>
                 </Box>
               </Box>
@@ -329,7 +335,7 @@ export default function PricingFinance() {
           >
             <SolutionProductForm
               preselectedPlan={selectedPlan}
-              planOptions={['Free', 'Premium', 'Enterprise']}
+              planOptions={['Basic', 'Premium', 'Enterprise']}
               title={t('software.form_title_cloud')}
               onClose={handleCloseModal}
               nafCloudOnly={true}

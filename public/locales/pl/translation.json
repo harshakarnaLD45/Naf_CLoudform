@@ -490,7 +490,7 @@
   "plans_enterprise": "Firma",
   "plans_free": "Darmowy",
   "plans_perMonth": "miesięcznie",
-  "plans_custom": "Indywidualny",
+  "plans_custom": "Niestandardowe",
   "plans_basicDesc": "Podstawowe narzędzia do zarządzania i monitorowania automatów vendingowych od pierwszego dnia.",
   "plans_premiumDesc": "Zaawansowane narzędzia do zwiększania przychodów, angażowania klientów i optymalizacji operacji.",
   "plans_enterpriseDesc": "Dostosowane rozwiązania dla dużych operatorów i środowisk korporacyjnych.",
@@ -515,6 +515,7 @@
   "plans_enterprise_feature4": "Opcje aplikacji white-label",
   "plans_enterprise_feature5": "Niestandardowe funkcje i wsparcie",
   "form_title_cloud": "Zapytanie o system NAF Cloud",
+  "ContactSales": "Kontakt sprzedaż",
     "softwareEnd": "KoniecOprogramowania"
   },
   "insights": {
@@ -3896,9 +3897,9 @@
       "reuseReturn": "System ponownego użycia i zwrotów",
       "cloudKitchen": "System kuchni chmurowej",
       "softwareIntegrations": "Integracje oprogramowania",
-      "Free": "Darmowy",
-  "Premium": "Premium",
-  "Enterprise": "Firma"
+      "Basic": "Podstawowy",
+      "Premium": "Premium",
+      "Enterprise": "Firma"
     },
     "validation": {
       "required": "To pole jest wymagane",

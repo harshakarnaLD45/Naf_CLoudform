@@ -496,7 +496,7 @@
   "plans_enterprise": "Unternehmen",
   "plans_free": "Kostenlos",
   "plans_perMonth": "pro Monat",
-  "plans_custom": "Individuell",
+  "plans_custom": "Benutzerdefiniert",
   "plans_basicDesc": "Wesentliche Tools zur Verwaltung und Überwachung Ihrer Verkaufsautomaten von Anfang an.",
   "plans_premiumDesc": "Erweiterte Tools zur Umsatzsteigerung, Kundenbindung und Optimierung Ihrer Abläufe.",
   "plans_enterpriseDesc": "Maßgeschneiderte Lösungen für große Betreiber und Unternehmensumgebungen.",
@@ -521,6 +521,7 @@
   "plans_enterprise_feature4": "White-Label-App-Optionen",
   "plans_enterprise_feature5": "Individuelle Funktionen und Support",
   "form_title_cloud": "NAF Cloud Systemanfrage",
+  "ContactSales": "Vertrieb kontaktieren",
     "softwareEnd": "SoftwareEnde"
   },
   "insights": {
@@ -3797,9 +3798,9 @@
       "reuseReturn": "Mehrweg- & Rückgabesystem",
       "cloudKitchen": "Cloud-Küchensystem",
       "softwareIntegrations": "Software-Integrationen",
-      "Free": "Kostenlos",
-  "Premium": "Premium",
-  "Enterprise": "Unternehmen"
+      "Basic": "Basis",
+      "Premium": "Premium",
+      "Enterprise": "Unternehmen"
     },
     "validation": {
       "required": "Dieses Feld ist erforderlich",

@@ -515,6 +515,7 @@
     "plans_enterprise_feature4": "Opciones de app de marca blanca",
     "plans_enterprise_feature5": "Funciones y soporte personalizados",
     "form_title_cloud": "Consulta del sistema NAF Cloud",
+    "ContactSales": "Contactar  ventas",
     "softwareEnd": "finSoftware"
   },
   "insights": {
@@ -3895,9 +3896,9 @@
       "reuseReturn": "Sistema de reutilización y devolución",
       "cloudKitchen": "Sistema de cocina en la nube",
       "softwareIntegrations": "Integraciones de software",
-        "Free": "Gratis",
-  "Premium": "Premium",
-  "Enterprise": "Empresarial"
+      "Basic": "Básico",
+      "Premium": "Premium",
+      "Enterprise": "Empresarial"
     },
     "validation": {
       "required": "Este campo es obligatorio",

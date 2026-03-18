@@ -525,6 +525,7 @@
       "plans_enterprise_feature4": "White-label app options",
       "plans_enterprise_feature5": "Custom features and support",
       "form_title_cloud": "NAF Cloud System Enquiry",
+      "ContactSales": "Contact Sales",
 
     "softwareEnd": "softwareEnd",
 
@@ -4163,7 +4164,7 @@
       "reuseReturn": "Reuse & Return Ecosystem",
       "cloudKitchen": "Cloud Kitchen System",
       "softwareIntegrations": "Software Integrations",
-      "Free": "Free",
+      "Basic": "Basic",
       "Premium": "Premium",
       "Enterprise": "Enterprise"
 
